@@ -1,12 +1,23 @@
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import heroBackground from "@/assets/hero-bg.jpg";
+import heroBackgroundWebP from "@/assets/hero-bg.webp";
 import { MeshGradientBackground } from "@/components/ui/mesh-gradient";
 const HeroSection = () => {
   const [mousePosition, setMousePosition] = useState({
     x: 0,
     y: 0
   });
+  const [backgroundImage, setBackgroundImage] = useState(heroBackground);
+  
+  // WebP support detection
+  useEffect(() => {
+    const webp = new Image();
+    webp.onload = webp.onerror = () => {
+      setBackgroundImage(webp.height === 2 ? heroBackgroundWebP : heroBackground);
+    };
+    webp.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
+  }, []);
   
   useEffect(() => {
     let animationFrameId: number;
@@ -43,7 +54,7 @@ const HeroSection = () => {
       
       {/* Animated Background */}
       <div className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-100 ease-out opacity-30 z-10" style={{
-      backgroundImage: `url(${heroBackground})`,
+      backgroundImage: `url(${backgroundImage})`,
       transform: `translate(${mousePosition.x * 10}px, ${mousePosition.y * 10}px) scale(1.1)`
     }} />
       
