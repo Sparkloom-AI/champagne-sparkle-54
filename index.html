@@ -17,9 +17,18 @@
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
     
     <!-- Google Calendar Appointment Scheduling begin -->
+    <link rel="preconnect" href="https://calendar.google.com">
     <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet"></noscript>
-    <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
+    <script>
+      // Defer Google Calendar script loading until after initial paint
+      window.addEventListener('load', function() {
+        const script = document.createElement('script');
+        script.src = 'https://calendar.google.com/calendar/scheduling-button-script.js';
+        script.async = true;
+        document.head.appendChild(script);
+      });
+    </script>
   </head>
 
   <body>
