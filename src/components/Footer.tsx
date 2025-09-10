@@ -32,7 +32,7 @@ const Footer = () => {
             <h4 className="font-semibold text-foreground mb-4">Contact</h4>
             <ul className="space-y-2 text-text-muted">
               <li>hello@sparklooomai.com</li>
-              <li>+1 (555) 123-4567</li>
+              
               <li>San Francisco, CA</li>
             </ul>
           </div>
