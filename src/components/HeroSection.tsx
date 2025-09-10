@@ -72,7 +72,7 @@ const HeroSection = () => {
       
       {/* Content */}
       <div className="relative z-20 text-center max-w-5xl mx-auto px-6">
-        <h1 className="text-5xl md:text-7xl font-bold mb-8 animate-fade-in-up">
+        <h1 className="text-5xl md:text-7xl font-bold mb-8">
           <span className="bg-gradient-to-r from-text via-accent to-accent-light bg-clip-text text-transparent">From Zero to Hero — Your AI Journey Starts Here</span>
           <br />
           
