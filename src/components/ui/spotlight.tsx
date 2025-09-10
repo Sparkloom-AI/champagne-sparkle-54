@@ -17,12 +17,21 @@ export function Spotlight({
   const containerRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
   const [parentElement, setParentElement] = useState<HTMLElement | null>(null);
+  const boundingRectRef = useRef<{ left: number; top: number }>({ left: 0, top: 0 });
 
   const mouseX = useSpring(0, springOptions);
   const mouseY = useSpring(0, springOptions);
 
   const spotlightLeft = useTransform(mouseX, (x) => `${x - size / 2}px`);
   const spotlightTop = useTransform(mouseY, (y) => `${y - size / 2}px`);
+
+  // Cache bounding rectangle to prevent forced reflows
+  const updateBoundingRect = useCallback(() => {
+    if (parentElement) {
+      const rect = parentElement.getBoundingClientRect();
+      boundingRectRef.current = { left: rect.left, top: rect.top };
+    }
+  }, [parentElement]);
 
   useEffect(() => {
     if (containerRef.current) {
@@ -35,14 +44,25 @@ export function Spotlight({
     }
   }, []);
 
+  // Update bounding rect when parent element changes or window resizes
+  useEffect(() => {
+    if (!parentElement) return;
+    
+    updateBoundingRect();
+    
+    const handleResize = () => updateBoundingRect();
+    window.addEventListener('resize', handleResize, { passive: true });
+    
+    return () => window.removeEventListener('resize', handleResize);
+  }, [parentElement, updateBoundingRect]);
+
   const handleMouseMove = useCallback(
     (event: MouseEvent) => {
       if (!parentElement) return;
       
-      // Use requestAnimationFrame to prevent forced reflows
+      // Use cached bounding rect to prevent forced reflows
       requestAnimationFrame(() => {
-        if (!parentElement) return;
-        const { left, top } = parentElement.getBoundingClientRect();
+        const { left, top } = boundingRectRef.current;
         mouseX.set(event.clientX - left);
         mouseY.set(event.clientY - top);
       });
