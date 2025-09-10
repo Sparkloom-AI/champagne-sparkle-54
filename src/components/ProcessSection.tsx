@@ -86,7 +86,7 @@ const ProcessSection = () => {
           {/* Connection Line */}
           <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-sl-auric-700/50 via-sl-auric-700/30 to-transparent transform -translate-x-1/2" />
           
-          <div className="space-y-12">
+          <div className="space-y-4">
             {processSteps.map((step, index) => {
               const Icon = step.icon;
               const isStepVisible = visibleSteps.includes(index);
