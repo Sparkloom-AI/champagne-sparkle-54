@@ -60,3 +60,5 @@ export function SplineShowcaseSection() {
     </section>
   );
 }
+
+export default SplineShowcaseSection;
