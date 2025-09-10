@@ -1,6 +1,5 @@
 const Footer = () => {
-  return (
-    <footer className="bg-sl-basalt-900 border-t border-border py-12">
+  return <footer className="bg-sl-basalt-900 border-t border-border py-12">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
@@ -41,9 +40,7 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-text-subtle text-sm">
-            © 2024 SparkLoom AI. All rights reserved.
-          </p>
+          <p className="text-text-subtle text-sm">© SparkLoomAI. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="#" className="text-text-subtle hover:text-accent text-sm transition-colors">Privacy Policy</a>
             <a href="#" className="text-text-subtle hover:text-accent text-sm transition-colors">Terms of Service</a>
@@ -51,8 +48,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
