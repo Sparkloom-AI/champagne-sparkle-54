@@ -6,7 +6,6 @@ import { lazy, Suspense, useEffect, useState } from "react";
 const SplineShowcaseSection = lazy(() => import("@/components/SplineShowcaseSection"));
 const AboutSection = lazy(() => import("@/components/AboutSection"));
 const ProcessSection = lazy(() => import("@/components/ProcessSection"));
-const ServicesSection = lazy(() => import("@/components/ServicesSection"));
 const PricingSection = lazy(() => import("@/components/PricingSection"));
 const FAQSection = lazy(() => import("@/components/FAQSection"));
 const ContactSection = lazy(() => import("@/components/ContactSection"));
@@ -42,9 +41,6 @@ const Index = () => {
           </Suspense>
           <Suspense fallback={<LoadingFallback />}>
             <ProcessSection />
-          </Suspense>
-          <Suspense fallback={<LoadingFallback />}>
-            <ServicesSection />
           </Suspense>
           <Suspense fallback={<LoadingFallback height="py-32" />}>
             <SplineShowcaseSection />
