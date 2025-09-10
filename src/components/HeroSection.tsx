@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import heroBackground from "@/assets/hero-bg.jpg";
+import { MeshGradientBackground } from "@/components/ui/mesh-gradient";
 
 const HeroSection = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -24,9 +25,12 @@ const HeroSection = () => {
         '--mouse-y': mousePosition.y,
       } as React.CSSProperties}
     >
+      {/* Mesh Gradient Background */}
+      <MeshGradientBackground className="z-0" speed={0.2} opacity={0.8} />
+      
       {/* Animated Background */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-100 ease-out" 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-100 ease-out opacity-30 z-10" 
         style={{
           backgroundImage: `url(${heroBackground})`,
           transform: `translate(${mousePosition.x * 10}px, ${mousePosition.y * 10}px) scale(1.1)`
@@ -35,30 +39,30 @@ const HeroSection = () => {
       
       {/* Dynamic Gradient Overlay */}
       <div 
-        className="absolute inset-0 transition-all duration-300 ease-out"
+        className="absolute inset-0 transition-all duration-300 ease-out z-10"
         style={{
           background: `radial-gradient(circle at ${50 + mousePosition.x * 20}% ${50 + mousePosition.y * 20}%, 
-            hsl(var(--sl-obsidian) / 0.4) 0%, 
-            hsl(var(--sl-obsidian) / 0.8) 100%)`
+            hsl(var(--sl-obsidian) / 0.2) 0%, 
+            hsl(var(--sl-obsidian) / 0.6) 100%)`
         }}
       />
       
       {/* Animated Floating Orbs */}
       <div 
-        className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-orb animate-float opacity-40 transition-transform duration-200 ease-out" 
+        className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-orb animate-float opacity-20 transition-transform duration-200 ease-out z-10" 
         style={{
           transform: `translate(${mousePosition.x * -15}px, ${mousePosition.y * -10}px)`
         }}
       />
       <div 
-        className="absolute bottom-1/3 right-1/4 w-64 h-64 bg-gradient-orb animate-float opacity-30 transition-transform duration-200 ease-out" 
+        className="absolute bottom-1/3 right-1/4 w-64 h-64 bg-gradient-orb animate-float opacity-15 transition-transform duration-200 ease-out z-10" 
         style={{
           animationDelay: '2s',
           transform: `translate(${mousePosition.x * 20}px, ${mousePosition.y * -15}px)`
         }}
       />
       <div 
-        className="absolute top-1/2 right-1/3 w-48 h-48 bg-gradient-orb animate-pulse-glow opacity-25 transition-transform duration-200 ease-out" 
+        className="absolute top-1/2 right-1/3 w-48 h-48 bg-gradient-orb animate-pulse-glow opacity-10 transition-transform duration-200 ease-out z-10" 
         style={{
           animationDelay: '4s',
           transform: `translate(${mousePosition.x * -25}px, ${mousePosition.y * 20}px)`
@@ -67,7 +71,7 @@ const HeroSection = () => {
       
       {/* Mouse-responsive Light Effects */}
       <div 
-        className="absolute w-96 h-96 opacity-20 pointer-events-none transition-all duration-300 ease-out"
+        className="absolute w-96 h-96 opacity-15 pointer-events-none transition-all duration-300 ease-out z-10"
         style={{
           background: `radial-gradient(circle, hsl(var(--sl-auric-700) / 0.3) 0%, transparent 70%)`,
           left: `${50 + mousePosition.x * 30}%`,
@@ -79,7 +83,7 @@ const HeroSection = () => {
       
       {/* Particle Effect */}
       <div 
-        className="absolute inset-0 opacity-30"
+        className="absolute inset-0 opacity-20 z-10"
         style={{
           background: `radial-gradient(2px 2px at ${20 + mousePosition.x * 10}px ${30 + mousePosition.y * 10}px, hsl(var(--sl-auric-700)), transparent),
                       radial-gradient(2px 2px at ${40 + mousePosition.x * 15}px ${70 + mousePosition.y * 15}px, hsl(var(--sl-pearl-100)), transparent),
