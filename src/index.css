@@ -2,95 +2,73 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+/* SparkLoom AI Design System - Black & Champagne Palette
+Based on sophisticated color specifications provided
 All colors MUST be HSL.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core SparkLoom palette */
+    --sl-obsidian: 240 4% 5%;          /* #0B0B0C */
+    --sl-basalt-900: 0 0% 7%;          /* #111111 */
+    --sl-slate-800: 240 2% 12%;        /* #1E1E1F */
+    --sl-graphite-700: 240 1% 19%;     /* #2F2F30 */
+    --sl-iron-600: 240 2% 25%;         /* #3F3F41 */
+    --sl-zinc-500: 240 2% 34%;         /* #565658 */
+    --sl-ash-400: 12 2% 48%;           /* #7D7A79 */
+    --sl-fog-300: 26 4% 63%;           /* #A39F9C */
+    --sl-mist-200: 32 12% 79%;         /* #CFC9C2 */
+    --sl-pearl-100: 30 21% 89%;        /* #E8E2DC */
+    --sl-auric-500: 35 25% 74%;        /* #CEC0AD - muted champagne */
+    --sl-auric-700: 34 51% 86%;        /* #EEDFCB - champagne highlight */
+    --sl-auric-800: 37 55% 90%;        /* #F3E8D6 - light champagne */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Semantic design tokens */
+    --background: var(--sl-obsidian);
+    --foreground: var(--sl-pearl-100);
+    --surface: var(--sl-slate-800);
+    --surface-hover: var(--sl-graphite-700);
+    --text: var(--sl-pearl-100);
+    --text-muted: var(--sl-fog-300);
+    --text-subtle: var(--sl-ash-400);
+    --accent: var(--sl-auric-700);
+    --accent-muted: var(--sl-auric-500);
+    --accent-light: var(--sl-auric-800);
+    --border: color-mix(in srgb, hsl(var(--sl-iron-600)) 24%, transparent);
+    --border-accent: color-mix(in srgb, hsl(var(--sl-auric-700)) 40%, transparent);
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    /* Component tokens */
+    --card: var(--sl-slate-800);
+    --card-foreground: var(--sl-pearl-100);
+    --popover: var(--sl-graphite-700);
+    --popover-foreground: var(--sl-pearl-100);
+    --primary: var(--sl-auric-700);
+    --primary-foreground: var(--sl-obsidian);
+    --secondary: var(--sl-slate-800);
+    --secondary-foreground: var(--sl-pearl-100);
+    --muted: var(--sl-iron-600);
+    --muted-foreground: var(--sl-fog-300); 
+    --destructive: 0 84% 60%;
+    --destructive-foreground: var(--sl-pearl-100);
+    --input: var(--sl-graphite-700);
+    --ring: var(--sl-auric-700);
+    --radius: 0.75rem;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Premium gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--sl-obsidian)), hsl(var(--sl-slate-800)));
+    --gradient-surface: linear-gradient(180deg, hsl(var(--sl-slate-800)), hsl(var(--sl-graphite-700)));
+    --gradient-accent: linear-gradient(90deg, transparent, hsl(var(--sl-auric-700)) 50%, transparent);
+    --gradient-orb: radial-gradient(circle at center, hsl(var(--sl-auric-700) / 0.3), transparent 70%);
+    
+    /* Premium shadows */
+    --shadow-elegant: 0 20px 40px -10px hsl(var(--sl-obsidian) / 0.5);
+    --shadow-glow: 0 0 40px hsl(var(--sl-auric-700) / 0.2);
+    --shadow-card: 0 8px 32px hsl(var(--sl-obsidian) / 0.3);
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Animations */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
 }
 
@@ -101,5 +79,47 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--sl-slate-800));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--sl-auric-700));
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--sl-auric-500));
+  }
+
+  /* Selection styles */
+  ::selection {
+    background: hsl(var(--sl-auric-700) / 0.3);
+    color: hsl(var(--sl-pearl-100));
+  }
+
+  /* Premium micro-styles */
+  .hairline-divider {
+    background: linear-gradient(90deg, transparent, hsl(var(--sl-auric-700)) 50%, transparent);
+    height: 1px;
+    opacity: 0.6;
+  }
+
+  .button-sheen:hover {
+    background: 
+      linear-gradient(180deg, color-mix(in oklab, hsl(var(--sl-auric-700)) 12%, transparent), transparent 40%),
+      hsl(var(--sl-slate-800));
   }
 }

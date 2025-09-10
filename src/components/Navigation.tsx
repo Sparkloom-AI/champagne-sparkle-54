@@ -1,0 +1,53 @@
+import { Button } from "@/components/ui/button";
+
+const Navigation = () => {
+  const scrollToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  return (
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-sl-obsidian/80 backdrop-blur-xl border-b border-border">
+      <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+        <div className="flex items-center space-x-2">
+          <div className="w-8 h-8 bg-gradient-to-r from-accent to-accent-light rounded-lg flex items-center justify-center">
+            <span className="text-sl-obsidian font-bold text-sm">SL</span>
+          </div>
+          <span className="text-xl font-bold text-foreground">SparkLoom AI</span>
+        </div>
+        
+        <div className="hidden md:flex items-center space-x-8">
+          <button 
+            onClick={() => scrollToSection('about')}
+            className="text-text-muted hover:text-accent transition-colors"
+          >
+            About
+          </button>
+          <button 
+            onClick={() => scrollToSection('services')}
+            className="text-text-muted hover:text-accent transition-colors"
+          >
+            Services
+          </button>
+          <button 
+            onClick={() => scrollToSection('pricing')}
+            className="text-text-muted hover:text-accent transition-colors"
+          >
+            Pricing
+          </button>
+          <button 
+            onClick={() => scrollToSection('contact')}
+            className="text-text-muted hover:text-accent transition-colors"
+          >
+            Contact
+          </button>
+        </div>
+
+        <Button variant="outline" className="border-accent text-accent hover:bg-accent hover:text-accent-foreground">
+          Get Started
+        </Button>
+      </div>
+    </nav>
+  );
+};
+
+export default Navigation;
