@@ -33,7 +33,7 @@ const Navigation = () => {
           variant="outline" 
           className="border-accent text-accent hover:bg-accent hover:text-accent-foreground"
           onClick={() => {
-            window.open('https://calendar.google.com/calendar/appointments/schedules/AcZssZ3bBsRd3WZyMmpXQEhUx3sRZfPYssFvYKMCZizHxcXvjZqaUXqZbKXGDgeWiPYssFvYKMCZizHxcXvjZqaUXqZbKXGDgeWiPYwu7e0OULB7mnA?gv=true', '_blank');
+            window.open('https://calendar.app.google/hnNuZRVCdZwq5cMU8', '_blank');
           }}
         >
           Talk to an Expert

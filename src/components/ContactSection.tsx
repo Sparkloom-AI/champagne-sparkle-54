@@ -21,7 +21,7 @@ const ContactSection = () => {
                 {/* Interactive Button */}
                 <div className="pt-8">
                   <button className="inline-flex items-center gap-2 px-6 py-3 bg-sl-auric-700/10 border border-sl-auric-700/30 rounded-lg backdrop-blur-sm hover:bg-sl-auric-700/20 transition-colors cursor-pointer" onClick={() => {
-                  window.open('https://calendar.google.com/calendar/appointments/schedules/AcZssZ3bBsRd3WZyMmpXQEhUx3sRZfPYssFvYKMCZizHxcXvjZqaUXqZbKXGDgeWiPYwu7e0OULB7mnA?gv=true', '_blank');
+                  window.open('https://calendar.app.google/hnNuZRVCdZwq5cMU8', '_blank');
                 }}>
                     <span className="w-2 h-2 bg-sl-auric-700 rounded-full animate-pulse"></span>
                     <span className="text-sl-auric-700 font-medium">Talk to an  Expert</span>
