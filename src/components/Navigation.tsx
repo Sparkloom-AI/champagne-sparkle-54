@@ -29,8 +29,14 @@ const Navigation = () => {
           </button>
         </div>
 
-        <Button variant="outline" className="border-accent text-accent hover:bg-accent hover:text-accent-foreground">
-          Get Started
+        <Button 
+          variant="outline" 
+          className="border-accent text-accent hover:bg-accent hover:text-accent-foreground"
+          onClick={() => {
+            window.open('https://calendar.google.com/calendar/appointments/schedules/AcZssZ3bBsRd3WZyMmpXQEhUx3sRZfPYssFvYKMCZizHxcXvjZqaUXqZbKXGDgeWiPYssFvYKMCZizHxcXvjZqaUXqZbKXGDgeWiPYwu7e0OULB7mnA?gv=true', '_blank');
+          }}
+        >
+          Talk to an Expert
         </Button>
       </div>
     </nav>;
