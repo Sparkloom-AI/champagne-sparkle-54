@@ -52,7 +52,7 @@ export function SplineShowcaseSection() {
         
         <div className="mt-16 h-96 rounded-lg bg-muted/50 flex items-center justify-center">
           <SplineScene 
-            scene="https://prod.spline.design/6Wq1Q7YGyM-iab4H/scene.splinecode"
+            scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
             className="w-full h-full rounded-lg"
           />
         </div>
