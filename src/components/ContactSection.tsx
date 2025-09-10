@@ -3,8 +3,55 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin } from "lucide-react";
+import { useEffect } from "react";
+
+// Extend Window interface for Google Calendar
+declare global {
+  interface Window {
+    calendar?: {
+      schedulingButton: {
+        load: (config: {
+          url: string;
+          color: string;
+          label: string;
+          target: HTMLElement;
+        }) => void;
+      };
+    };
+  }
+}
 
 const ContactSection = () => {
+  useEffect(() => {
+    // Initialize Google Calendar button after component mounts and scripts load
+    const initCalendarButton = () => {
+      const target = document.getElementById('google-calendar-button');
+      if (target && window.calendar && window.calendar.schedulingButton) {
+        window.calendar.schedulingButton.load({
+          url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3bBsRd3WZyMmpXQEhUx3sRZfPYssFvYKMCZizHxcXvjZqaUXqZbKXGDgeWiPYwu7e0OULB7mnA?gv=true',
+          color: '#EEDFCB',
+          label: 'Book Your Demo',
+          target,
+        });
+      }
+    };
+
+    // Try to initialize immediately if scripts are already loaded
+    if (window.calendar) {
+      initCalendarButton();
+    } else {
+      // Otherwise wait for scripts to load
+      const checkForCalendar = setInterval(() => {
+        if (window.calendar) {
+          initCalendarButton();
+          clearInterval(checkForCalendar);
+        }
+      }, 100);
+
+      // Cleanup interval on unmount
+      return () => clearInterval(checkForCalendar);
+    }
+  }, []);
   return (
     <section id="contact" className="py-24 bg-sl-obsidian relative overflow-hidden">
       {/* Background Elements */}
@@ -68,11 +115,38 @@ const ContactSection = () => {
                 />
               </div>
               
+              {/* Google Calendar Scheduling Button */}
+              <div 
+                id="google-calendar-button"
+                className="w-full"
+              ></div>
+              
+              <script
+                dangerouslySetInnerHTML={{
+                  __html: `
+                    (function() {
+                      var target = document.getElementById('google-calendar-button');
+                      if (target && window.calendar) {
+                        calendar.schedulingButton.load({
+                          url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3bBsRd3WZyMmpXQEhUx3sRZfPYssFvYKMCZizHxcXvjZqaUXqZbKXGDgeWiPYwu7e0OULB7mnA?gv=true',
+                          color: '#EEDFCB',
+                          label: 'Book Your Demo',
+                          target,
+                        });
+                      }
+                    })();
+                  `
+                }}
+              />
+              
+              {/* Fallback Submit Button */}
               <Button 
                 type="submit"
                 className="w-full bg-accent text-accent-foreground hover:bg-accent-light shadow-glow py-3 font-semibold"
+                style={{ display: 'none' }}
+                id="fallback-button"
               >
-                Book Your Demo
+                Send Message
               </Button>
             </form>
           </Card>
