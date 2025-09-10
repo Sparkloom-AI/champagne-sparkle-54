@@ -1,9 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { SplineScene } from "@/components/ui/splite";
-
 const ContactSection = () => {
-  return (
-    <section id="contact" className="py-20 bg-sl-obsidian relative overflow-hidden">
+  return <section id="contact" className="py-20 bg-sl-obsidian relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Card className="w-full h-[600px] bg-sl-obsidian/80 relative overflow-hidden border-sl-iron-600/30 rounded-2xl">
           
@@ -22,14 +20,11 @@ const ContactSection = () => {
 
                 {/* Interactive Button */}
                 <div className="pt-8">
-                  <button 
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-sl-auric-700/10 border border-sl-auric-700/30 rounded-lg backdrop-blur-sm hover:bg-sl-auric-700/20 transition-colors cursor-pointer"
-                    onClick={() => {
-                      window.open('https://calendar.google.com/calendar/appointments/schedules/AcZssZ3bBsRd3WZyMmpXQEhUx3sRZfPYssFvYKMCZizHxcXvjZqaUXqZbKXGDgeWiPYwu7e0OULB7mnA?gv=true', '_blank');
-                    }}
-                  >
+                  <button className="inline-flex items-center gap-2 px-6 py-3 bg-sl-auric-700/10 border border-sl-auric-700/30 rounded-lg backdrop-blur-sm hover:bg-sl-auric-700/20 transition-colors cursor-pointer" onClick={() => {
+                  window.open('https://calendar.google.com/calendar/appointments/schedules/AcZssZ3bBsRd3WZyMmpXQEhUx3sRZfPYssFvYKMCZizHxcXvjZqaUXqZbKXGDgeWiPYwu7e0OULB7mnA?gv=true', '_blank');
+                }}>
                     <span className="w-2 h-2 bg-sl-auric-700 rounded-full animate-pulse"></span>
-                    <span className="text-sl-auric-700 font-medium">Click and drag to interact</span>
+                    <span className="text-sl-auric-700 font-medium">Talk to an  Expert</span>
                   </button>
                 </div>
               </div>
@@ -37,10 +32,7 @@ const ContactSection = () => {
 
             {/* Right content - 3D Robot Scene */}
             <div className="flex-1 relative min-h-[300px] lg:min-h-full">
-              <SplineScene 
-                scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode" 
-                className="w-full h-full" 
-              />
+              <SplineScene scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode" className="w-full h-full" />
               
               {/* Overlay gradient for better text readability on mobile */}
               <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-sl-obsidian/20 pointer-events-none lg:hidden" />
@@ -48,8 +40,6 @@ const ContactSection = () => {
           </div>
         </Card>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default ContactSection;

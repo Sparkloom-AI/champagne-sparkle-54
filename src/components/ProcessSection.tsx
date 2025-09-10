@@ -1,80 +1,66 @@
 import { useEffect, useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { ArrowRight, Search, Target, Lightbulb, Rocket, Settings } from 'lucide-react';
-
-const processSteps = [
-  {
-    number: 1,
-    title: "AI Discovery Session",
-    description: "Identifying opportunities and challenges in your organization.",
-    icon: Search,
-    color: "from-sl-auric-700 to-sl-auric-500"
-  },
-  {
-    number: 2,
-    title: "AI Scoping Programme", 
-    description: "Defining clear objectives and implementation strategy.",
-    icon: Target,
-    color: "from-sl-pearl-100 to-sl-fog-300"
-  },
-  {
-    number: 3,
-    title: "Proof of Concept (PoC)",
-    description: "Building a working prototype to validate the approach.",
-    icon: Lightbulb,
-    color: "from-sl-auric-700 to-sl-auric-500"
-  },
-  {
-    number: 4,
-    title: "Minimum Viable Product (MVP)",
-    description: "Developing a scalable solution ready for deployment.",
-    icon: Rocket,
-    color: "from-sl-pearl-100 to-sl-fog-300"
-  },
-  {
-    number: 5,
-    title: "Ongoing Maintenance",
-    description: "Continuous improvement and adaptation to changing needs.",
-    icon: Settings,
-    color: "from-sl-auric-700 to-sl-auric-500"
-  }
-];
-
+const processSteps = [{
+  number: 1,
+  title: "AI Discovery Session",
+  description: "Identifying opportunities and challenges in your organization.",
+  icon: Search,
+  color: "from-sl-auric-700 to-sl-auric-500"
+}, {
+  number: 2,
+  title: "AI Scoping Programme",
+  description: "Defining clear objectives and implementation strategy.",
+  icon: Target,
+  color: "from-sl-pearl-100 to-sl-fog-300"
+}, {
+  number: 3,
+  title: "Proof of Concept (PoC)",
+  description: "Building a working prototype to validate the approach.",
+  icon: Lightbulb,
+  color: "from-sl-auric-700 to-sl-auric-500"
+}, {
+  number: 4,
+  title: "Minimum Viable Product (MVP)",
+  description: "Developing a scalable solution ready for deployment.",
+  icon: Rocket,
+  color: "from-sl-pearl-100 to-sl-fog-300"
+}, {
+  number: 5,
+  title: "Ongoing Maintenance",
+  description: "Continuous improvement and adaptation to changing needs.",
+  icon: Settings,
+  color: "from-sl-auric-700 to-sl-auric-500"
+}];
 const ProcessSection = () => {
   const [visibleSteps, setVisibleSteps] = useState<number[]>([]);
   const [isVisible, setIsVisible] = useState(false);
-
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          // Stagger the animation of each step
-          processSteps.forEach((_, index) => {
-            setTimeout(() => {
-              setVisibleSteps(prev => [...prev, index]);
-            }, index * 200);
-          });
-        }
-      },
-      { threshold: 0.2 }
-    );
-
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setIsVisible(true);
+        // Stagger the animation of each step
+        processSteps.forEach((_, index) => {
+          setTimeout(() => {
+            setVisibleSteps(prev => [...prev, index]);
+          }, index * 200);
+        });
+      }
+    }, {
+      threshold: 0.2
+    });
     const section = document.getElementById('process-section');
     if (section) {
       observer.observe(section);
     }
-
     return () => observer.disconnect();
   }, []);
-
-  return (
-    <section id="process-section" className="py-20 bg-gradient-to-b from-sl-obsidian/30 to-background">
+  return <section id="process-section" className="py-20 bg-gradient-to-b from-sl-obsidian/30 to-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            The <span className="text-transparent bg-gradient-to-r from-sl-auric-700 to-sl-auric-500 bg-clip-text">5-Step Process</span>
+            The 
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Our proven methodology transforms your business in 30 days with structured AI implementation
@@ -88,21 +74,13 @@ const ProcessSection = () => {
           
           <div className="space-y-4">
             {processSteps.map((step, index) => {
-              const Icon = step.icon;
-              const isStepVisible = visibleSteps.includes(index);
-              const isEven = index % 2 === 0;
-              
-              return (
-                <div
-                  key={step.number}
-                  className={`flex flex-col lg:flex-row items-center gap-8 ${
-                    isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'
-                  } ${isStepVisible ? 'animate-fade-in' : 'opacity-0'}`}
-                  style={{
-                    animationDelay: `${index * 200}ms`,
-                    animationFillMode: 'both'
-                  }}
-                >
+            const Icon = step.icon;
+            const isStepVisible = visibleSteps.includes(index);
+            const isEven = index % 2 === 0;
+            return <div key={step.number} className={`flex flex-col lg:flex-row items-center gap-8 ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} ${isStepVisible ? 'animate-fade-in' : 'opacity-0'}`} style={{
+              animationDelay: `${index * 200}ms`,
+              animationFillMode: 'both'
+            }}>
                   {/* Step Content */}
                   <div className={`flex-1 ${isEven ? 'lg:text-right' : 'lg:text-left'} text-center lg:text-left`}>
                     <Card className="bg-sl-slate-800/30 border-sl-iron-600/30 backdrop-blur-sm hover:bg-sl-slate-800/50 transition-all duration-300 group">
@@ -138,18 +116,15 @@ const ProcessSection = () => {
                     </div>
                     
                     {/* Arrow to next step */}
-                    {index < processSteps.length - 1 && (
-                      <div className={`absolute top-full left-1/2 transform -translate-x-1/2 mt-4 ${isStepVisible ? 'animate-fade-in' : 'opacity-0'}`}>
+                    {index < processSteps.length - 1 && <div className={`absolute top-full left-1/2 transform -translate-x-1/2 mt-4 ${isStepVisible ? 'animate-fade-in' : 'opacity-0'}`}>
                         <ArrowRight className="w-6 h-6 text-sl-auric-700/60 animate-pulse" />
-                      </div>
-                    )}
+                      </div>}
                   </div>
 
                   {/* Spacer for even layout */}
                   <div className="flex-1 hidden lg:block" />
-                </div>
-              );
-            })}
+                </div>;
+          })}
           </div>
         </div>
 
@@ -164,8 +139,6 @@ const ProcessSection = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default ProcessSection;
