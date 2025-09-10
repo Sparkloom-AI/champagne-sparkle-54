@@ -61,7 +61,7 @@ export function SplineShowcaseSection() {
           {/* Bottom CTA */}
           <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-10">
             <button className="inline-flex items-center gap-2 px-4 py-2 bg-sl-auric-700/10 border border-sl-auric-700/30 rounded-lg backdrop-blur-sm hover:bg-sl-auric-700/20 transition-colors cursor-pointer" onClick={() => {
-            window.open('https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2FER4ydVNvRJ6Vl4V4vbf3klhZLW3kJe8YmLFzSIJLPo0H7x8pZQVzL4-8Kl2QFmjY3Qz8', '_blank');
+            window.open('https://calendar.google.com/calendar/appointments/schedules/AcZssZ3bBsRd3WZyMmpXQEhUx3sRZfPYssFvYKMCZizHxcXvjZqaUXqZbKXGDgeWiPYwu7e0OULB7mnA?gv=true', '_blank');
           }}>
               <span className="w-2 h-2 bg-sl-auric-700 rounded-full animate-pulse"></span>
               <span className="text-sl-auric-700 text-sm font-medium">Talk to an Expert</span>
