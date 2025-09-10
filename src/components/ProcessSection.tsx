@@ -60,7 +60,7 @@ const ProcessSection = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            The 
+            The 5-Step Process
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Our proven methodology transforms your business in 30 days with structured AI implementation
