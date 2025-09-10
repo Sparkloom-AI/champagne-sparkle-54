@@ -110,7 +110,7 @@ const HeroSection = () => {
           animationDelay: '0.4s'
         }}>
           <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent-light transition-all duration-300 shadow-glow px-8 py-4 text-lg font-semibold">
-            Start Your Transformation
+            Book a Discovery Call
           </Button>
           <Button variant="outline" size="lg" className="border-accent text-accent hover:bg-accent/10 px-8 py-4 text-lg font-semibold">
             Watch Demo
