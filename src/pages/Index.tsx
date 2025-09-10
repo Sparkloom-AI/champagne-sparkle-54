@@ -1,48 +1,68 @@
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection"; 
-import AboutSection from "@/components/AboutSection";
-import ProcessSection from "@/components/ProcessSection";
-import ServicesSection from "@/components/ServicesSection";
-import PricingSection from "@/components/PricingSection";
-import FAQSection from "@/components/FAQSection";
-import ContactSection from "@/components/ContactSection";
-import Footer from "@/components/Footer";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 
-// Lazy load the heavy Spline component to reduce main-thread work
+// Lazy load heavy components to reduce main-thread work
 const SplineShowcaseSection = lazy(() => import("@/components/SplineShowcaseSection"));
+const AboutSection = lazy(() => import("@/components/AboutSection"));
+const ProcessSection = lazy(() => import("@/components/ProcessSection"));
+const ServicesSection = lazy(() => import("@/components/ServicesSection"));
+const PricingSection = lazy(() => import("@/components/PricingSection"));
+const FAQSection = lazy(() => import("@/components/FAQSection"));
+const ContactSection = lazy(() => import("@/components/ContactSection"));
+const Footer = lazy(() => import("@/components/Footer"));
 
 const Index = () => {
+  const [showBelowFold, setShowBelowFold] = useState(false);
+
+  // Defer below-the-fold content to reduce initial main-thread work
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowBelowFold(true);
+    }, 100); // Small delay to allow hero section to render first
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const LoadingFallback = ({ height = "py-24" }: { height?: string }) => (
+    <div className={`${height} bg-background flex items-center justify-center`}>
+      <div className="animate-pulse text-muted-foreground">Loading...</div>
+    </div>
+  );
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navigation />
       <HeroSection />
-      <AboutSection />
-      <ProcessSection />
-      <ServicesSection />
-      <Suspense fallback={
-        <section className="py-24 bg-background relative overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Interactive 3D Experiences
-              </h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Discover our cutting-edge Spline integrations that bring your ideas to life
-              </p>
-            </div>
-            <div className="mt-16 h-96 rounded-lg bg-muted/50 flex items-center justify-center">
-              <div className="animate-pulse text-muted-foreground">Loading 3D Experience...</div>
-            </div>
-          </div>
-        </section>
-      }>
-        <SplineShowcaseSection />
-      </Suspense>
-      <PricingSection />
-      <FAQSection />
-      <ContactSection />
-      <Footer />
+      
+      {showBelowFold && (
+        <>
+          <Suspense fallback={<LoadingFallback />}>
+            <AboutSection />
+          </Suspense>
+          <Suspense fallback={<LoadingFallback />}>
+            <ProcessSection />
+          </Suspense>
+          <Suspense fallback={<LoadingFallback />}>
+            <ServicesSection />
+          </Suspense>
+          <Suspense fallback={<LoadingFallback height="py-32" />}>
+            <SplineShowcaseSection />
+          </Suspense>
+          <Suspense fallback={<LoadingFallback />}>
+            <PricingSection />
+          </Suspense>
+          <Suspense fallback={<LoadingFallback />}>
+            <FAQSection />
+          </Suspense>
+          <Suspense fallback={<LoadingFallback />}>
+            <ContactSection />
+          </Suspense>
+          <Suspense fallback={<LoadingFallback height="py-12" />}>
+            <Footer />
+          </Suspense>
+        </>
+      )}
     </div>
   );
 };
