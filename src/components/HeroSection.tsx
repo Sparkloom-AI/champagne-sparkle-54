@@ -7,17 +7,32 @@ const HeroSection = () => {
     x: 0,
     y: 0
   });
+  
   useEffect(() => {
+    let animationFrameId: number;
+    
     const handleMouseMove = (e: MouseEvent) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 2;
-      const y = (e.clientY / window.innerHeight - 0.5) * 2;
-      setMousePosition({
-        x,
-        y
+      // Cancel previous frame if it hasn't executed yet
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
+      
+      // Use requestAnimationFrame to prevent blocking the main thread
+      animationFrameId = requestAnimationFrame(() => {
+        const x = (e.clientX / window.innerWidth - 0.5) * 2;
+        const y = (e.clientY / window.innerHeight - 0.5) * 2;
+        setMousePosition({ x, y });
       });
     };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
+    };
   }, []);
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{
     '--mouse-x': mousePosition.x,
