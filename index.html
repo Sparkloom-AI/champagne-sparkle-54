@@ -22,17 +22,23 @@
     
     <!-- Google Calendar Appointment Scheduling begin -->
     <link rel="preconnect" href="https://calendar.google.com">
-    <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet"></noscript>
     <script>
-      // Defer Google Calendar script loading until after initial paint
+      // Defer Google Calendar resources until after initial paint to reduce render-blocking
       window.addEventListener('load', function() {
+        // Load CSS
+        const css = document.createElement('link');
+        css.rel = 'stylesheet';
+        css.href = 'https://calendar.google.com/calendar/scheduling-button-script.css';
+        document.head.appendChild(css);
+        
+        // Load script
         const script = document.createElement('script');
         script.src = 'https://calendar.google.com/calendar/scheduling-button-script.js';
         script.async = true;
         document.head.appendChild(script);
       });
     </script>
+    <noscript><link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet"></noscript>
   </head>
 
   <body>
