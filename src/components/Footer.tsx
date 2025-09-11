@@ -8,12 +8,9 @@ const Footer = () => {
               <div className="w-8 h-8 bg-gradient-to-r from-accent to-accent-light rounded-lg flex items-center justify-center">
                 <span className="text-sl-obsidian font-bold text-sm">SL</span>
               </div>
-              <span className="text-xl font-bold text-foreground">SparkLoom AI</span>
+              <span className="text-xl font-bold text-foreground">SparkloomAI</span>
             </div>
-            <p className="text-text-muted leading-relaxed max-w-md">
-              Empowering enterprise operations teams to transform their workflows with 
-              AI-powered solutions delivered in just 30 days.
-            </p>
+            <p className="text-text-muted leading-relaxed max-w-md">To empower organizations with accessible AI tools that solve real business problems and drive innovation.</p>
           </div>
 
           {/* Quick Links */}

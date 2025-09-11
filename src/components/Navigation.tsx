@@ -11,7 +11,7 @@ const Navigation = () => {
           <div className="w-8 h-8 bg-gradient-to-r from-accent to-accent-light rounded-lg flex items-center justify-center">
             <span className="text-sl-obsidian font-bold text-sm">SP</span>
           </div>
-          <span className="text-xl font-bold text-foreground">SparkLoomAI</span>
+          <span className="text-xl font-bold text-foreground">SparkloomAI</span>
         </div>
         
         <div className="hidden md:flex items-center space-x-8">
@@ -29,13 +29,9 @@ const Navigation = () => {
           </button>
         </div>
 
-        <Button 
-          variant="outline" 
-          className="border-accent text-accent hover:bg-accent hover:text-accent-foreground"
-          onClick={() => {
-            window.open('https://calendar.app.google/hnNuZRVCdZwq5cMU8', '_blank');
-          }}
-        >
+        <Button variant="outline" className="border-accent text-accent hover:bg-accent hover:text-accent-foreground" onClick={() => {
+        window.open('https://calendar.app.google/hnNuZRVCdZwq5cMU8', '_blank');
+      }}>
           Talk to an Expert
         </Button>
       </div>
