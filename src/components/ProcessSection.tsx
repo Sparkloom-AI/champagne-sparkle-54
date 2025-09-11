@@ -33,29 +33,27 @@ const processSteps = [{
   color: "from-sl-auric-700 to-sl-auric-500"
 }];
 const ProcessSection = () => {
-  const [visibleSteps, setVisibleSteps] = useState<number[]>([]);
   const [isVisible, setIsVisible] = useState(false);
+  
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
         setIsVisible(true);
-        // Stagger the animation of each step
-        processSteps.forEach((_, index) => {
-          setTimeout(() => {
-            setVisibleSteps(prev => [...prev, index]);
-          }, index * 200);
-        });
       }
     }, {
       threshold: 0.2
     });
+    
     const section = document.getElementById('process-section');
     if (section) {
       observer.observe(section);
     }
+    
     return () => observer.disconnect();
   }, []);
-  return <section id="process-section" className="py-20 bg-gradient-to-b from-sl-obsidian/30 to-background">
+
+  return (
+    <section id="process-section" className="py-20 bg-gradient-to-b from-sl-obsidian/30 to-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
@@ -67,65 +65,43 @@ const ProcessSection = () => {
           </p>
         </div>
 
-        {/* Process Steps */}
-        <div className="relative">
-          {/* Connection Line */}
-          <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-sl-auric-700/50 via-sl-auric-700/30 to-transparent transform -translate-x-1/2" />
-          
-          <div className="space-y-4">
-            {processSteps.map((step, index) => {
+        {/* Process Cards Grid */}
+        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
+          {processSteps.map((step, index) => {
             const Icon = step.icon;
-            const isStepVisible = visibleSteps.includes(index);
-            const isEven = index % 2 === 0;
-            return <div key={step.number} className={`flex flex-col lg:flex-row items-center gap-8 ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} ${isStepVisible ? 'animate-fade-in' : 'opacity-0'}`} style={{
-              animationDelay: `${index * 200}ms`,
-              animationFillMode: 'both'
-            }}>
-                  {/* Step Content */}
-                  <div className={`flex-1 ${isEven ? 'lg:text-right' : 'lg:text-left'} text-center lg:text-left`}>
-                    <Card className="bg-sl-slate-800/30 border-sl-iron-600/30 backdrop-blur-sm hover:bg-sl-slate-800/50 transition-all duration-300 group">
-                      <CardContent className="p-8">
-                        <div className={`flex items-center gap-4 mb-4 ${isEven ? 'lg:justify-end' : 'lg:justify-start'} justify-center`}>
-                          <div className={`w-12 h-12 rounded-full bg-gradient-to-r ${step.color} flex items-center justify-center text-sl-obsidian font-bold text-lg group-hover:scale-110 transition-transform duration-300`}>
-                            {step.number}
-                          </div>
-                          <Icon className="w-6 h-6 text-sl-auric-700" />
-                        </div>
-                        
-                        <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-sl-auric-700 transition-colors duration-300">
-                          {step.title}
-                        </h3>
-                        
-                        <p className="text-muted-foreground text-lg leading-relaxed">
-                          {step.description}
-                        </p>
-                        
-                        {/* Duration Badge */}
-                        <div className={`inline-flex items-center gap-2 mt-4 px-3 py-1 bg-sl-auric-700/10 border border-sl-auric-700/30 rounded-full text-sm text-sl-auric-700`}>
-                          <span className="w-2 h-2 bg-sl-auric-700 rounded-full animate-pulse"></span>
-                          {index === 0 ? "Week 1" : index === 1 ? "Week 1-2" : index === 2 ? "Week 2-3" : index === 3 ? "Week 3-4" : "Ongoing"}
-                        </div>
-                      </CardContent>
-                    </Card>
+            return (
+              <Card 
+                key={step.number} 
+                className="bg-sl-slate-800/50 border-sl-iron-600/30 backdrop-blur-sm hover:bg-sl-slate-800/70 transition-all duration-300 group h-full"
+                style={{
+                  animationDelay: `${index * 100}ms`,
+                  animationFillMode: 'both'
+                }}
+              >
+                <CardContent className="p-6 h-full flex flex-col">
+                  {/* Large Number */}
+                  <div className="text-6xl font-bold text-muted-foreground/30 mb-4">
+                    {step.number.toString().padStart(2, '0')}
                   </div>
-
-                  {/* Central Circle */}
-                  <div className="relative z-10 flex-shrink-0">
-                    <div className={`w-16 h-16 rounded-full bg-gradient-to-r ${step.color} flex items-center justify-center shadow-lg border-4 border-background ${isStepVisible ? 'animate-scale-in' : 'scale-0'}`}>
-                      <Icon className="w-8 h-8 text-sl-obsidian" />
-                    </div>
-                    
-                    {/* Arrow to next step */}
-                    {index < processSteps.length - 1 && <div className={`absolute top-full left-1/2 transform -translate-x-1/2 mt-4 ${isStepVisible ? 'animate-fade-in' : 'opacity-0'}`}>
-                        <ArrowRight className="w-6 h-6 text-sl-auric-700/60 animate-pulse" />
-                      </div>}
+                  
+                  {/* Icon */}
+                  <div className="mb-4">
+                    <Icon className="w-8 h-8 text-sl-auric-700" />
                   </div>
-
-                  {/* Spacer for even layout */}
-                  <div className="flex-1 hidden lg:block" />
-                </div>;
+                  
+                  {/* Title */}
+                  <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-sl-auric-700 transition-colors duration-300">
+                    {step.title}
+                  </h3>
+                  
+                  {/* Description */}
+                  <p className="text-muted-foreground text-sm leading-relaxed flex-grow">
+                    {step.description}
+                  </p>
+                </CardContent>
+              </Card>
+            );
           })}
-          </div>
         </div>
 
         {/* Bottom CTA */}
@@ -139,6 +115,7 @@ const ProcessSection = () => {
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
 export default ProcessSection;
