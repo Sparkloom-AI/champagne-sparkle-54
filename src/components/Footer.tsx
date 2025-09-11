@@ -29,8 +29,8 @@ const Footer = () => {
             <h4 className="font-semibold text-foreground mb-4">Contact</h4>
             <ul className="space-y-2 text-text-muted">
               <li>hello@sparklooomai.com</li>
-              
-              <li>San Francisco, CA</li>
+              <li>5214F Diamond Heights Blvd</li>
+              <li>94131 San Francisco, United States</li>
             </ul>
           </div>
         </div>
