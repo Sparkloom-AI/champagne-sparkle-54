@@ -15,11 +15,8 @@ const Navigation = () => {
         </div>
         
         <div className="hidden md:flex items-center space-x-8">
-          <button onClick={() => scrollToSection('about')} className="text-text-muted hover:text-accent transition-colors">
-            About
-          </button>
-          <button onClick={() => scrollToSection('services')} className="text-text-muted hover:text-accent transition-colors">
-            Services
+          <button onClick={() => scrollToSection('process-section')} className="text-text-muted hover:text-accent transition-colors">
+            Process
           </button>
           <button onClick={() => scrollToSection('pricing')} className="text-text-muted hover:text-accent transition-colors">
             Pricing

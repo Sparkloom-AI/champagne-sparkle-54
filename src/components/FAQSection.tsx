@@ -18,7 +18,7 @@ const FAQSection = () => {
     question: "What technologies do you use?",
     answer: "We use modern, scalable technologies like React, Next.js, Node.js, and PostgreSQL. Our stack is chosen for reliability and future scalability, ensuring your MVP can grow with your business needs."
   }];
-  return <section className="py-20 bg-sl-obsidian relative overflow-hidden">
+  return <section id="faq" className="py-20 bg-sl-obsidian relative overflow-hidden">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-20">
           {/* Left side - Title and CTA */}
