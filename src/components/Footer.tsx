@@ -37,7 +37,7 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-text-subtle text-sm">© SparkLoomAI. All rights reserved.</p>
+          <p className="text-text-subtle text-sm">© SparkloomAI. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="/privacy-policy" className="text-text-subtle hover:text-accent text-sm transition-colors">Privacy Policy</a>
             <a href="/terms-of-service" className="text-text-subtle hover:text-accent text-sm transition-colors">Terms of Service</a>
