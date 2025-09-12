@@ -18,8 +18,8 @@ const Navigation = () => {
           <button onClick={() => scrollToSection('process-section')} className="text-text-muted hover:text-accent transition-colors">
             Process
           </button>
-          <button onClick={() => scrollToSection('pricing')} className="text-text-muted hover:text-accent transition-colors">
-            Pricing
+          <button onClick={() => scrollToSection('services')} className="text-text-muted hover:text-accent transition-colors">
+            Services
           </button>
           <button onClick={() => scrollToSection('faq')} className="text-text-muted hover:text-accent transition-colors">
             FAQ

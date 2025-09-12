@@ -4,7 +4,7 @@ import { lazy, Suspense, useEffect, useState } from "react";
 
 // Lazy load heavy components to reduce main-thread work
 const ProcessSection = lazy(() => import("@/components/ProcessSection"));
-const PricingSection = lazy(() => import("@/components/PricingSection"));
+const ServicesSection = lazy(() => import("@/components/ServicesSection"));
 const FAQSection = lazy(() => import("@/components/FAQSection"));
 const ContactSection = lazy(() => import("@/components/ContactSection"));
 const Footer = lazy(() => import("@/components/Footer"));
@@ -38,7 +38,7 @@ const Index = () => {
             <ProcessSection />
           </Suspense>
           <Suspense fallback={<LoadingFallback />}>
-            <PricingSection />
+            <ServicesSection />
           </Suspense>
           <Suspense fallback={<LoadingFallback />}>
             <FAQSection />

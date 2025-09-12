@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
-const PricingSection = () => {
+const ServicesSection = () => {
   const plans = [{
     name: "Starter",
     price: "$15,000",
@@ -24,7 +24,7 @@ const PricingSection = () => {
     features: ["Multiple AI solution suite", "Phased delivery approach", "Enterprise-grade security", "24/7 premium support", "Ongoing maintenance (12 months)", "Advanced analytics & reporting", "Dedicated development team"],
     popular: false
   }];
-  return <section id="pricing" className="py-24 bg-gradient-surface relative">
+  return <section id="services" className="py-24 bg-gradient-surface relative">
       {/* Floating Orbs */}
       <div className="absolute top-20 right-20 w-32 h-32 bg-gradient-orb animate-pulse-glow opacity-20" />
       <div className="absolute bottom-20 left-20 w-48 h-48 bg-gradient-orb animate-float opacity-15" />
@@ -32,10 +32,10 @@ const PricingSection = () => {
       <div className="container mx-auto px-6 relative">
         <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-            Transparent <span className="text-accent">Pricing</span>
+            Our <span className="text-accent">Services</span>
           </h2>
           <p className="text-xl text-text-muted max-w-2xl mx-auto mb-8">
-            No hidden costs. No endless meetings. Just fast, transparent results with every milestone tracked.
+            Comprehensive AI solutions tailored to your business needs. From simple automation to enterprise transformation.
           </p>
           
         </div>
@@ -51,11 +51,7 @@ const PricingSection = () => {
                 </div>}
               
               <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-foreground mb-2">{plan.name}</h3>
-                <div className="mb-4">
-                  <span className="text-4xl font-bold text-accent">{plan.price}</span>
-                  <span className="text-text-muted ml-2">/{plan.period}</span>
-                </div>
+                <h3 className="text-2xl font-bold text-foreground mb-4">{plan.name}</h3>
                 <p className="text-text-muted">{plan.description}</p>
               </div>
 
@@ -66,6 +62,17 @@ const PricingSection = () => {
                   </li>)}
               </ul>
 
+              <div className="text-center">
+                <Button 
+                  variant="outline" 
+                  className="w-full border-accent text-accent hover:bg-accent hover:text-accent-foreground" 
+                  onClick={() => {
+                    window.open('https://calendar.app.google/hnNuZRVCdZwq5cMU8', '_blank');
+                  }}
+                >
+                  Talk to an Expert
+                </Button>
+              </div>
               
             </Card>)}
         </div>
@@ -73,7 +80,7 @@ const PricingSection = () => {
         <div className="text-center mt-16 animate-fade-in-up" style={{
         animationDelay: '0.8s'
       }}>
-          <p className="text-text-muted mb-4">All plans include our 30-day delivery guarantee</p>
+          <p className="text-text-muted mb-4">All services include our 30-day delivery guarantee</p>
           <div className="flex justify-center space-x-8">
             <div className="flex items-center space-x-2">
               <Check className="w-4 h-4 text-accent" />
@@ -92,4 +99,4 @@ const PricingSection = () => {
       </div>
     </section>;
 };
-export default PricingSection;
+export default ServicesSection;
