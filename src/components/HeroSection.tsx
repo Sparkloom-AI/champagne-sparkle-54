@@ -96,7 +96,7 @@ const HeroSection = () => {
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-orb animate-float opacity-20 transition-transform duration-200 ease-out z-10" style={{
       transform: dynamicStyles.orb1Transform
     }} />
-      <div className="absolute bottom-1/3 right-1/4 w-64 h-64 bg-gradient-orb animate-float opacity-15 transition-transform duration-200 ease-out z-10" style={{
+      <div className="absolute bottom-1/3 right-1/4 w-64 h-64 bg-gradient-neon-glow animate-float opacity-20 transition-transform duration-200 ease-out z-10" style={{
       animationDelay: '2s',
       transform: dynamicStyles.orb2Transform
     }} />
@@ -124,7 +124,7 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative z-20 text-center max-w-5xl mx-auto px-6">
         <h1 className="text-5xl md:text-7xl font-bold mb-8">
-          <span className="bg-gradient-to-r from-text via-accent to-accent-light bg-clip-text text-transparent">From Zero to Hero
+          <span className="bg-gradient-to-r from-text via-accent-neon to-accent bg-clip-text text-transparent animate-gradient-shift bg-[length:200%_200%] drop-shadow-[0_0_20px_hsl(var(--sl-neon-pink-500)_/_0.3)]">From Zero to Hero
 — Your AI Journey Starts Here</span>
           <br />
           
@@ -148,8 +148,8 @@ const HeroSection = () => {
       
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-accent rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-accent rounded-full mt-2 animate-pulse"></div>
+        <div className="w-6 h-10 border-2 border-accent-neon rounded-full flex justify-center shadow-neon">
+          <div className="w-1 h-3 bg-accent-neon rounded-full mt-2 animate-pulse"></div>
         </div>
       </div>
     </section>;

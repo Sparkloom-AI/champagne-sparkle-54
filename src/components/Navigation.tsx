@@ -29,7 +29,7 @@ const Navigation = () => {
           </button>
         </div>
 
-        <Button variant="outline" className="border-accent text-accent hover:bg-accent hover:text-accent-foreground" onClick={() => {
+        <Button variant="outline" className="border-accent-neon text-accent-neon hover:bg-accent-neon hover:text-sl-obsidian hover:shadow-neon transition-all duration-300" onClick={() => {
         window.open('https://calendar.app.google/hnNuZRVCdZwq5cMU8', '_blank');
       }}>
           Talk to an Expert

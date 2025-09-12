@@ -35,6 +35,9 @@ export default {
           auric500: "hsl(var(--sl-auric-500))",
           auric700: "hsl(var(--sl-auric-700))",
           auric800: "hsl(var(--sl-auric-800))",
+          neonPink400: "hsl(var(--sl-neon-pink-400))",
+          neonPink500: "hsl(var(--sl-neon-pink-500))",
+          neonPink600: "hsl(var(--sl-neon-pink-600))",
         },
 
         surface: "hsl(var(--surface))",
@@ -44,7 +47,11 @@ export default {
         "text-subtle": "hsl(var(--text-subtle))",
         "accent-muted": "hsl(var(--accent-muted))",
         "accent-light": "hsl(var(--accent-light))",
+        "accent-neon": "hsl(var(--accent-neon))",
+        "accent-neon-light": "hsl(var(--accent-neon-light))",
+        "accent-neon-dark": "hsl(var(--accent-neon-dark))",
         "border-accent": "hsl(var(--border-accent))",
+        "border-neon": "hsl(var(--border-neon))",
 
         primary: {
           DEFAULT: "hsl(var(--primary))",
@@ -85,11 +92,15 @@ export default {
         'gradient-surface': 'var(--gradient-surface)',
         'gradient-accent': 'var(--gradient-accent)',
         'gradient-orb': 'var(--gradient-orb)',
+        'gradient-neon': 'var(--gradient-neon)',
+        'gradient-neon-glow': 'var(--gradient-neon-glow)',
       },
       boxShadow: {
         'elegant': 'var(--shadow-elegant)',
         'glow': 'var(--shadow-glow)',
         'card': 'var(--shadow-card)',
+        'neon': 'var(--shadow-neon)',
+        'neon-strong': 'var(--shadow-neon-strong)',
       },
       transitionTimingFunction: {
         'smooth': 'var(--transition-smooth)',
