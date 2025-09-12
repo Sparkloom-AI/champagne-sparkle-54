@@ -5,31 +5,36 @@ const processSteps = [{
   title: "AI Discovery Session",
   description: "Identifying opportunities and challenges in your organization.",
   icon: Search,
-  color: "from-sl-auric-700 to-sl-auric-500"
+  color: "from-sl-neon-pink-500 to-sl-neon-pink-400",
+  isNeon: true
 }, {
   number: 2,
   title: "AI Scoping Programme",
   description: "Defining clear objectives and implementation strategy.",
   icon: Target,
-  color: "from-sl-pearl-100 to-sl-fog-300"
+  color: "from-sl-auric-700 to-sl-auric-500",
+  isNeon: false
 }, {
   number: 3,
   title: "Proof of Concept (PoC)",
   description: "Building a working prototype to validate the approach.",
   icon: Lightbulb,
-  color: "from-sl-auric-700 to-sl-auric-500"
+  color: "from-sl-neon-pink-500 to-sl-neon-pink-400",
+  isNeon: true
 }, {
   number: 4,
   title: "Minimum Viable Product (MVP)",
   description: "Developing a scalable solution ready for deployment.",
   icon: Rocket,
-  color: "from-sl-pearl-100 to-sl-fog-300"
+  color: "from-sl-auric-700 to-sl-auric-500",
+  isNeon: false
 }, {
   number: 5,
   title: "Ongoing Maintenance",
   description: "Continuous improvement and adaptation to changing needs.",
   icon: Settings,
-  color: "from-sl-auric-700 to-sl-auric-500"
+  color: "from-sl-neon-pink-500 to-sl-neon-pink-400",
+  isNeon: true
 }];
 const ProcessSection = () => {
   return (
@@ -52,7 +57,9 @@ const ProcessSection = () => {
             return (
               <Card 
                 key={step.number} 
-                className="bg-sl-slate-800/50 border-sl-iron-600/30 backdrop-blur-sm hover:bg-sl-slate-800/70 hover:shadow-glow hover:-translate-y-2 transition-all duration-500 group h-full animate-fade-in-up"
+                className={`bg-sl-slate-800/50 border-sl-iron-600/30 backdrop-blur-sm hover:bg-sl-slate-800/70 hover:-translate-y-2 transition-all duration-500 group h-full animate-fade-in-up ${
+                  step.isNeon ? 'hover:shadow-neon hover:border-accent-neon/50' : 'hover:shadow-glow'
+                }`}
                 style={{
                   animationDelay: `${index * 0.2}s`,
                   animationFillMode: 'both'
@@ -60,17 +67,23 @@ const ProcessSection = () => {
               >
                 <CardContent className="p-6 h-full flex flex-col">
                   {/* Large Number */}
-                  <div className="text-6xl font-bold text-muted-foreground/30 mb-4">
+                  <div className={`text-6xl font-bold mb-4 ${
+                    step.isNeon ? 'text-accent-neon/30' : 'text-muted-foreground/30'
+                  }`}>
                     {step.number.toString().padStart(2, '0')}
                   </div>
                   
                   {/* Icon */}
                   <div className="mb-4">
-                    <Icon className="w-8 h-8 text-sl-auric-700" />
+                    <Icon className={`w-8 h-8 ${
+                      step.isNeon ? 'text-accent-neon' : 'text-sl-auric-700'
+                    }`} />
                   </div>
                   
                   {/* Title */}
-                  <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-sl-auric-700 transition-colors duration-500">
+                  <h3 className={`text-xl font-bold text-foreground mb-3 transition-colors duration-500 ${
+                    step.isNeon ? 'group-hover:text-accent-neon' : 'group-hover:text-sl-auric-700'
+                  }`}>
                     {step.title}
                   </h3>
                   
@@ -86,12 +99,12 @@ const ProcessSection = () => {
 
         {/* Bottom CTA */}
         <div className="text-center mt-16 animate-fade-in-up" style={{ animationDelay: '1.2s', animationFillMode: 'both' }}>
-          <div className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-sl-auric-700/20 to-sl-auric-500/20 border border-sl-auric-700/30 rounded-2xl backdrop-blur-sm">
-            <div className="w-3 h-3 bg-sl-auric-700 rounded-full animate-pulse"></div>
+          <div className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-accent-neon/20 to-sl-auric-700/20 border border-accent-neon/30 rounded-2xl backdrop-blur-sm hover:shadow-neon transition-all duration-300">
+            <div className="w-3 h-3 bg-accent-neon rounded-full animate-pulse"></div>
             <span className="text-foreground font-semibold text-lg">
               Complete transformation in just 30 days
             </span>
-            <div className="w-3 h-3 bg-sl-auric-700 rounded-full animate-pulse"></div>
+            <div className="w-3 h-3 bg-accent-neon rounded-full animate-pulse"></div>
           </div>
         </div>
       </div>

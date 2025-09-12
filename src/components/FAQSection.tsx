@@ -32,14 +32,27 @@ const FAQSection = () => {
           {/* Right side - FAQ Accordion */}
           <div className="lg:w-2/3">
             <Accordion type="single" collapsible className="w-full space-y-4">
-              {faqs.map((faq, index) => <AccordionItem key={index} value={`item-${index}`} className="border-sl-iron-600/30 bg-sl-obsidian/50 rounded-lg px-6">
-                  <AccordionTrigger className="text-left text-sl-pearl-100 hover:text-sl-auric-700 py-6 text-lg font-medium hover:no-underline">
-                    {faq.question}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-sl-fog-300 pb-6 pt-0 leading-relaxed">
-                    {faq.answer}
-                  </AccordionContent>
-                </AccordionItem>)}
+              {faqs.map((faq, index) => {
+                const isNeonHighlight = index % 2 === 0; // Alternate neon highlights
+                return (
+                  <AccordionItem 
+                    key={index} 
+                    value={`item-${index}`} 
+                    className={`border-sl-iron-600/30 bg-sl-obsidian/50 rounded-lg px-6 transition-all duration-300 hover:bg-sl-slate-800/30 ${
+                      isNeonHighlight ? 'hover:border-accent-neon/30 hover:shadow-neon/50' : ''
+                    }`}
+                  >
+                    <AccordionTrigger className={`text-left text-sl-pearl-100 py-6 text-lg font-medium hover:no-underline transition-colors duration-300 ${
+                      isNeonHighlight ? 'hover:text-accent-neon' : 'hover:text-sl-auric-700'
+                    }`}>
+                      {faq.question}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-sl-fog-300 pb-6 pt-0 leading-relaxed">
+                      {faq.answer}
+                    </AccordionContent>
+                  </AccordionItem>
+                )
+              })}
             </Accordion>
           </div>
         </div>
