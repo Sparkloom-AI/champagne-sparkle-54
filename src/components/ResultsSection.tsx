@@ -5,32 +5,28 @@ import { ArrowRight } from "lucide-react";
 const ResultsSection = () => {
   const caseStudies = [
     {
-      client: "Built for Venus",
-      metric: "75% Reduction in Processing Time",
-      description: "Automated order processing and customer support workflows, handling 500+ orders daily",
-      techStack: ["AI", "Process Automation", "Customer Support AI"],
-      deliveryTime: "45 days"
+      client: "DUDE WIPES",
+      title: "Saved $100K+ & Automated Hundreds of Orders Monthly with a Custom Internal Tool",
+      completionTime: "60 Days",
+      scope: "Custom Software",
+      description: "By staying lean and building their own software, Dude wipes avoided contract lock-ins and high per-seat pricing, replacing an entire ops role and creating a system that processes hundreds of orders every month.",
+      backgroundImage: "bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"
     },
     {
-      client: "Nimos AI",
-      metric: "$400K Annual Savings",
-      description: "Implemented AI-powered customer support system reducing response times by 60%",
-      techStack: ["AI Chatbots", "NLP", "Integration APIs"],
-      deliveryTime: "30 days"
+      client: "MADRASA",
+      title: "From Locked-In to Launching a Scalable Learning Platform with $20K in Weeks",
+      completionTime: "4 Weeks",
+      scope: "Learning Platform",
+      description: "Transformed from vendor dependency to launching an independent, scalable learning platform that generated $20K in revenue within weeks of launch.",
+      backgroundImage: "bg-gradient-to-br from-blue-900 via-slate-800 to-slate-900"
     },
     {
-      client: "Customer Support Hub",
-      metric: "3x ROI in 90 Days",
-      description: "Automated 85% of routine customer inquiries with intelligent routing and responses",
-      techStack: ["Machine Learning", "Automation", "CRM Integration"],
-      deliveryTime: "60 days"
-    },
-    {
-      client: "Manufacturing Corp",
-      metric: "$2M Cost Reduction",
-      description: "Streamlined back-office operations with 20+ automated processes across departments",
-      techStack: ["RPA", "AI Analytics", "Workflow Automation"],
-      deliveryTime: "90 days"
+      client: "TEKEVER",
+      title: "From $100K SaaS Fees to a Secure Custom Deployment System in 30 Days",
+      completionTime: "30 Days",
+      scope: "Custom Deployment",
+      description: "Eliminated expensive SaaS dependencies by building a secure, custom deployment system that reduced operational costs by $100K annually.",
+      backgroundImage: "bg-gradient-to-br from-red-900 via-slate-800 to-slate-900"
     }
   ];
 
@@ -54,56 +50,55 @@ const ResultsSection = () => {
         </div>
 
         {/* Case Studies Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {caseStudies.map((study, index) => (
-            <Card 
+            <div 
               key={index}
-              className="bg-sl-graphite-800/50 border-border backdrop-blur-sm hover:shadow-glow hover:-translate-y-2 transition-all duration-300 group animate-fade-in"
+              className={`relative h-96 rounded-2xl overflow-hidden group hover:scale-105 transition-all duration-500 animate-fade-in ${study.backgroundImage}`}
               style={{ animationDelay: `${index * 150}ms` }}
             >
-              <CardHeader className="pb-4">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="w-10 h-10 bg-gradient-to-r from-accent to-accent-light rounded-lg flex items-center justify-center">
-                    <span className="text-sl-obsidian font-bold text-sm">
-                      {study.client.split(' ').map(word => word[0]).join('').slice(0, 2)}
-                    </span>
-                  </div>
-                  <span className="text-xs text-text-muted bg-sl-graphite-700 px-2 py-1 rounded-full">
-                    {study.deliveryTime}
-                  </span>
-                </div>
-                <CardTitle className="text-lg mb-2">{study.client}</CardTitle>
-                <div className="text-2xl font-bold text-accent mb-2">
-                  {study.metric}
-                </div>
-              </CardHeader>
+              {/* Background Pattern/Texture */}
+              <div className="absolute inset-0 bg-black/20 backdrop-blur-[1px]" />
               
-              <CardContent className="pt-0">
-                <p className="text-text-muted text-sm mb-4 leading-relaxed">
-                  {study.description}
-                </p>
-                
-                <div className="flex flex-wrap gap-1 mb-6">
-                  {study.techStack.map((tech, techIndex) => (
-                    <span 
-                      key={techIndex}
-                      className="text-xs bg-accent/10 text-accent px-2 py-1 rounded-full"
-                    >
-                      {tech}
-                    </span>
-                  ))}
+              {/* Content Overlay */}
+              <div className="absolute inset-0 p-6 flex flex-col justify-between">
+                {/* Top Section - Completion Time & Scope */}
+                <div className="flex justify-between items-start">
+                  <div className="space-y-1">
+                    <div className="text-xs text-white/70 uppercase tracking-wide">Completion Time</div>
+                    <div className="text-sm font-semibold text-white">{study.completionTime}</div>
+                  </div>
+                  <div className="space-y-1 text-right">
+                    <div className="text-xs text-white/70 uppercase tracking-wide">Scope of Work</div>
+                    <div className="text-sm font-semibold text-white">{study.scope}</div>
+                  </div>
                 </div>
                 
-                <Button 
-                  variant="outline"
-                  size="sm"
-                  className="w-full border-accent/30 text-accent hover:bg-accent hover:text-accent-foreground group-hover:border-accent transition-all duration-300"
-                >
-                  See Case Study
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                </Button>
-              </CardContent>
-            </Card>
+                {/* Main Title */}
+                <div className="flex-1 flex items-center">
+                  <h3 className="text-xl font-bold text-white leading-tight">
+                    {study.title}
+                  </h3>
+                </div>
+                
+                {/* Bottom Section - Client & CTA */}
+                <div className="flex justify-between items-end">
+                  <div className="text-2xl font-bold text-white tracking-wider">
+                    {study.client}
+                  </div>
+                  <Button 
+                    variant="secondary"
+                    className="bg-white/10 hover:bg-white/20 text-white border-white/20 hover:border-white/30 backdrop-blur-sm"
+                  >
+                    <span className="text-lg mr-2">+</span>
+                    See case study
+                  </Button>
+                </div>
+              </div>
+              
+              {/* Hover Effect Overlay */}
+              <div className="absolute inset-0 bg-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </div>
           ))}
         </div>
 
