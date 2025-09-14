@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
+import BackgroundRemovalProcessor from "@/components/BackgroundRemovalProcessor";
 import moritzPhoto from "@/assets/moritz-florian.png";
 import nilsPhoto from "@/assets/nils-effmert.png";
 
@@ -108,6 +109,11 @@ const AboutUs = () => {
                 </CardContent>
               </Card>
             </div>
+          </section>
+
+          {/* Background Removal Tool */}
+          <section className="mb-16">
+            <BackgroundRemovalProcessor />
           </section>
 
           {/* Call to Action */}
