@@ -15,9 +15,6 @@ const AboutUs = () => {
               <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6">
                 <span className="text-accent-neon">SparkloomAI:</span> AI for Real Life
               </h1>
-              <p className="text-xl text-text-muted max-w-3xl mx-auto leading-relaxed">
-                Hey there, we're SparkloomAI. We're all about using AI to tackle real-world problems and just make everyday life a bit easier. Think of us as the bridge between complicated tech and useful, everyday solutions.
-              </p>
             </div>
           </div>
         </section>
@@ -32,7 +29,7 @@ const AboutUs = () => {
                   <h2 className="text-3xl font-bold text-foreground">Our Mission</h2>
                 </div>
                 <p className="text-lg text-text-muted leading-relaxed">
-                  To use AI to help solve some of society's biggest challenges and make life simpler and better for everyone.
+                  Our Mission is to empower organizations with accessible AI tools that solve real business problems and drive innovation.
                 </p>
               </CardContent>
             </Card>
