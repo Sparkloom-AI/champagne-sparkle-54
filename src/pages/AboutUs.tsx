@@ -20,33 +20,6 @@ const AboutUs = () => {
         </section>
 
         <div className="container mx-auto px-6 py-16 max-w-6xl">
-          {/* Mission & Vision */}
-          <div className="grid md:grid-cols-2 gap-8 mb-16">
-            <Card className="bg-gradient-surface border-border-accent shadow-card">
-              <CardContent className="p-8">
-                <div className="flex items-center mb-6">
-                  <div className="w-3 h-3 bg-accent-neon rounded-full mr-3"></div>
-                  <h2 className="text-3xl font-bold text-foreground">Our Mission</h2>
-                </div>
-                <p className="text-lg text-text-muted leading-relaxed">
-                  Our Mission is to empower organizations with accessible AI tools that solve real business problems and drive innovation.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gradient-surface border-border-accent shadow-card">
-              <CardContent className="p-8">
-                <div className="flex items-center mb-6">
-                  <div className="w-3 h-3 bg-accent rounded-full mr-3"></div>
-                  <h2 className="text-3xl font-bold text-foreground">Our Vision</h2>
-                </div>
-                <p className="text-lg text-text-muted leading-relaxed">
-                  We see a future where AI is a positive force in the world, helping people everywhere to be more creative, productive, and inspired.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-
           {/* Founders Section */}
           <section className="mb-16">
             <div className="text-center mb-12">
