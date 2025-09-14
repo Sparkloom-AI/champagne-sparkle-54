@@ -2,6 +2,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import moritzPhoto from "@/assets/moritz-florian.png";
+import nilsPhoto from "@/assets/nils-effmert.png";
 
 const AboutUs = () => {
   return (
@@ -63,9 +64,11 @@ const AboutUs = () => {
               <Card className="bg-gradient-surface border-border-accent shadow-card hover:shadow-glow transition-all duration-500 group">
                 <CardContent className="p-8">
                   <div className="flex items-start space-x-6 mb-6">
-                    <div className="w-20 h-20 bg-gradient-surface rounded-full border-2 border-accent flex-shrink-0 flex items-center justify-center">
-                      <span className="text-2xl font-bold text-accent">NE</span>
-                    </div>
+                    <img 
+                      src={nilsPhoto} 
+                      alt="Nils Effmert, Founder of SparkloomAI"
+                      className="w-20 h-20 rounded-full object-cover border-2 border-accent-neon flex-shrink-0"
+                    />
                     <div>
                       <h3 className="text-2xl font-bold text-accent-neon mb-2 group-hover:text-accent-neon-light transition-colors">
                         Nils Effmert
