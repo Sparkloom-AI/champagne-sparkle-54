@@ -59,48 +59,52 @@ const AboutUs = () => {
               <div className="w-24 h-1 bg-gradient-neon mx-auto rounded-full"></div>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="space-y-16">
               {/* Nils Effmert */}
-              <Card className="bg-gradient-surface border-border-accent shadow-card hover:shadow-glow transition-all duration-500 group">
-                <CardContent className="p-8">
-                  <div className="flex items-start space-x-6 mb-6">
-                    <img 
-                      src={nilsPhoto} 
-                      alt="Nils Effmert, Founder of SparkloomAI"
-                      className="w-20 h-20 rounded-full object-cover border-2 border-accent-neon flex-shrink-0"
-                    />
-                    <div>
-                      <h3 className="text-2xl font-bold text-accent-neon mb-2 group-hover:text-accent-neon-light transition-colors">
+              <Card className="bg-gradient-surface border-border-accent shadow-card hover:shadow-glow transition-all duration-500 group overflow-hidden">
+                <CardContent className="p-0">
+                  <div className="grid md:grid-cols-2 gap-0 items-center min-h-[400px]">
+                    <div className="p-12 md:p-16">
+                      <h3 className="text-4xl md:text-5xl font-bold text-foreground mb-3 group-hover:text-accent-neon transition-colors">
                         Nils Effmert
                       </h3>
-                      <p className="text-accent font-medium">Founder</p>
+                      <p className="text-xl text-accent font-medium mb-8">Founder</p>
+                      <blockquote className="text-xl md:text-2xl text-text-muted leading-relaxed font-light">
+                        "We're here to make AI actually useful. We build smart, quality tools that help people and businesses get things done and unlock their full potential. It's all about creating tech that genuinely helps."
+                      </blockquote>
+                    </div>
+                    <div className="relative h-full min-h-[400px]">
+                      <img 
+                        src={nilsPhoto} 
+                        alt="Nils Effmert, Founder of SparkloomAI"
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                   </div>
-                  <blockquote className="text-lg text-text-muted italic leading-relaxed">
-                    "We're here to make AI actually useful. We build smart, quality tools that help people and businesses get things done and unlock their full potential. It's all about creating tech that genuinely helps."
-                  </blockquote>
                 </CardContent>
               </Card>
 
               {/* Moritz Florian */}
-              <Card className="bg-gradient-surface border-border-accent shadow-card hover:shadow-glow transition-all duration-500 group">
-                <CardContent className="p-8">
-                  <div className="flex items-start space-x-6 mb-6">
-                    <img 
-                      src={moritzPhoto} 
-                      alt="Moritz Florian, Founder of SparkloomAI"
-                      className="w-20 h-20 rounded-full object-cover border-2 border-accent-neon flex-shrink-0"
-                    />
-                    <div>
-                      <h3 className="text-2xl font-bold text-accent-neon mb-2 group-hover:text-accent-neon-light transition-colors">
+              <Card className="bg-gradient-surface border-border-accent shadow-card hover:shadow-glow transition-all duration-500 group overflow-hidden">
+                <CardContent className="p-0">
+                  <div className="grid md:grid-cols-2 gap-0 items-center min-h-[400px]">
+                    <div className="p-12 md:p-16">
+                      <h3 className="text-4xl md:text-5xl font-bold text-foreground mb-3 group-hover:text-accent-neon transition-colors">
                         Moritz Florian
                       </h3>
-                      <p className="text-accent font-medium">Founder</p>
+                      <p className="text-xl text-accent font-medium mb-8">Founder</p>
+                      <blockquote className="text-xl md:text-2xl text-text-muted leading-relaxed font-light">
+                        "AI has the power to spark some incredible new ideas and services that can benefit us all. At SparkloomAI, we're excited to be a part of that, building a future where technology empowers everyone."
+                      </blockquote>
+                    </div>
+                    <div className="relative h-full min-h-[400px]">
+                      <img 
+                        src={moritzPhoto} 
+                        alt="Moritz Florian, Founder of SparkloomAI"
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                   </div>
-                  <blockquote className="text-lg text-text-muted italic leading-relaxed">
-                    "AI has the power to spark some incredible new ideas and services that can benefit us all. At SparkloomAI, we're excited to be a part of that, building a future where technology empowers everyone."
-                  </blockquote>
                 </CardContent>
               </Card>
             </div>
