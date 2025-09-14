@@ -50,7 +50,7 @@ const AboutUs = () => {
           {/* Founders Section */}
           <section className="mb-16">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-foreground mb-4">A Few Words From Us</h2>
+              <h2 className="text-4xl font-bold text-foreground mb-4 italic">Our Mission is to empower organizations with accessible AI tools that solve real business problems and drive innovation.</h2>
               <div className="w-24 h-1 bg-gradient-neon mx-auto rounded-full"></div>
             </div>
 
