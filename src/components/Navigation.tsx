@@ -24,9 +24,6 @@ const Navigation = () => {
           <a href="/about" className="text-text-muted hover:text-accent transition-colors">
             About
           </a>
-          <a href="/how-we-are" className="text-text-muted hover:text-accent transition-colors">
-            How We Are
-          </a>
           <button onClick={() => scrollToSection('faq')} className="text-text-muted hover:text-accent transition-colors">
             FAQ
           </button>
