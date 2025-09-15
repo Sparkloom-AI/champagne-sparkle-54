@@ -33,15 +33,18 @@ const Navigation = () => {
           <button onClick={() => handleNavigation('services')} className="text-text-muted hover:text-accent transition-colors">
             Services
           </button>
-          <a href="/about" className={`text-text-muted hover:text-accent transition-colors ${location.pathname === '/about' ? 'text-accent' : ''}`}>
-            About
-          </a>
+          <button onClick={() => handleNavigation('results-section')} className="text-text-muted hover:text-accent transition-colors">
+            Results
+          </button>
           <button onClick={() => handleNavigation('faq')} className="text-text-muted hover:text-accent transition-colors">
             FAQ
           </button>
           <button onClick={() => handleNavigation('contact')} className="text-text-muted hover:text-accent transition-colors">
             Contact
           </button>
+          <a href="/about" className={`text-text-muted hover:text-accent transition-colors ${location.pathname === '/about' ? 'text-accent' : ''}`}>
+            About
+          </a>
         </div>
 
         <Button variant="outline" className="border-accent-neon text-accent-neon hover:bg-accent-neon hover:text-sl-obsidian hover:shadow-neon transition-all duration-300" onClick={() => {

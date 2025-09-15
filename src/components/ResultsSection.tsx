@@ -31,7 +31,7 @@ const ResultsSection = () => {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-sl-obsidian to-sl-graphite-900 relative overflow-hidden">
+    <section id="results-section" className="py-24 bg-gradient-to-b from-sl-obsidian to-sl-graphite-900 relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-accent-neon/20 to-accent/20 rounded-full blur-3xl" />
