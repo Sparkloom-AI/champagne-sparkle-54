@@ -1,6 +1,8 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
+import nilsImage from "@/assets/nils-effmert-new.png";
+import moritzImage from "@/assets/moritz-florian-new.png";
 
 const AboutUs = () => {
   return (
@@ -31,30 +33,52 @@ const AboutUs = () => {
               {/* Nils Effmert */}
               <Card className="bg-gradient-surface border-border-accent shadow-card hover:shadow-glow transition-all duration-500 group">
                 <CardContent className="p-8">
-                  <div className="mb-6">
-                    <h3 className="text-2xl font-bold text-accent-neon mb-2 group-hover:text-accent-neon-light transition-colors">
-                      Nils Effmert
-                    </h3>
-                    <p className="text-accent font-medium">Founder</p>
+                  <div className="flex items-start gap-6">
+                    <div className="flex-shrink-0">
+                      <img
+                        src={nilsImage}
+                        alt="Nils Effmert"
+                        className="w-24 h-24 rounded-full object-cover border-2 border-accent-neon"
+                      />
+                    </div>
+                    <div className="flex-1">
+                      <div className="mb-4">
+                        <h3 className="text-2xl font-bold text-accent-neon mb-2 group-hover:text-accent-neon-light transition-colors">
+                          Nils Effmert
+                        </h3>
+                        <p className="text-accent font-medium">Founder</p>
+                      </div>
+                      <blockquote className="text-lg text-text-muted italic leading-relaxed">
+                        "We're here to make AI actually useful. We build smart, quality tools that help people and businesses get things done and unlock their full potential. It's all about creating tech that genuinely helps."
+                      </blockquote>
+                    </div>
                   </div>
-                  <blockquote className="text-lg text-text-muted italic leading-relaxed">
-                    "We're here to make AI actually useful. We build smart, quality tools that help people and businesses get things done and unlock their full potential. It's all about creating tech that genuinely helps."
-                  </blockquote>
                 </CardContent>
               </Card>
 
               {/* Moritz Florian */}
               <Card className="bg-gradient-surface border-border-accent shadow-card hover:shadow-glow transition-all duration-500 group">
                 <CardContent className="p-8">
-                  <div className="mb-6">
-                    <h3 className="text-2xl font-bold text-accent-neon mb-2 group-hover:text-accent-neon-light transition-colors">
-                      Moritz Florian
-                    </h3>
-                    <p className="text-accent font-medium">Founder</p>
+                  <div className="flex items-start gap-6">
+                    <div className="flex-shrink-0">
+                      <img
+                        src={moritzImage}
+                        alt="Moritz Florian"
+                        className="w-24 h-24 rounded-full object-cover border-2 border-accent-neon"
+                      />
+                    </div>
+                    <div className="flex-1">
+                      <div className="mb-4">
+                        <h3 className="text-2xl font-bold text-accent-neon mb-2 group-hover:text-accent-neon-light transition-colors">
+                          Moritz Florian
+                        </h3>
+                        <p className="text-accent font-medium">Founder</p>
+                      </div>
+                      <blockquote className="text-lg text-text-muted italic leading-relaxed">
+                        "AI has the power to spark some incredible new ideas and services that can benefit us all. At SparkloomAI, we're excited to be a part of that, building a future where technology empowers everyone."
+                      </blockquote>
+                    </div>
                   </div>
-                  <blockquote className="text-lg text-text-muted italic leading-relaxed">
-                    "AI has the power to spark some incredible new ideas and services that can benefit us all. At SparkloomAI, we're excited to be a part of that, building a future where technology empowers everyone."
-                  </blockquote>
                 </CardContent>
               </Card>
             </div>
