@@ -47,7 +47,7 @@ const AboutUs = () => {
                       <img
                         src={nilsImage}
                         alt="Nils Effmert"
-                        className="w-32 h-32 rounded-2xl object-cover border-2 border-accent-neon"
+                        className="w-64 h-64 rounded-2xl object-cover border-2 border-accent-neon"
                       />
                     </div>
                   </div>
@@ -71,7 +71,7 @@ const AboutUs = () => {
                       <img
                         src={moritzImage}
                         alt="Moritz Florian"
-                        className="w-32 h-32 rounded-2xl object-cover border-2 border-accent-neon"
+                        className="w-64 h-64 rounded-2xl object-cover border-2 border-accent-neon"
                       />
                     </div>
                   </div>
