@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogOverlay, DialogPortal } from "@/components/ui/dialog";
 import { ArrowRight, Clock, TrendingUp, Users, Zap } from "lucide-react";
 import { useState } from "react";
 
@@ -162,7 +162,9 @@ const ResultsSection = () => {
                 </Card>
               </DialogTrigger>
               
-              <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-sl-graphite-900 border-border">
+              <DialogPortal>
+                <DialogOverlay className="fixed inset-0 z-50 bg-sl-obsidian/90 backdrop-blur-sm" />
+                <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-sl-obsidian border border-sl-graphite-700 shadow-2xl relative z-50">
                 <DialogHeader>
                   <DialogTitle className="text-2xl font-bold mb-4 text-accent-neon">
                     {study.client} Case Study
@@ -244,6 +246,7 @@ const ResultsSection = () => {
                   </div>
                 </div>
               </DialogContent>
+              </DialogPortal>
             </Dialog>
           ))}
         </div>
