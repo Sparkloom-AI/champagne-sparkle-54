@@ -98,10 +98,10 @@ const ResultsSection = () => {
             <Dialog key={index}>
               <DialogTrigger asChild>
                 <Card 
-                  className={`bg-sl-graphite-800/50 border-border backdrop-blur-sm hover:-translate-y-3 hover:scale-[1.02] transition-all duration-500 group animate-fade-in cursor-pointer ${
+                  className={`bg-sl-graphite-800 border-border hover:-translate-y-6 hover:scale-[1.05] transition-all duration-700 group animate-fade-in cursor-pointer overflow-hidden relative ${
                     study.isNeon 
-                      ? 'hover:shadow-[0_20px_40px_rgba(0,255,255,0.3)] hover:border-accent-neon/60 hover:bg-sl-graphite-800/80' 
-                      : 'hover:shadow-[0_20px_40px_rgba(139,92,246,0.3)] hover:border-accent/60 hover:bg-sl-graphite-800/80'
+                      ? 'hover:shadow-[0_30px_60px_rgba(0,255,255,0.4)] hover:border-accent-neon/80 hover:bg-sl-graphite-700' 
+                      : 'hover:shadow-[0_30px_60px_rgba(139,92,246,0.4)] hover:border-accent/80 hover:bg-sl-graphite-700'
                   }`}
                   style={{ animationDelay: `${index * 150}ms` }}
                 >
@@ -162,9 +162,19 @@ const ResultsSection = () => {
                 </Card>
               </DialogTrigger>
               
-              <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-sl-graphite-900 border-border">
+              <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-sl-obsidian border border-accent-neon/20 shadow-2xl">
+                {/* Black overlay background */}
+                <div className="fixed inset-0 bg-black/95 backdrop-blur-sm -z-10" />
+                
                 <DialogHeader>
-                  <DialogTitle className="text-2xl font-bold mb-4 text-accent-neon">
+                  <DialogTitle className="text-3xl font-bold mb-6 text-accent-neon flex items-center gap-3">
+                    <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${
+                      study.isNeon ? 'bg-gradient-neon shadow-neon' : 'bg-gradient-to-r from-accent to-accent-light shadow-glow'
+                    }`}>
+                      <span className="text-sl-obsidian font-bold">
+                        {study.client.split(' ').map(word => word[0]).join('').slice(0, 2)}
+                      </span>
+                    </div>
                     {study.client} Case Study
                   </DialogTitle>
                 </DialogHeader>
