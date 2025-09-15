@@ -29,28 +29,26 @@ const AboutUs = () => {
               <div className="w-24 h-1 bg-gradient-neon mx-auto rounded-full"></div>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="space-y-8">
               {/* Nils Effmert */}
               <Card className="bg-gradient-surface border-border-accent shadow-card hover:shadow-glow transition-all duration-500 group">
                 <CardContent className="p-8">
-                  <div className="flex items-start gap-6">
+                  <div className="flex items-center gap-8">
+                    <div className="flex-1">
+                      <blockquote className="text-2xl text-text-muted italic leading-relaxed mb-6">
+                        "We're here to make AI actually useful. We build smart, quality tools that help people and businesses get things done and unlock their full potential. It's all about creating tech that genuinely helps."
+                      </blockquote>
+                      <h3 className="text-2xl font-bold text-accent-neon mb-2 group-hover:text-accent-neon-light transition-colors">
+                        Nils Effmert
+                      </h3>
+                      <p className="text-accent font-medium">Founder</p>
+                    </div>
                     <div className="flex-shrink-0">
                       <img
                         src={nilsImage}
                         alt="Nils Effmert"
-                        className="w-24 h-24 rounded-full object-cover border-2 border-accent-neon"
+                        className="w-32 h-32 rounded-2xl object-cover border-2 border-accent-neon"
                       />
-                    </div>
-                    <div className="flex-1">
-                      <div className="mb-4">
-                        <h3 className="text-2xl font-bold text-accent-neon mb-2 group-hover:text-accent-neon-light transition-colors">
-                          Nils Effmert
-                        </h3>
-                        <p className="text-accent font-medium">Founder</p>
-                      </div>
-                      <blockquote className="text-lg text-text-muted italic leading-relaxed">
-                        "We're here to make AI actually useful. We build smart, quality tools that help people and businesses get things done and unlock their full potential. It's all about creating tech that genuinely helps."
-                      </blockquote>
                     </div>
                   </div>
                 </CardContent>
@@ -59,24 +57,22 @@ const AboutUs = () => {
               {/* Moritz Florian */}
               <Card className="bg-gradient-surface border-border-accent shadow-card hover:shadow-glow transition-all duration-500 group">
                 <CardContent className="p-8">
-                  <div className="flex items-start gap-6">
+                  <div className="flex items-center gap-8">
+                    <div className="flex-1">
+                      <blockquote className="text-2xl text-text-muted italic leading-relaxed mb-6">
+                        "AI has the power to spark some incredible new ideas and services that can benefit us all. At SparkloomAI, we're excited to be a part of that, building a future where technology empowers everyone."
+                      </blockquote>
+                      <h3 className="text-2xl font-bold text-accent-neon mb-2 group-hover:text-accent-neon-light transition-colors">
+                        Moritz Florian
+                      </h3>
+                      <p className="text-accent font-medium">Founder</p>
+                    </div>
                     <div className="flex-shrink-0">
                       <img
                         src={moritzImage}
                         alt="Moritz Florian"
-                        className="w-24 h-24 rounded-full object-cover border-2 border-accent-neon"
+                        className="w-32 h-32 rounded-2xl object-cover border-2 border-accent-neon"
                       />
-                    </div>
-                    <div className="flex-1">
-                      <div className="mb-4">
-                        <h3 className="text-2xl font-bold text-accent-neon mb-2 group-hover:text-accent-neon-light transition-colors">
-                          Moritz Florian
-                        </h3>
-                        <p className="text-accent font-medium">Founder</p>
-                      </div>
-                      <blockquote className="text-lg text-text-muted italic leading-relaxed">
-                        "AI has the power to spark some incredible new ideas and services that can benefit us all. At SparkloomAI, we're excited to be a part of that, building a future where technology empowers everyone."
-                      </blockquote>
                     </div>
                   </div>
                 </CardContent>
