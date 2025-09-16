@@ -51,7 +51,7 @@ const Careers = () => {
         {teamMembers.map((member, index) => (
           <div 
             key={index}
-            className={`absolute ${member.position} ${member.size} ${member.bgColor} rounded-3xl p-4 animate-fade-in hover-scale hidden lg:block`}
+            className={`absolute ${member.position} ${member.size} ${member.bgColor} rounded-3xl p-4 animate-fade-in hover-scale hidden lg:block z-20`}
             style={{ animationDelay: `${index * 0.2}s` }}
           >
             <img 
