@@ -20,12 +20,12 @@ const Careers = () => {
   ];
 
   const teamMembers = [
-    { image: teamMember1, position: "top-10 right-20", size: "w-48 h-48" },
-    { image: teamMember2, position: "top-1/3 right-80", size: "w-40 h-40" },
-    { image: teamMember3, position: "bottom-32 right-1/2", size: "w-44 h-44" },
-    { image: teamMember4, position: "top-1/4 right-10", size: "w-80 h-80" },
-    { image: teamMember5, position: "bottom-10 right-32", size: "w-60 h-60" },
-    { image: teamMember6, position: "top-2/3 right-96", size: "w-52 h-52" }
+    { image: teamMember1, position: "top-16 right-16", size: "w-40 h-40" },
+    { image: teamMember2, position: "top-40 right-72", size: "w-36 h-36" },
+    { image: teamMember3, position: "bottom-40 right-96", size: "w-44 h-44" },
+    { image: teamMember4, position: "top-32 right-32", size: "w-64 h-64" },
+    { image: teamMember5, position: "bottom-16 right-48", size: "w-48 h-48" },
+    { image: teamMember6, position: "top-72 right-80", size: "w-40 h-40" }
   ];
 
   const handleEmailCV = () => {
