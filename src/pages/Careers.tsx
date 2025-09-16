@@ -164,8 +164,8 @@ const Careers = () => {
       
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-xl">
+        <div className="container mx-auto px-4 relative z-30">
+          <div className="max-w-xl ml-8 lg:ml-16">
             <p className="text-primary text-lg font-medium mb-4">CAREERS</p>
             <h1 className="text-5xl lg:text-6xl font-bold text-foreground mb-8 leading-tight">Join us now!</h1>
           </div>
