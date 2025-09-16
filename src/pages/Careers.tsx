@@ -17,28 +17,28 @@ const Careers = () => {
   }];
   const teamMembers = [{
     image: teamMember1,
-    position: "top-20 left-96",
-    size: "w-64 h-64"
+    position: "top-16 left-20",
+    size: "w-56 h-56"
   }, {
     image: teamMember2,
-    position: "top-10 right-40",
+    position: "top-32 right-20",
     size: "w-48 h-48"
   }, {
     image: teamMember3,
-    position: "bottom-20 left-80",
-    size: "w-72 h-72"
+    position: "bottom-20 left-32",
+    size: "w-64 h-64"
   }, {
     image: teamMember4,
-    position: "top-40 right-16",
-    size: "w-80 h-80"
+    position: "top-80 right-32",
+    size: "w-60 h-60"
   }, {
     image: teamMember5,
-    position: "bottom-32 right-32",
-    size: "w-56 h-56"
+    position: "bottom-32 right-80",
+    size: "w-52 h-52"
   }, {
     image: teamMember6,
-    position: "top-80 left-1/2",
-    size: "w-60 h-60"
+    position: "bottom-80 left-80",
+    size: "w-58 h-58"
   }];
   const handleEmailCV = () => {
     window.open('mailto:hello@sparkloomai.com?subject=CV Submission&body=Hi, I would like to submit my CV for consideration.', '_blank');
