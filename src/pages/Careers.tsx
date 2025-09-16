@@ -71,7 +71,7 @@ const Careers = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-8">
-              If you're creative, passionate and driven to do great work, we offer:
+              If you're passionate about AI and driven to shape the future, we offer:
             </h2>
           </div>
           
@@ -80,10 +80,10 @@ const Careers = () => {
               <div className="w-16 h-16 mx-auto mb-6 bg-primary/10 rounded-2xl flex items-center justify-center">
                 <TrendingUp className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-4">A growth mindset</h3>
+              <h3 className="text-xl font-semibold text-foreground mb-4">Cutting-edge AI innovation</h3>
               <p className="text-muted-foreground leading-relaxed">
-                We're dynamic, disruptive and get things done. If you enjoy a fast-moving yet 
-                friendly culture, get in touch.
+                Work with the latest AI technologies and push the boundaries of what's possible. 
+                Join a team that's defining the future of artificial intelligence.
               </p>
             </div>
             
@@ -91,10 +91,10 @@ const Careers = () => {
               <div className="w-16 h-16 mx-auto mb-6 bg-primary/10 rounded-2xl flex items-center justify-center">
                 <Zap className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-4">A world-class product</h3>
+              <h3 className="text-xl font-semibold text-foreground mb-4">Revolutionary AI platform</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Our partners love our product - and we just keep making it better. Our 
-                plans for the future will blow your mind.
+                Build products that transform how people interact with AI. Our platform 
+                powers the next generation of intelligent applications.
               </p>
             </div>
             
@@ -102,10 +102,10 @@ const Careers = () => {
               <div className="w-16 h-16 mx-auto mb-6 bg-primary/10 rounded-2xl flex items-center justify-center">
                 <Globe className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-4">Global impact</h3>
+              <h3 className="text-xl font-semibold text-foreground mb-4">Shape AI's future</h3>
               <p className="text-muted-foreground leading-relaxed">
-                We're reshaping an industry. But this is just the beginning. Join us and make 
-                your mark on a global scale.
+                Help democratize AI and make it accessible to everyone. Your work will impact 
+                millions and change how the world builds with artificial intelligence.
               </p>
             </div>
           </div>
