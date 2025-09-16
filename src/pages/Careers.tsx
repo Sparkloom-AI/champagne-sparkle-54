@@ -10,11 +10,29 @@ import teamMember4 from "@/assets/team-member-4.png";
 import teamMember5 from "@/assets/team-member-5.png";
 import teamMember6 from "@/assets/team-member-6.png";
 const Careers = () => {
-  const jobs = [{
-    title: "Full Stack Engineer",
-    location: "100% Remote",
-    department: "Engineering"
-  }];
+  const jobs = [
+    {
+      title: "Full Stack Engineer",
+      location: "100% Remote",
+      department: "Engineering",
+      experience: "3+ years",
+      description: "Build end-to-end AI solutions and prototypes for diverse client projects"
+    },
+    {
+      title: "Senior Full Stack Engineer", 
+      location: "100% Remote",
+      department: "Engineering",
+      experience: "7+ years",
+      description: "Lead complex projects and mentor engineers while architecting scalable solutions"
+    },
+    {
+      title: "Software Developer",
+      location: "100% Remote", 
+      department: "Engineering",
+      experience: "1-2 years",
+      description: "Learn and contribute to AI-powered applications with mentorship from senior engineers"
+    }
+  ];
   const teamMembers = [{
     image: teamMember1,
     position: "top-16 left-20",
@@ -120,21 +138,30 @@ const Careers = () => {
           </h2>
           
           <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
-            {jobs.map((job, index) => <Card key={index} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer border-border/50 bg-card">
+            {jobs.map((job, index) => (
+              <Card key={index} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer border-border/50 bg-card">
                 <CardContent className="p-8">
-                  <div className="flex items-center justify-between">
-                    <div>
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
                       <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
                         {job.title}
                       </h3>
-                      <p className="text-muted-foreground">
-                        {job.location} • {job.department}
+                      <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
+                        <span>{job.location}</span>
+                        <span>•</span>
+                        <span>{job.department}</span>
+                        <span>•</span>
+                        <span>{job.experience}</span>
+                      </div>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {job.description}
                       </p>
                     </div>
-                    <ArrowRight className="w-6 h-6 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                    <ArrowRight className="w-6 h-6 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all ml-4 flex-shrink-0" />
                   </div>
                 </CardContent>
-              </Card>)}
+              </Card>
+            ))}
           </div>
         </div>
       </section>
