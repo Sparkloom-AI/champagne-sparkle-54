@@ -20,12 +20,12 @@ const Careers = () => {
   ];
 
   const teamMembers = [
-    { image: teamMember1, position: "top-20 left-96", size: "w-40 h-40" },
-    { image: teamMember2, position: "top-10 right-40", size: "w-36 h-36" },
-    { image: teamMember3, position: "bottom-20 left-80", size: "w-44 h-44" },
-    { image: teamMember4, position: "top-40 right-16", size: "w-56 h-56" },
-    { image: teamMember5, position: "bottom-32 right-32", size: "w-48 h-48" },
-    { image: teamMember6, position: "top-80 left-1/2", size: "w-40 h-40" }
+    { image: teamMember1, position: "top-20 left-96", size: "w-64 h-64" },
+    { image: teamMember2, position: "top-10 right-40", size: "w-48 h-48" },
+    { image: teamMember3, position: "bottom-20 left-80", size: "w-72 h-72" },
+    { image: teamMember4, position: "top-40 right-16", size: "w-80 h-80" },
+    { image: teamMember5, position: "bottom-32 right-32", size: "w-56 h-56" },
+    { image: teamMember6, position: "top-80 left-1/2", size: "w-60 h-60" }
   ];
 
   const handleEmailCV = () => {
@@ -47,17 +47,17 @@ const Careers = () => {
           </div>
         </div>
 
-        {/* Floating Team Member Cards */}
+        {/* Floating Team Member Photos */}
         {teamMembers.map((member, index) => (
           <div 
             key={index}
-            className={`absolute ${member.position} ${member.size} bg-sl-slate-800/50 border-sl-iron-600/30 backdrop-blur-sm rounded-3xl p-4 animate-fade-in hover-scale hidden lg:block z-20 hover:bg-sl-slate-800/70 hover:-translate-y-2 transition-all duration-500 hover:shadow-neon hover:border-accent-neon/50`}
+            className={`absolute ${member.position} ${member.size} animate-fade-in hover-scale hidden lg:block z-20`}
             style={{ animationDelay: `${index * 0.2}s` }}
           >
             <img 
               src={member.image} 
               alt={`Team member ${index + 1}`}
-              className="w-full h-full object-cover rounded-2xl"
+              className="w-full h-full object-cover rounded-3xl"
             />
           </div>
         ))}
