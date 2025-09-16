@@ -13,35 +13,7 @@ const Careers = () => {
   const jobs = [{
     title: "Full Stack Engineer",
     location: "100% Remote",
-    department: "Engineering",
-    description: "We're looking for a versatile Full Stack Engineer to be a foundational member of our technical team. You'll be on the front lines, designing and building a diverse range of AI-powered solutions and applications for our clients.",
-    responsibilities: [
-      "Build End-to-End Solutions: Architect, develop, and deploy full-stack applications that serve as the backbone for our client's AI initiatives",
-      "Rapid Prototyping: Quickly build functional prototypes and proofs-of-concept to demonstrate the value and feasibility of an AI solution",
-      "Integrate Cutting-Edge Tech: Work directly with large language models (LLMs) and other machine learning APIs, integrating them seamlessly into new and existing applications",
-      "Collaborate and Advise: Work closely with our consultants and clients to understand their needs, offer technical insights, and help shape the final product",
-      "Drive Technical Excellence: Help establish best practices for our development process, ensuring what we build is scalable, maintainable, and robust"
-    ],
-    qualifications: [
-      "3+ years of professional experience in full-stack development, with a portfolio of web applications you've helped build",
-      "Strong proficiency in our core stack: TypeScript, Python, React, and Node.js",
-      "Solid experience with cloud platforms (Netlify, Supabase, Google Cloud) and deploying applications",
-      "A firm grasp of system design, APIs (REST/GraphQL), and relational databases",
-      "Prior experience or a strong, demonstrable interest in working with AI/ML models is a huge plus"
-    ],
-    idealCandidate: [
-      "A Natural Problem-Solver: You enjoy breaking down complex, ambiguous problems into manageable steps and finding elegant solutions",
-      "Adaptable and Curious: You're excited by the prospect of jumping into new projects, learning new technologies, and working across different industries",
-      "A Strong Communicator: You can clearly explain technical concepts to non-technical stakeholders and enjoy a collaborative process",
-      "Product-Minded: You don't just write code; you think about the end-user and the business goals, building products that are both powerful and intuitive"
-    ],
-    perks: [
-      "Meaningful Work: You'll see the direct impact of your work on our clients' success and be at the forefront of the AI revolution",
-      "Constant Learning: The variety of projects ensures you'll never be bored and will constantly be adding new skills to your toolkit",
-      "A 4-Day Work Week: We're serious about work-life balance. Enjoy a three-day weekend, every week",
-      "Generous Time Off: With 25 paid holidays and a solid PTO package, we encourage you to disconnect and recharge",
-      "Flexibility: We offer flexible schedules and remote work options. We trust you to get your work done"
-    ]
+    department: "Engineering"
   }];
   const teamMembers = [{
     image: teamMember1,
@@ -147,84 +119,22 @@ const Careers = () => {
             Jobs
           </h2>
           
-          <div className="max-w-4xl mx-auto">
-            {jobs.map((job, index) => (
-              <Card key={index} className="group hover:shadow-lg transition-all duration-300 border-border/50 bg-card">
+          <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+            {jobs.map((job, index) => <Card key={index} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer border-border/50 bg-card">
                 <CardContent className="p-8">
-                  <div className="mb-8">
-                    <div className="flex items-center justify-between mb-4">
-                      <div>
-                        <h3 className="text-3xl font-bold text-foreground mb-2">
-                          {job.title}
-                        </h3>
-                        <p className="text-lg text-muted-foreground">
-                          SparkloomAI • {job.location} • {job.department}
-                        </p>
-                      </div>
-                    </div>
-                    <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-                      {job.description}
-                    </p>
-                  </div>
-
-                  <div className="space-y-8">
+                  <div className="flex items-center justify-between">
                     <div>
-                      <h4 className="text-xl font-semibold text-foreground mb-4">What You'll Be Doing:</h4>
-                      <ul className="space-y-3">
-                        {job.responsibilities.map((item, idx) => (
-                          <li key={idx} className="text-muted-foreground leading-relaxed">
-                            • {item}
-                          </li>
-                        ))}
-                      </ul>
+                      <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+                        {job.title}
+                      </h3>
+                      <p className="text-muted-foreground">
+                        {job.location} • {job.department}
+                      </p>
                     </div>
-
-                    <div>
-                      <h4 className="text-xl font-semibold text-foreground mb-4">What You Bring to the Table:</h4>
-                      <ul className="space-y-3">
-                        {job.qualifications.map((item, idx) => (
-                          <li key={idx} className="text-muted-foreground leading-relaxed">
-                            • {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div>
-                      <h4 className="text-xl font-semibold text-foreground mb-4">Who You Are:</h4>
-                      <ul className="space-y-3">
-                        {job.idealCandidate.map((item, idx) => (
-                          <li key={idx} className="text-muted-foreground leading-relaxed">
-                            • {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div>
-                      <h4 className="text-xl font-semibold text-foreground mb-4">Why SparkloomAI?</h4>
-                      <ul className="space-y-3">
-                        {job.perks.map((item, idx) => (
-                          <li key={idx} className="text-muted-foreground leading-relaxed">
-                            • {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div className="pt-6 border-t border-border">
-                      <Button 
-                        onClick={() => window.open('mailto:hello@sparkloomai.com?subject=Full Stack Engineer Application&body=Hi, I would like to apply for the Full Stack Engineer position.', '_blank')}
-                        className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3"
-                      >
-                        Apply Now
-                        <ArrowRight className="w-4 h-4 ml-2" />
-                      </Button>
-                    </div>
+                    <ArrowRight className="w-6 h-6 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
                   </div>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </section>
