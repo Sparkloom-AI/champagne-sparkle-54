@@ -3,8 +3,12 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Mail } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import moritzImage from "@/assets/moritz-florian-new.png";
-import nilsImage from "@/assets/nils-effmert-new.png";
+import teamMember1 from "@/assets/team-member-1.png";
+import teamMember2 from "@/assets/team-member-2.png";
+import teamMember3 from "@/assets/team-member-3.png";
+import teamMember4 from "@/assets/team-member-4.png";
+import teamMember5 from "@/assets/team-member-5.png";
+import teamMember6 from "@/assets/team-member-6.png";
 
 const Careers = () => {
   const jobs = [
@@ -16,11 +20,12 @@ const Careers = () => {
   ];
 
   const teamMembers = [
-    { image: moritzImage, bgColor: "bg-blue-400", position: "top-16 right-32" },
-    { image: nilsImage, bgColor: "bg-purple-400", position: "top-32 right-4" },
-    { image: moritzImage, bgColor: "bg-pink-400", position: "top-64 right-80" },
-    { image: nilsImage, bgColor: "bg-blue-300", position: "bottom-32 right-48" },
-    { image: moritzImage, bgColor: "bg-yellow-400", position: "bottom-16 right-16" }
+    { image: teamMember1, bgColor: "bg-orange-400", position: "top-16 right-32" },
+    { image: teamMember2, bgColor: "bg-purple-400", position: "top-32 right-4" },
+    { image: teamMember3, bgColor: "bg-pink-400", position: "top-64 right-80" },
+    { image: teamMember4, bgColor: "bg-blue-300", position: "bottom-32 right-48" },
+    { image: teamMember5, bgColor: "bg-gray-400", position: "bottom-16 right-16" },
+    { image: teamMember6, bgColor: "bg-yellow-400", position: "top-48 left-16" }
   ];
 
   const handleEmailCV = () => {
