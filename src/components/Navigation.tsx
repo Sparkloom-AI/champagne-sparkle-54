@@ -45,6 +45,9 @@ const Navigation = () => {
           <a href="/about" className={`text-text-muted hover:text-accent transition-colors ${location.pathname === '/about' ? 'text-accent' : ''}`}>
             About
           </a>
+          <a href="/careers" className={`text-text-muted hover:text-accent transition-colors ${location.pathname === '/careers' ? 'text-accent' : ''}`}>
+            Careers
+          </a>
         </div>
 
         <Button variant="outline" className="border-accent-neon text-accent-neon hover:bg-accent-neon hover:text-sl-obsidian hover:shadow-neon transition-all duration-300" onClick={() => {
