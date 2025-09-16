@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowRight, Mail } from "lucide-react";
+import { ArrowRight, Mail, TrendingUp, Globe, Zap } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import teamMember1 from "@/assets/team-member-1.png";
@@ -64,6 +64,52 @@ const Careers = () => {
 
         {/* Background gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-background via-background/95 to-primary/5" />
+      </section>
+
+      {/* What We Offer Section */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-8">
+              If you're creative, passionate and driven to do great work, we offer:
+            </h2>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div className="text-center">
+              <div className="w-16 h-16 mx-auto mb-6 bg-primary/10 rounded-2xl flex items-center justify-center">
+                <TrendingUp className="w-8 h-8 text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold text-foreground mb-4">A growth mindset</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                We're dynamic, disruptive and get things done. If you enjoy a fast-moving yet 
+                friendly culture, get in touch.
+              </p>
+            </div>
+            
+            <div className="text-center">
+              <div className="w-16 h-16 mx-auto mb-6 bg-primary/10 rounded-2xl flex items-center justify-center">
+                <Zap className="w-8 h-8 text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold text-foreground mb-4">A world-class product</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Our partners love our product - and we just keep making it better. Our 
+                plans for the future will blow your mind.
+              </p>
+            </div>
+            
+            <div className="text-center">
+              <div className="w-16 h-16 mx-auto mb-6 bg-primary/10 rounded-2xl flex items-center justify-center">
+                <Globe className="w-8 h-8 text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold text-foreground mb-4">Global impact</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                We're reshaping an industry. But this is just the beginning. Join us and make 
+                your mark on a global scale.
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Jobs Section */}
