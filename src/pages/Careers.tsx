@@ -20,12 +20,12 @@ const Careers = () => {
   ];
 
   const teamMembers = [
-    { image: teamMember1, bgColor: "bg-blue-200", position: "top-20 right-60", size: "w-36 h-36" },
-    { image: teamMember2, bgColor: "bg-gray-300", position: "top-60 left-20", size: "w-28 h-28" },
-    { image: teamMember3, bgColor: "bg-pink-200", position: "bottom-60 left-40", size: "w-32 h-32" },
-    { image: teamMember4, bgColor: "bg-blue-100", position: "top-40 right-20", size: "w-64 h-64" },
-    { image: teamMember5, bgColor: "bg-purple-100", position: "bottom-40 right-40", size: "w-40 h-40" },
-    { image: teamMember6, bgColor: "bg-yellow-200", position: "bottom-20 right-4", size: "w-36 h-36" }
+    { image: teamMember1, position: "top-20 right-60", size: "w-36 h-36" },
+    { image: teamMember2, position: "top-60 left-20", size: "w-28 h-28" },
+    { image: teamMember3, position: "bottom-60 left-40", size: "w-32 h-32" },
+    { image: teamMember4, position: "top-40 right-20", size: "w-64 h-64" },
+    { image: teamMember5, position: "bottom-40 right-40", size: "w-40 h-40" },
+    { image: teamMember6, position: "bottom-20 right-4", size: "w-36 h-36" }
   ];
 
   const handleEmailCV = () => {
@@ -51,7 +51,7 @@ const Careers = () => {
         {teamMembers.map((member, index) => (
           <div 
             key={index}
-            className={`absolute ${member.position} ${member.size} ${member.bgColor} rounded-3xl p-4 animate-fade-in hover-scale hidden lg:block z-20`}
+            className={`absolute ${member.position} ${member.size} bg-sl-slate-800/50 border-sl-iron-600/30 backdrop-blur-sm rounded-3xl p-4 animate-fade-in hover-scale hidden lg:block z-20 hover:bg-sl-slate-800/70 hover:-translate-y-2 transition-all duration-500 hover:shadow-neon hover:border-accent-neon/50`}
             style={{ animationDelay: `${index * 0.2}s` }}
           >
             <img 
