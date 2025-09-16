@@ -12,36 +12,6 @@ const Careers = () => {
       title: "Full Stack Engineer",
       location: "100% Remote",
       department: "Engineering"
-    },
-    {
-      title: "(Inbound) Business Development Manager",
-      location: "Paris, FR",
-      department: "Commercial"
-    },
-    {
-      title: "Account Manager - Amsterdam (Dutch Speaking)",
-      location: "Amsterdam, NL",
-      department: "Commercial"
-    },
-    {
-      title: "Account Manager (London)",
-      location: "London, GB",
-      department: "Commercial"
-    },
-    {
-      title: "B2B Software Customer Support Specialist (Dubai)",
-      location: "Dubai, AE",
-      department: "Customer Experience"
-    },
-    {
-      title: "Backend Engineer",
-      location: "Pristina, XK",
-      department: "Engineering"
-    },
-    {
-      title: "Backend Engineer (B2B - Warsaw)",
-      location: "Warsaw, PL",
-      department: "Engineering"
     }
   ];
 
