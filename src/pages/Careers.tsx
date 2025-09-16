@@ -4,7 +4,7 @@ import { ArrowRight, Mail } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import teamMember1 from "@/assets/team-member-1.png";
-import teamMember2 from "@/assets/team-member-2.png";
+import teamMember2 from "@/assets/new-team-member-2.png";
 import teamMember3 from "@/assets/team-member-3.png";
 import teamMember4 from "@/assets/team-member-4.png";
 import teamMember5 from "@/assets/team-member-5.png";
