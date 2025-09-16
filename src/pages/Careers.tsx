@@ -20,12 +20,12 @@ const Careers = () => {
   ];
 
   const teamMembers = [
-    { image: teamMember1, bgColor: "bg-orange-400", position: "top-16 right-32" },
-    { image: teamMember2, bgColor: "bg-purple-400", position: "top-32 right-4" },
-    { image: teamMember3, bgColor: "bg-pink-400", position: "top-64 right-80" },
-    { image: teamMember4, bgColor: "bg-blue-300", position: "bottom-32 right-48" },
-    { image: teamMember5, bgColor: "bg-gray-400", position: "bottom-16 right-16" },
-    { image: teamMember6, bgColor: "bg-yellow-400", position: "top-48 left-16" }
+    { image: teamMember1, bgColor: "bg-blue-200", position: "top-20 right-60", size: "w-36 h-36" },
+    { image: teamMember2, bgColor: "bg-gray-300", position: "top-60 left-20", size: "w-28 h-28" },
+    { image: teamMember3, bgColor: "bg-pink-200", position: "bottom-60 left-40", size: "w-32 h-32" },
+    { image: teamMember4, bgColor: "bg-blue-100", position: "top-40 right-20", size: "w-64 h-64" },
+    { image: teamMember5, bgColor: "bg-purple-100", position: "bottom-40 right-40", size: "w-40 h-40" },
+    { image: teamMember6, bgColor: "bg-yellow-200", position: "bottom-20 right-4", size: "w-36 h-36" }
   ];
 
   const handleEmailCV = () => {
@@ -37,11 +37,11 @@ const Careers = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-2xl">
+          <div className="max-w-xl">
             <p className="text-primary text-lg font-medium mb-4">CAREERS</p>
-            <h1 className="text-6xl lg:text-7xl font-bold text-foreground mb-8 leading-tight">
+            <h1 className="text-5xl lg:text-6xl font-bold text-foreground mb-8 leading-tight">
               Join us in changing the world
             </h1>
           </div>
@@ -51,7 +51,7 @@ const Careers = () => {
         {teamMembers.map((member, index) => (
           <div 
             key={index}
-            className={`absolute ${member.position} w-32 h-32 lg:w-40 lg:h-40 ${member.bgColor} rounded-3xl p-4 animate-fade-in hover-scale hidden md:block`}
+            className={`absolute ${member.position} ${member.size} ${member.bgColor} rounded-3xl p-4 animate-fade-in hover-scale hidden lg:block`}
             style={{ animationDelay: `${index * 0.2}s` }}
           >
             <img 
