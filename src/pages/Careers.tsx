@@ -165,18 +165,65 @@ const Careers = () => {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
         <div className="container mx-auto px-4 relative z-30">
-          <div className="max-w-xl ml-8 lg:ml-16">
-            <p className="text-primary text-lg font-medium mb-4">CAREERS</p>
-            <h1 className="text-5xl lg:text-6xl font-bold text-foreground mb-8 leading-tight">Join us now!</h1>
+          {/* Desktop Layout - Grid with headline and images */}
+          <div className="hidden lg:grid lg:grid-cols-5 lg:grid-rows-4 lg:gap-6 lg:h-[600px] items-center">
+            {/* Headline area */}
+            <div className="lg:col-span-2 lg:row-span-2 lg:row-start-2 flex flex-col justify-center">
+              <p className="text-primary text-lg font-medium mb-4">CAREERS</p>
+              <h1 className="text-5xl lg:text-6xl font-bold text-foreground mb-8 leading-tight">Join us now!</h1>
+            </div>
+            
+            {/* Image collage layout */}
+            <div className="lg:col-start-3 lg:row-start-1 lg:w-48 lg:h-48 animate-fade-in hover-scale" style={{animationDelay: '0s'}}>
+              <img src={teamMember1} alt="Team member 1" className="w-full h-full object-cover rounded-3xl" />
+            </div>
+            <div className="lg:col-start-5 lg:row-start-1 lg:w-56 lg:h-56 animate-fade-in hover-scale" style={{animationDelay: '0.2s'}}>
+              <img src={teamMember3} alt="Team member 3" className="w-full h-full object-cover rounded-3xl" />
+            </div>
+            <div className="lg:col-start-4 lg:row-start-2 lg:w-52 lg:h-52 animate-fade-in hover-scale" style={{animationDelay: '0.4s'}}>
+              <img src={teamMember2} alt="Team member 2" className="w-full h-full object-cover rounded-3xl" />
+            </div>
+            <div className="lg:col-start-3 lg:row-start-3 lg:w-60 lg:h-60 animate-fade-in hover-scale" style={{animationDelay: '0.6s'}}>
+              <img src={teamMember4} alt="Team member 4" className="w-full h-full object-cover rounded-3xl" />
+            </div>
+            <div className="lg:col-start-5 lg:row-start-3 lg:w-48 lg:h-48 animate-fade-in hover-scale" style={{animationDelay: '0.8s'}}>
+              <img src={teamMember5} alt="Team member 5" className="w-full h-full object-cover rounded-3xl" />
+            </div>
+            <div className="lg:col-start-4 lg:row-start-4 lg:w-52 lg:h-52 animate-fade-in hover-scale" style={{animationDelay: '1s'}}>
+              <img src={teamMember6} alt="Team member 6" className="w-full h-full object-cover rounded-3xl" />
+            </div>
+          </div>
+
+          {/* Tablet Layout - 2 column grid */}
+          <div className="hidden md:block lg:hidden">
+            <div className="text-center mb-12">
+              <p className="text-primary text-lg font-medium mb-4">CAREERS</p>
+              <h1 className="text-5xl font-bold text-foreground mb-8 leading-tight">Join us now!</h1>
+            </div>
+            <div className="grid grid-cols-2 gap-6 max-w-2xl mx-auto">
+              {teamMembers.map((member, index) => (
+                <div key={index} className="w-48 h-48 mx-auto animate-fade-in hover-scale" style={{animationDelay: `${index * 0.2}s`}}>
+                  <img src={member.image} alt={`Team member ${index + 1}`} className="w-full h-full object-cover rounded-3xl" />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Mobile Layout - Single column */}
+          <div className="block md:hidden">
+            <div className="text-center mb-12">
+              <p className="text-primary text-lg font-medium mb-4">CAREERS</p>
+              <h1 className="text-4xl font-bold text-foreground mb-8 leading-tight">Join us now!</h1>
+            </div>
+            <div className="flex flex-col space-y-6 items-center">
+              {teamMembers.slice(0, 4).map((member, index) => (
+                <div key={index} className="w-40 h-40 animate-fade-in hover-scale" style={{animationDelay: `${index * 0.2}s`}}>
+                  <img src={member.image} alt={`Team member ${index + 1}`} className="w-full h-full object-cover rounded-3xl" />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-
-        {/* Floating Team Member Photos */}
-        {teamMembers.map((member, index) => <div key={index} className={`absolute ${member.position} ${member.size} animate-fade-in hover-scale hidden lg:block z-20`} style={{
-        animationDelay: `${index * 0.2}s`
-      }}>
-            <img src={member.image} alt={`Team member ${index + 1}`} className="w-full h-full object-cover rounded-3xl" />
-          </div>)}
 
         {/* Background gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-background via-background/95 to-primary/5" />
