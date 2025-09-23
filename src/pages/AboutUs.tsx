@@ -47,7 +47,7 @@ const AboutUs = () => {
                       <img
                         src={nilsImage}
                         alt="Nils Effmert"
-                        className="w-3/4 sm:w-64 h-auto sm:h-64 mx-auto sm:mx-0 rounded-2xl object-cover border-2 border-accent-neon"
+                        className="w-3/4 sm:w-64 aspect-square mx-auto sm:mx-0 rounded-2xl object-cover border-2 border-accent-neon"
                       />
                     </div>
                   </div>
@@ -71,7 +71,7 @@ const AboutUs = () => {
                       <img
                         src={moritzImage}
                         alt="Moritz Florian"
-                        className="w-3/4 sm:w-64 h-auto sm:h-64 mx-auto sm:mx-0 rounded-2xl object-cover border-2 border-accent-neon"
+                        className="w-3/4 sm:w-64 aspect-square mx-auto sm:mx-0 rounded-2xl object-cover border-2 border-accent-neon"
                       />
                     </div>
                   </div>
