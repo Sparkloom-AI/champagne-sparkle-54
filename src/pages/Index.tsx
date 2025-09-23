@@ -14,9 +14,9 @@ const Footer = lazy(() => import("@/components/Footer"));
 const Index = () => {
   const [showBelowFold, setShowBelowFold] = useState(false);
 
-  // Much more aggressive deferral to prevent blocking
+  // Ultra-aggressive deferral to achieve better TTI
   useEffect(() => {
-    // Don't load anything below fold until page is fully interactive
+    // Don't load anything below fold until TTI is achieved
     const loadBelowFold = () => {
       // Use scheduler.postTask if available for better performance
       if ('scheduler' in window && 'postTask' in (window.scheduler as any)) {
@@ -24,21 +24,24 @@ const Index = () => {
           setShowBelowFold(true);
         }, { priority: 'background' });
       } else {
-        // Much longer delay to ensure initial render is complete
+        // Extremely long delay to ensure TTI is achieved first
         setTimeout(() => {
           setShowBelowFold(true);
-        }, 2000);
+        }, 8000); // 8 second delay to ensure TTI
       }
     };
     
-    // Wait for multiple indicators that page is ready
-    if (document.readyState === 'complete') {
-      loadBelowFold();
-    } else {
-      window.addEventListener('load', loadBelowFold);
-    }
+    // Wait for multiple indicators that page is ready + additional time for TTI
+    const checkReadiness = () => {
+      // Additional delay even after load event for TTI
+      setTimeout(loadBelowFold, 3000);
+    };
     
-    return () => window.removeEventListener('load', loadBelowFold);
+    if (document.readyState === 'complete') {
+      checkReadiness();
+    } else {
+      window.addEventListener('load', checkReadiness, { once: true });
+    }
   }, []);
 
   const LoadingFallback = ({ height = "py-24" }: { height?: string }) => (

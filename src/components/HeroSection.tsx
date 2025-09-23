@@ -4,40 +4,81 @@ import heroBackground from "@/assets/hero-bg.jpg";
 import heroBackgroundWebP from "@/assets/hero-bg.webp";
 import { MeshGradientBackground } from "@/components/ui/mesh-gradient";
 const HeroSection = () => {
-  const [mousePosition, setMousePosition] = useState({
-    x: 0,
-    y: 0
-  });
+  const [isFullyInteractive, setIsFullyInteractive] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [backgroundImage, setBackgroundImage] = useState(heroBackground);
   
   // Cache window dimensions to prevent forced reflows
   const windowDimensionsRef = useRef({ width: 0, height: 0 });
 
-  // Memoize expensive style calculations
-  const dynamicStyles = useMemo(() => ({
-    backgroundTransform: `translate(${mousePosition.x * 10}px, ${mousePosition.y * 10}px) scale(1.1)`,
-    gradientPosition: `${50 + mousePosition.x * 20}% ${50 + mousePosition.y * 20}%`,
-    lightEffectLeft: `${50 + mousePosition.x * 30}%`,
-    lightEffectTop: `${50 + mousePosition.y * 30}%`,
-    orb1Transform: `translate(${mousePosition.x * -15}px, ${mousePosition.y * -10}px)`,
-    orb2Transform: `translate(${mousePosition.x * 20}px, ${mousePosition.y * -15}px)`,
-    orb3Transform: `translate(${mousePosition.x * -25}px, ${mousePosition.y * 20}px)`,
-    particleBackground: `radial-gradient(2px 2px at ${20 + mousePosition.x * 10}px ${30 + mousePosition.y * 10}px, hsl(var(--sl-auric-700)), transparent),
-                         radial-gradient(2px 2px at ${40 + mousePosition.x * 15}px ${70 + mousePosition.y * 15}px, hsl(var(--sl-pearl-100)), transparent),
-                         radial-gradient(1px 1px at ${90 + mousePosition.x * 20}px ${40 + mousePosition.y * 20}px, hsl(var(--sl-auric-500)), transparent)`
-  }), [mousePosition.x, mousePosition.y]);
+  // Static styles for initial render - no JavaScript computation
+  const staticStyles = {
+    backgroundTransform: 'translate(0px, 0px) scale(1.1)',
+    gradientPosition: '50% 50%',
+    lightEffectLeft: '50%',
+    lightEffectTop: '50%',
+    orb1Transform: 'translate(0px, 0px)',
+    orb2Transform: 'translate(0px, 0px)',
+    orb3Transform: 'translate(0px, 0px)',
+    particleBackground: `radial-gradient(2px 2px at 20px 30px, hsl(var(--sl-auric-700)), transparent),
+                         radial-gradient(2px 2px at 40px 70px, hsl(var(--sl-pearl-100)), transparent),
+                         radial-gradient(1px 1px at 90px 40px, hsl(var(--sl-auric-500)), transparent)`
+  };
 
-  // Defer WebP detection to reduce initial blocking time
+  // Memoize expensive style calculations - only when interactive
+  const dynamicStyles = useMemo(() => {
+    if (!isFullyInteractive) return staticStyles;
+    
+    return {
+      backgroundTransform: `translate(${mousePosition.x * 10}px, ${mousePosition.y * 10}px) scale(1.1)`,
+      gradientPosition: `${50 + mousePosition.x * 20}% ${50 + mousePosition.y * 20}%`,
+      lightEffectLeft: `${50 + mousePosition.x * 30}%`,
+      lightEffectTop: `${50 + mousePosition.y * 30}%`,
+      orb1Transform: `translate(${mousePosition.x * -15}px, ${mousePosition.y * -10}px)`,
+      orb2Transform: `translate(${mousePosition.x * 20}px, ${mousePosition.y * -15}px)`,
+      orb3Transform: `translate(${mousePosition.x * -25}px, ${mousePosition.y * 20}px)`,
+      particleBackground: `radial-gradient(2px 2px at ${20 + mousePosition.x * 10}px ${30 + mousePosition.y * 10}px, hsl(var(--sl-auric-700)), transparent),
+                           radial-gradient(2px 2px at ${40 + mousePosition.x * 15}px ${70 + mousePosition.y * 15}px, hsl(var(--sl-pearl-100)), transparent),
+                           radial-gradient(1px 1px at ${90 + mousePosition.x * 20}px ${40 + mousePosition.y * 20}px, hsl(var(--sl-auric-500)), transparent)`
+    };
+  }, [mousePosition.x, mousePosition.y, isFullyInteractive]);
+
+  // Ultra-aggressive deferral - only enable interactivity after page is fully loaded
   useEffect(() => {
-    const timer = setTimeout(() => {
-      const webp = new Image();
-      webp.onload = webp.onerror = () => {
-        setBackgroundImage(webp.height === 2 ? heroBackgroundWebP : heroBackground);
-      };
-      webp.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
-    }, 100); // Defer to reduce initial blocking
+    // Wait for multiple signals that page is ready for interactivity
+    const enableInteractivity = () => {
+      // Use scheduler.postTask if available for lowest priority
+      if ('scheduler' in window && 'postTask' in (window.scheduler as any)) {
+        (window.scheduler as any).postTask(() => {
+          setIsFullyInteractive(true);
+          
+          // Only then start WebP detection
+          const webp = new Image();
+          webp.onload = webp.onerror = () => {
+            setBackgroundImage(webp.height === 2 ? heroBackgroundWebP : heroBackground);
+          };
+          webp.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
+        }, { priority: 'background' });
+      } else {
+        // Much longer delay to ensure TTI is achieved first
+        setTimeout(() => {
+          setIsFullyInteractive(true);
+          
+          const webp = new Image();
+          webp.onload = webp.onerror = () => {
+            setBackgroundImage(webp.height === 2 ? heroBackgroundWebP : heroBackground);
+          };
+          webp.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
+        }, 5000); // 5 second delay to ensure TTI
+      }
+    };
 
-    return () => clearTimeout(timer);
+    // Wait for multiple readiness indicators
+    if (document.readyState === 'complete') {
+      enableInteractivity();
+    } else {
+      window.addEventListener('load', enableInteractivity, { once: true });
+    }
   }, []);
 
   // Cache window dimensions on mount and resize
@@ -77,17 +118,20 @@ const HeroSection = () => {
     }
   }, []);
   useEffect(() => {
+    // Only enable mouse tracking after page is fully interactive
+    if (!isFullyInteractive) return;
+    
     let lastUpdate = 0;
     
     // Check for reduced motion preference
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) return; // Skip mouse tracking if user prefers reduced motion
+    if (prefersReducedMotion) return;
     
     const handleMouseMove = (e: MouseEvent) => {
       const now = performance.now();
       
-      // Ultra aggressive throttling - max 10fps to drastically reduce main thread work
-      if (now - lastUpdate < 100) return;
+      // Ultra aggressive throttling - max 5fps when interactive
+      if (now - lastUpdate < 200) return;
       
       throttledMouseUpdate(e);
       lastUpdate = now;
@@ -100,7 +144,7 @@ const HeroSection = () => {
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, [throttledMouseUpdate]);
+  }, [throttledMouseUpdate, isFullyInteractive]);
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{
     '--mouse-x': mousePosition.x,
     '--mouse-y': mousePosition.y
