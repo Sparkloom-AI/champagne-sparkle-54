@@ -60,29 +60,39 @@ const HeroSection = () => {
     const { width, height } = windowDimensionsRef.current;
     if (width === 0 || height === 0) return;
     
+    // Much more aggressive throttling - only update every 100ms minimum
+    const now = performance.now();
+    if (now - (throttledMouseUpdate as any).lastCall < 100) return;
+    (throttledMouseUpdate as any).lastCall = now;
+    
     // Use scheduler.postTask for non-urgent updates to prevent blocking
     if ('scheduler' in window && 'postTask' in (window.scheduler as any)) {
       (window.scheduler as any).postTask(() => {
-        const x = (e.clientX / width - 0.5) * 2;
-        const y = (e.clientY / height - 0.5) * 2;
+        const x = (e.clientX / width - 0.5) * 0.5; // Reduced sensitivity
+        const y = (e.clientY / height - 0.5) * 0.5; // Reduced sensitivity
         setMousePosition({ x, y });
       }, { priority: 'background' });
     } else {
       // Fallback for browsers without scheduler API
       setTimeout(() => {
-        const x = (e.clientX / width - 0.5) * 2;
-        const y = (e.clientY / height - 0.5) * 2;
+        const x = (e.clientX / width - 0.5) * 0.5; // Reduced sensitivity
+        const y = (e.clientY / height - 0.5) * 0.5; // Reduced sensitivity
         setMousePosition({ x, y });
       }, 0);
     }
   }, []);
   useEffect(() => {
     let lastUpdate = 0;
+    
+    // Check for reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return; // Skip mouse tracking if user prefers reduced motion
+    
     const handleMouseMove = (e: MouseEvent) => {
       const now = performance.now();
-
-      // More aggressive throttling - max 20fps to reduce main thread work
-      if (now - lastUpdate < 50) return;
+      
+      // Ultra aggressive throttling - max 10fps to drastically reduce main thread work
+      if (now - lastUpdate < 100) return;
       
       throttledMouseUpdate(e);
       lastUpdate = now;
@@ -100,8 +110,8 @@ const HeroSection = () => {
     '--mouse-x': mousePosition.x,
     '--mouse-y': mousePosition.y
   } as React.CSSProperties}>
-      {/* Mesh Gradient Background */}
-      <MeshGradientBackground className="z-0" speed={0.2} opacity={0.8} />
+      {/* Mesh Gradient Background - Reduced intensity */}
+      <MeshGradientBackground className="z-0" speed={0.05} opacity={0.6} />
       
       {/* Animated Background */}
       <div className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-100 ease-out opacity-30 z-10" style={{
