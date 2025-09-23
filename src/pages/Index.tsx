@@ -14,9 +14,9 @@ const Footer = lazy(() => import("@/components/Footer"));
 const Index = () => {
   const [showBelowFold, setShowBelowFold] = useState(false);
 
-  // Ultra-aggressive deferral to achieve better TTI
+  // Extremely aggressive deferral to achieve better TTI and reduce JavaScript execution
   useEffect(() => {
-    // Don't load anything below fold until TTI is achieved
+    // Don't load anything below fold until all main-thread work is done
     const loadBelowFold = () => {
       // Use scheduler.postTask if available for better performance
       if ('scheduler' in window && 'postTask' in (window.scheduler as any)) {
@@ -24,17 +24,17 @@ const Index = () => {
           setShowBelowFold(true);
         }, { priority: 'background' });
       } else {
-        // Balanced delay - not too long to hurt Speed Index
+        // Much longer delay to ensure main thread is completely free
         setTimeout(() => {
           setShowBelowFold(true);
-        }, 3000); // 3 second delay balances TTI and Speed Index
+        }, 5000); // 5 second delay to ensure no JavaScript execution blocking
       }
     };
     
-    // Wait for multiple indicators that page is ready + minimal delay for TTI
+    // Wait for multiple indicators that page is ready + longer delay for main thread
     const checkReadiness = () => {
-      // Minimal delay to balance TTI and Speed Index
-      setTimeout(loadBelowFold, 1000);
+      // Much longer delay to ensure main thread is free
+      setTimeout(loadBelowFold, 3000);
     };
     
     if (document.readyState === 'complete') {
