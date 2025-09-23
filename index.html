@@ -16,26 +16,23 @@
     <meta name="twitter:site" content="@lovable_dev" />
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
     
-    <!-- Preconnect to critical external origins to reduce network dependency chain -->
+    <!-- Preconnect to critical external origins -->
     <link rel="preconnect" href="https://prod.spline.design">
     <link rel="preconnect" href="https://unpkg.com">
+    <link rel="preconnect" href="https://calendar.google.com">
     
-    <!-- Preload critical hero background images for Speed Index -->
+    <!-- Preload critical hero background images -->
     <link rel="preload" as="image" href="/src/assets/hero-bg.webp" type="image/webp">
     <link rel="preload" as="image" href="/src/assets/hero-bg.jpg" type="image/jpeg">
     
-    <!-- Google Calendar Appointment Scheduling begin -->
-    <link rel="preconnect" href="https://calendar.google.com">
+    <!-- Defer Google Calendar resources -->
     <script>
-      // Defer Google Calendar resources until after initial paint to reduce render-blocking
       window.addEventListener('load', function() {
-        // Load CSS
         const css = document.createElement('link');
         css.rel = 'stylesheet';
         css.href = 'https://calendar.google.com/calendar/scheduling-button-script.css';
         document.head.appendChild(css);
         
-        // Load script
         const script = document.createElement('script');
         script.src = 'https://calendar.google.com/calendar/scheduling-button-script.js';
         script.async = true;
@@ -44,60 +41,7 @@
     </script>
     <noscript><link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet"></noscript>
     <link rel="icon" type="image/x-icon" href="https://storage.googleapis.com/gpt-engineer-file-uploads/Fzrb2bgbi1YxR0Ukj3QUpAbgquI3/uploads/1757932006239-Screenshot 2025-09-15 at 18.26.34.png">
-    
-    <!-- Critical CSS for immediate paint -->
-    <style>
-      :root {
-        --sl-black: 0 0% 3%;
-        --sl-black-100: 0 0% 8%;
-        --sl-black-200: 0 0% 12%;
-        --sl-black-300: 0 0% 18%;
-        --sl-champagne: 60 40% 85%;
-        --sl-champagne-100: 60 30% 90%;
-        --sl-champagne-200: 60 20% 95%;
-        --sl-champagne-300: 60 10% 98%;
-        --background: var(--sl-black);
-        --foreground: var(--sl-champagne);
-        --card: var(--sl-black-100);
-        --card-foreground: var(--sl-champagne);
-        --popover: var(--sl-black-100);
-        --popover-foreground: var(--sl-champagne);
-        --primary: var(--sl-champagne);
-        --primary-foreground: var(--sl-black);
-        --secondary: var(--sl-black-200);
-        --secondary-foreground: var(--sl-champagne);
-        --muted: var(--sl-black-200);
-        --muted-foreground: var(--sl-champagne-100);
-        --accent: var(--sl-black-300);
-        --accent-foreground: var(--sl-champagne);
-        --destructive: 0 62.8% 30.6%;
-        --destructive-foreground: var(--sl-champagne);
-        --border: var(--sl-black-300);
-        --input: var(--sl-black-200);
-        --ring: var(--sl-champagne);
-        --chart-1: 220 70% 50%;
-        --chart-2: 160 60% 45%;
-        --chart-3: 30 80% 55%;
-        --chart-4: 280 65% 60%;
-        --chart-5: 340 75% 55%;
-        --radius: 0.5rem;
-      }
-      
-      * {
-        border-color: hsl(var(--border));
-      }
-      
-      body {
-        background-color: hsl(var(--background));
-        color: hsl(var(--foreground));
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-      }
-      
-      html {
-        scroll-behavior: smooth;
-      }
-    </style>
-</head>
+  </head>
 
   <body>
     <div id="root"></div>
