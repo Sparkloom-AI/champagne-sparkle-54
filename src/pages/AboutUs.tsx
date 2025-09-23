@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { OptimizedImage } from "@/components/OptimizedImage";
+import nilsImage from "@/assets/nils-effmert-new.png";
+import moritzImage from "@/assets/moritz-florian-new.png";
 
 const AboutUs = () => {
   return (
@@ -16,12 +17,12 @@ const AboutUs = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
             {/* Nils */}
             <div className="space-y-6">
-              <OptimizedImage
-                src="/src/assets/nils-effmert-new.png"
+              <img
+                src={nilsImage}
                 alt="Nils Effmert - Founder"
                 className="w-full h-80 object-cover rounded-lg"
-                sizes="(max-width: 768px) 100vw, 50vw"
-                priority
+                loading="eager"
+                decoding="async"
               />
               <div className="space-y-4">
                 <h2 className="text-2xl font-bold text-accent">Nils Effmert</h2>
@@ -34,12 +35,12 @@ const AboutUs = () => {
 
             {/* Moritz */}
             <div className="space-y-6">
-              <OptimizedImage
-                src="/src/assets/moritz-florian-new.png"
+              <img
+                src={moritzImage}
                 alt="Moritz Florian - Founder"
                 className="w-full h-80 object-cover rounded-lg"
-                sizes="(max-width: 768px) 100vw, 50vw"
-                priority
+                loading="eager"
+                decoding="async"
               />
               <div className="space-y-4">
                 <h2 className="text-2xl font-bold text-accent">Moritz Florian</h2>

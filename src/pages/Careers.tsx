@@ -1,17 +1,22 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { OptimizedImage } from "@/components/OptimizedImage";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import teamMember1 from "@/assets/team-member-1.png";
+import teamMember2 from "@/assets/new-team-member-2.png";
+import teamMember3 from "@/assets/team-member-3.png";
+import teamMember4 from "@/assets/team-member-4.png";
+import teamMember5 from "@/assets/team-member-5.png";
+import teamMember6 from "@/assets/team-member-6.png";
 
 const Careers = () => {
   const teamMembers = [
-    { src: "/src/assets/team-member-1.png", alt: "Team Member 1" },
-    { src: "/src/assets/new-team-member-2.png", alt: "Team Member 2" },
-    { src: "/src/assets/team-member-3.png", alt: "Team Member 3" },
-    { src: "/src/assets/team-member-4.png", alt: "Team Member 4" },
-    { src: "/src/assets/team-member-5.png", alt: "Team Member 5" },
-    { src: "/src/assets/team-member-6.png", alt: "Team Member 6" },
+    { src: teamMember1, alt: "Team Member 1" },
+    { src: teamMember2, alt: "Team Member 2" },
+    { src: teamMember3, alt: "Team Member 3" },
+    { src: teamMember4, alt: "Team Member 4" },
+    { src: teamMember5, alt: "Team Member 5" },
+    { src: teamMember6, alt: "Team Member 6" },
   ];
 
   const jobs = [
@@ -45,12 +50,13 @@ const Careers = () => {
           {/* Team Photos */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-16">
             {teamMembers.map((member, index) => (
-              <OptimizedImage
+              <img
                 key={index}
                 src={member.src}
                 alt={member.alt}
                 className="w-full h-32 object-cover rounded-lg"
-                sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 16vw"
+                loading="lazy"
+                decoding="async"
               />
             ))}
           </div>
