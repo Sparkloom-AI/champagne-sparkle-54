@@ -5,6 +5,7 @@ import { lazy, Suspense, useEffect, useState } from "react";
 // Lazy load heavy components to reduce main-thread work
 const ProcessSection = lazy(() => import("@/components/ProcessSection"));
 const ServicesSection = lazy(() => import("@/components/ServicesSection"));
+const StatisticsSection = lazy(() => import("@/components/StatisticsSection"));
 const ResultsSection = lazy(() => import("@/components/ResultsSection"));
 const FAQSection = lazy(() => import("@/components/FAQSection"));
 const ContactSection = lazy(() => import("@/components/ContactSection"));
@@ -13,13 +14,20 @@ const Footer = lazy(() => import("@/components/Footer"));
 const Index = () => {
   const [showBelowFold, setShowBelowFold] = useState(false);
 
-  // Defer below-the-fold content to reduce initial main-thread work
+  // Defer below-the-fold content more aggressively
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowBelowFold(true);
-    }, 100); // Small delay to allow hero section to render first
-
-    return () => clearTimeout(timer);
+    // Use scheduler.postTask if available for better performance
+    if ('scheduler' in window && 'postTask' in (window.scheduler as any)) {
+      (window.scheduler as any).postTask(() => {
+        setShowBelowFold(true);
+      }, { priority: 'background' });
+    } else {
+      // Increase delay to allow hero section to fully render
+      const timer = setTimeout(() => {
+        setShowBelowFold(true);
+      }, 300);
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   const LoadingFallback = ({ height = "py-24" }: { height?: string }) => (
@@ -40,6 +48,9 @@ const Index = () => {
           </Suspense>
           <Suspense fallback={<LoadingFallback />}>
             <ServicesSection />
+          </Suspense>
+          <Suspense fallback={<LoadingFallback />}>
+            <StatisticsSection />
           </Suspense>
           <Suspense fallback={<LoadingFallback />}>
             <ResultsSection />

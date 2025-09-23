@@ -55,42 +55,45 @@ const HeroSection = () => {
     return () => window.removeEventListener('resize', updateDimensions);
   }, []);
 
-  // Throttle mouse updates more aggressively to reduce blocking time
+  // Use scheduler.postTask to break up mouse update work
   const throttledMouseUpdate = useCallback((e: MouseEvent) => {
     const { width, height } = windowDimensionsRef.current;
-    if (width === 0 || height === 0) return; // Skip if dimensions not cached yet
+    if (width === 0 || height === 0) return;
     
-    const x = (e.clientX / width - 0.5) * 2;
-    const y = (e.clientY / height - 0.5) * 2;
-    setMousePosition({
-      x,
-      y
-    });
+    // Use scheduler.postTask for non-urgent updates to prevent blocking
+    if ('scheduler' in window && 'postTask' in (window.scheduler as any)) {
+      (window.scheduler as any).postTask(() => {
+        const x = (e.clientX / width - 0.5) * 2;
+        const y = (e.clientY / height - 0.5) * 2;
+        setMousePosition({ x, y });
+      }, { priority: 'background' });
+    } else {
+      // Fallback for browsers without scheduler API
+      setTimeout(() => {
+        const x = (e.clientX / width - 0.5) * 2;
+        const y = (e.clientY / height - 0.5) * 2;
+        setMousePosition({ x, y });
+      }, 0);
+    }
   }, []);
   useEffect(() => {
-    let animationFrameId: number;
     let lastUpdate = 0;
     const handleMouseMove = (e: MouseEvent) => {
       const now = performance.now();
 
-      // Throttle to max 30fps to reduce main thread work
-      if (now - lastUpdate < 33) return;
-      if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
-      }
-      animationFrameId = requestAnimationFrame(() => {
-        throttledMouseUpdate(e);
-        lastUpdate = now;
-      });
+      // More aggressive throttling - max 20fps to reduce main thread work
+      if (now - lastUpdate < 50) return;
+      
+      throttledMouseUpdate(e);
+      lastUpdate = now;
     };
+    
     window.addEventListener('mousemove', handleMouseMove, {
       passive: true
     });
+    
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
-      if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
-      }
     };
   }, [throttledMouseUpdate]);
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{

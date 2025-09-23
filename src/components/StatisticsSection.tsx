@@ -1,5 +1,5 @@
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip } from 'recharts';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback, memo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const costReductionData = [
@@ -20,37 +20,64 @@ const revenueData = [
   { month: 'Jun', revenue: 180, profit: 255 },
 ];
 
-const AnimatedCounter = ({ end, duration = 2000, suffix = "" }: { end: number; duration?: number; suffix?: string }) => {
+// Optimized AnimatedCounter that defers animation start and uses time-slicing
+const AnimatedCounter = memo(({ end, duration = 2000, suffix = "", delay = 0 }: { 
+  end: number; 
+  duration?: number; 
+  suffix?: string;
+  delay?: number;
+}) => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    let startTime: number;
-    const animate = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / duration, 1);
-      setCount(Math.floor(progress * end));
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      }
-    };
-    requestAnimationFrame(animate);
-  }, [end, duration]);
+    // Defer animation start to prevent blocking main thread
+    const startDelay = setTimeout(() => {
+      let startTime: number;
+      let animationId: number;
+      
+      const animate = (timestamp: number) => {
+        if (!startTime) startTime = timestamp;
+        const progress = Math.min((timestamp - startTime) / duration, 1);
+        
+        // Use time-slicing to prevent long tasks
+        if (progress < 1) {
+          setCount(Math.floor(progress * end));
+          animationId = requestAnimationFrame(animate);
+        } else {
+          setCount(end);
+        }
+      };
+      
+      animationId = requestAnimationFrame(animate);
+      
+      return () => {
+        if (animationId) cancelAnimationFrame(animationId);
+      };
+    }, delay);
+    
+    return () => clearTimeout(startDelay);
+  }, [end, duration, delay]);
 
   return <span>{count}{suffix}</span>;
-};
+});
 
-const StatisticsSection = () => {
+const StatisticsSection = memo(() => {
   const [isVisible, setIsVisible] = useState(false);
+  const [startAnimations, setStartAnimations] = useState(false);
+
+  const handleIntersection = useCallback(([entry]: IntersectionObserverEntry[]) => {
+    if (entry.isIntersecting) {
+      setIsVisible(true);
+      // Stagger animation start to prevent simultaneous heavy operations
+      setTimeout(() => setStartAnimations(true), 300);
+    }
+  }, []);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.2 }
-    );
+    const observer = new IntersectionObserver(handleIntersection, { 
+      threshold: 0.2,
+      rootMargin: '50px' // Start loading slightly before visible
+    });
 
     const section = document.getElementById('statistics-section');
     if (section) {
@@ -58,7 +85,7 @@ const StatisticsSection = () => {
     }
 
     return () => observer.disconnect();
-  }, []);
+  }, [handleIntersection]);
 
   return (
     <section id="statistics-section" className="py-20 bg-gradient-to-b from-background to-sl-obsidian/50">
@@ -77,19 +104,19 @@ const StatisticsSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           <div className="text-center">
             <div className="text-4xl md:text-5xl font-bold text-sl-auric-700 mb-2">
-              {isVisible && <AnimatedCounter end={75} suffix="%" />}
+              {startAnimations && <AnimatedCounter end={75} suffix="%" delay={0} />}
             </div>
             <p className="text-muted-foreground">Cost Reduction</p>
           </div>
           <div className="text-center">
             <div className="text-4xl md:text-5xl font-bold text-sl-auric-700 mb-2">
-              {isVisible && <AnimatedCounter end={155} suffix="%" />}
+              {startAnimations && <AnimatedCounter end={155} suffix="%" delay={200} />}
             </div>
             <p className="text-muted-foreground">Profit Increase</p>
           </div>
           <div className="text-center">
             <div className="text-4xl md:text-5xl font-bold text-sl-auric-700 mb-2">
-              {isVisible && <AnimatedCounter end={30} />}
+              {startAnimations && <AnimatedCounter end={30} delay={400} />}
             </div>
             <p className="text-muted-foreground">Days to ROI</p>
           </div>
@@ -211,6 +238,6 @@ const StatisticsSection = () => {
       </div>
     </section>
   );
-};
+});
 
 export default StatisticsSection;
