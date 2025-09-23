@@ -32,9 +32,9 @@ const AboutUs = () => {
             <div className="space-y-8">
               {/* Nils Effmert */}
               <Card className="bg-gradient-surface border-border-accent shadow-card hover:shadow-glow transition-all duration-500 group">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-8">
-                    <div className="flex-1">
+                <CardContent className="p-4 sm:p-8">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-8">
+                    <div className="flex-1 max-w-prose">
                       <blockquote className="text-2xl text-text-muted italic leading-relaxed mb-6">
                         "We're here to make AI actually useful. We build smart, quality tools that help people and businesses get things done and unlock their full potential. It's all about creating tech that genuinely helps."
                       </blockquote>
@@ -47,7 +47,7 @@ const AboutUs = () => {
                       <img
                         src={nilsImage}
                         alt="Nils Effmert"
-                        className="w-64 h-64 rounded-2xl object-cover border-2 border-accent-neon"
+                        className="w-3/4 sm:w-64 h-auto sm:h-64 mx-auto sm:mx-0 rounded-2xl object-cover border-2 border-accent-neon"
                       />
                     </div>
                   </div>
@@ -56,9 +56,9 @@ const AboutUs = () => {
 
               {/* Moritz Florian */}
               <Card className="bg-gradient-surface border-border-accent shadow-card hover:shadow-glow transition-all duration-500 group">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-8">
-                    <div className="flex-1">
+                <CardContent className="p-4 sm:p-8">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-8">
+                    <div className="flex-1 max-w-prose">
                       <blockquote className="text-2xl text-text-muted italic leading-relaxed mb-6">
                         "AI has the power to spark some incredible new ideas and services that can benefit us all. At SparkloomAI, we're excited to be a part of that, building a future where technology empowers everyone."
                       </blockquote>
@@ -71,7 +71,7 @@ const AboutUs = () => {
                       <img
                         src={moritzImage}
                         alt="Moritz Florian"
-                        className="w-64 h-64 rounded-2xl object-cover border-2 border-accent-neon"
+                        className="w-3/4 sm:w-64 h-auto sm:h-64 mx-auto sm:mx-0 rounded-2xl object-cover border-2 border-accent-neon"
                       />
                     </div>
                   </div>
