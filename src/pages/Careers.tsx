@@ -22,8 +22,8 @@ const Careers = () => {
       experience: "3+ years",
       description: "Build end-to-end AI solutions and prototypes for diverse client projects",
       fullDescription: {
-        whoWeAre: "At SparkloomAI, we bridge the gap between the potential of Artificial Intelligence and real-world business results. We're an AI consulting startup that partners with companies to design, build, and deploy custom AI solutions that solve their most pressing challenges. Our goal is to cut through the hype and deliver practical, high-impact systems that work.",
-        role: "We're looking for a versatile Full Stack Engineer to be a foundational member of our technical team. This isn't a role where you'll be working on a single product for years. Instead, you'll be on the front lines, designing and building a diverse range of AI-powered solutions and applications for our clients.",
+        whoWeAre: "At SparkloomAI, we bridge the gap between the potential of Artificial Intelligence and real-world business results. We're an AI consulting startup that partners with companies to design, build, and deploy custom AI solutions that solve their most pressing challenges. Our goal is to cut through the hype and deliver practical, high-impact systems that work.\n\nWe are a passionate team of builders, problem-solvers, and strategists who thrive in a dynamic, collaborative environment. If you're excited by the prospect of applying cutting-edge technology to a variety of business domains, you'll fit right in.",
+        role: "We're looking for a versatile Full Stack Engineer to be a foundational member of our technical team. This isn't a role where you'll be working on a single product for years. Instead, you'll be on the front lines, designing and building a diverse range of AI-powered solutions and applications for our clients.\n\nYou'll be a key player in the entire project lifecycle, from initial technical discovery and whiteboarding with clients to hands-on development and deployment. This role is perfect for a builder who loves variety and wants to make a tangible impact on different businesses.",
         responsibilities: [
           "Build End-to-End Solutions: Architect, develop, and deploy full-stack applications that serve as the backbone for our client's AI initiatives.",
           "Rapid Prototyping: Quickly build functional prototypes and proofs-of-concept to demonstrate the value and feasibility of an AI solution.",
@@ -34,7 +34,7 @@ const Careers = () => {
         qualifications: [
           "3+ years of professional experience in full-stack development, with a portfolio of web applications you've helped build.",
           "Strong proficiency in our core stack: TypeScript, Python, React, and Node.js.",
-          "Solid experience with cloud platforms (Netlify, Supabase, Google Cloud) and deploying applications.",
+          "Solid experience with cloud platforms and deploying applications.",
           "A firm grasp of system design, APIs (REST/GraphQL), and relational databases.",
           "A bachelor's degree in Computer Science is great, but we're more interested in what you can build.",
           "Prior experience or a strong, demonstrable interest in working with AI/ML models is a huge plus."
@@ -73,7 +73,7 @@ const Careers = () => {
         qualifications: [
           "7+ years of professional experience in full-stack development, with a track record of leading complex projects from start to finish.",
           "Expert-level proficiency in our core stack: TypeScript, Python, React, and Node.js.",
-          "A deep understanding of system architecture, cloud platforms (AWS, GCP, or Azure), CI/CD, and security best practices.",
+          "A deep understanding of system architecture, cloud platforms (GCP, AWS or Azure), CI/CD, and security best practices.",
           "Proven experience designing and building complex systems, working with APIs (REST/GraphQL), and managing databases.",
           "Experience or a strong passion for integrating AI/ML models into applications."
         ],
