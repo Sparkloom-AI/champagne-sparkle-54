@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
 const Navigation = () => {
@@ -8,12 +8,41 @@ const Navigation = () => {
   const isHomePage = location.pathname === '/';
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
+  // Handle initial hash navigation when page loads
+  useEffect(() => {
+    if (isHomePage && window.location.hash) {
+      const hash = window.location.hash.substring(1);
+      const element = document.getElementById(hash);
+      if (element) {
+        // Small delay to ensure page is rendered
+        setTimeout(() => {
+          const navHeight = 80;
+          const elementPosition = element.offsetTop - navHeight;
+          window.scrollTo({
+            top: elementPosition,
+            behavior: 'smooth'
+          });
+        }, 100);
+      }
+    }
+  }, [isHomePage]);
+  
   const handleNavigation = (id: string) => {
     if (isHomePage) {
-      // If on homepage, scroll to section
-      document.getElementById(id)?.scrollIntoView({
-        behavior: 'smooth'
-      });
+      // If on homepage, scroll to section and update URL
+      const element = document.getElementById(id);
+      if (element) {
+        // Calculate offset for fixed navigation (assuming nav height ~80px)
+        const navHeight = 80;
+        const elementPosition = element.offsetTop - navHeight;
+        
+        window.scrollTo({
+          top: elementPosition,
+          behavior: 'smooth'
+        });
+        // Update URL hash for proper browser navigation
+        window.history.pushState(null, '', `#${id}`);
+      }
     } else {
       // If on other pages, navigate to homepage with anchor
       window.location.href = `/#${id}`;

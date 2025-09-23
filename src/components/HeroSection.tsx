@@ -70,12 +70,13 @@ const StaticHeroSection = () => {
         }}
       />
       
-      {/* Static Background */}
+      {/* Static Background - Optimized for faster loading */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30 z-10" 
         style={{
           backgroundImage: `url(${heroBackgroundWebP})`,
-          transform: 'translate(0px, 0px) scale(1.1)'
+          transform: 'translate(0px, 0px) scale(1.1)',
+          willChange: 'transform'
         }} 
       />
       
