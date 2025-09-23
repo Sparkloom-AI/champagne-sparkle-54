@@ -145,24 +145,22 @@ const HeroSection = () => {
       backgroundSize: '100px 100px, 150px 150px, 200px 200px'
     }} />
       
-      {/* Content */}
-      <div className="relative z-20 text-center max-w-5xl mx-auto px-6">
-        <h1 className="text-5xl md:text-7xl font-bold mb-8">
+      {/* Content - Critical text rendered immediately for LCP optimization */}
+      <div className="relative z-20 text-center max-w-5xl mx-auto px-6 opacity-100">
+        <h1 className="text-5xl md:text-7xl font-bold mb-8 opacity-100">
           <span className="bg-gradient-to-r from-text via-accent-neon to-accent bg-clip-text text-transparent animate-gradient-shift bg-[length:200%_200%] drop-shadow-[0_0_20px_hsl(var(--sl-neon-pink-500)_/_0.3)]">From Zero to Hero
 — Your AI Journey Starts Here</span>
           <br />
           
         </h1>
         
-        <p className="text-xl md:text-2xl text-text-muted mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in-up" style={{
-        animationDelay: '0.2s'
-      }}>
+        <p className="text-xl md:text-2xl text-text-muted mb-12 max-w-3xl mx-auto leading-relaxed opacity-100">
           Empowering enterprises to slash costs, boost efficiency, and automate workflows 
           with expertly crafted AI solutions delivered in just 30 days.
         </p>
         
         
-        <div className="mt-16 text-center animate-fade-in" style={{
+        <div className="mt-16 text-center opacity-0 animate-fade-in" style={{
         animationDelay: '0.6s'
       }}>
           
