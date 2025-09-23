@@ -6,7 +6,8 @@ import { MeshGradientBackground } from "@/components/ui/mesh-gradient";
 const HeroSection = () => {
   const [isFullyInteractive, setIsFullyInteractive] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [backgroundImage, setBackgroundImage] = useState(heroBackground);
+  // Use WebP immediately for better Speed Index, fallback later if needed
+  const [backgroundImage, setBackgroundImage] = useState(heroBackgroundWebP);
   
   // Cache window dimensions to prevent forced reflows
   const windowDimensionsRef = useRef({ width: 0, height: 0 });
@@ -52,10 +53,12 @@ const HeroSection = () => {
         (window.scheduler as any).postTask(() => {
           setIsFullyInteractive(true);
           
-          // Only then start WebP detection
+          // Test WebP support and fallback to JPG if needed (for old browsers)
           const webp = new Image();
           webp.onload = webp.onerror = () => {
-            setBackgroundImage(webp.height === 2 ? heroBackgroundWebP : heroBackground);
+            if (webp.height !== 2) {
+              setBackgroundImage(heroBackground); // Fallback to JPG for unsupported browsers
+            }
           };
           webp.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
         }, { priority: 'background' });
@@ -66,7 +69,9 @@ const HeroSection = () => {
           
           const webp = new Image();
           webp.onload = webp.onerror = () => {
-            setBackgroundImage(webp.height === 2 ? heroBackgroundWebP : heroBackground);
+            if (webp.height !== 2) {
+              setBackgroundImage(heroBackground);
+            }
           };
           webp.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
         }, 5000); // 5 second delay to ensure TTI
@@ -161,7 +166,7 @@ const HeroSection = () => {
         }}
       />
       
-      {/* Animated Background */}
+      {/* Animated Background - Optimized for Speed Index */}
       <div className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-100 ease-out opacity-30 z-10" style={{
       backgroundImage: `url(${backgroundImage})`,
       transform: dynamicStyles.backgroundTransform

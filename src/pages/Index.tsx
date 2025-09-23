@@ -24,17 +24,17 @@ const Index = () => {
           setShowBelowFold(true);
         }, { priority: 'background' });
       } else {
-        // Extremely long delay to ensure TTI is achieved first
+        // Balanced delay - not too long to hurt Speed Index
         setTimeout(() => {
           setShowBelowFold(true);
-        }, 8000); // 8 second delay to ensure TTI
+        }, 3000); // 3 second delay balances TTI and Speed Index
       }
     };
     
-    // Wait for multiple indicators that page is ready + additional time for TTI
+    // Wait for multiple indicators that page is ready + minimal delay for TTI
     const checkReadiness = () => {
-      // Additional delay even after load event for TTI
-      setTimeout(loadBelowFold, 3000);
+      // Minimal delay to balance TTI and Speed Index
+      setTimeout(loadBelowFold, 1000);
     };
     
     if (document.readyState === 'complete') {
