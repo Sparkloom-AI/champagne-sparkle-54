@@ -24,6 +24,32 @@
     <link rel="preload" as="image" href="/src/assets/hero-bg.webp" type="image/webp">
     <link rel="preload" as="image" href="/src/assets/hero-bg.jpg" type="image/jpeg">
     
+    <!-- CSS optimization to eliminate render-blocking -->
+    <script>
+      // Make CSS non-render-blocking by intercepting Vite's CSS injection
+      (function() {
+        const originalCreateElement = document.createElement;
+        document.createElement = function(tagName) {
+          const element = originalCreateElement.call(this, tagName);
+          if (tagName.toLowerCase() === 'link' && arguments.callee.caller) {
+            // Intercept CSS links and make them non-render-blocking
+            const originalSetAttribute = element.setAttribute;
+            element.setAttribute = function(name, value) {
+              if (name === 'rel' && value === 'stylesheet') {
+                // Use media="print" trick to make CSS non-render-blocking
+                originalSetAttribute.call(this, 'rel', 'preload');
+                originalSetAttribute.call(this, 'as', 'style');
+                originalSetAttribute.call(this, 'onload', 'this.onload=null;this.rel="stylesheet"');
+                return;
+              }
+              originalSetAttribute.call(this, name, value);
+            };
+          }
+          return element;
+        };
+      })();
+    </script>
+    
     <!-- Google Calendar Appointment Scheduling begin -->
     <link rel="preconnect" href="https://calendar.google.com">
     <script>
