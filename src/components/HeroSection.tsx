@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { useEffect, useState, useMemo, useCallback } from "react";
+import { useEffect, useState, useMemo, useCallback, useRef } from "react";
 import heroBackground from "@/assets/hero-bg.jpg";
 import heroBackgroundWebP from "@/assets/hero-bg.webp";
 import { MeshGradientBackground } from "@/components/ui/mesh-gradient";
@@ -9,6 +9,9 @@ const HeroSection = () => {
     y: 0
   });
   const [backgroundImage, setBackgroundImage] = useState(heroBackground);
+  
+  // Cache window dimensions to prevent forced reflows
+  const windowDimensionsRef = useRef({ width: 0, height: 0 });
 
   // Memoize expensive style calculations
   const dynamicStyles = useMemo(() => ({
@@ -37,10 +40,28 @@ const HeroSection = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  // Cache window dimensions on mount and resize
+  useEffect(() => {
+    const updateDimensions = () => {
+      windowDimensionsRef.current = {
+        width: window.innerWidth,
+        height: window.innerHeight
+      };
+    };
+    
+    updateDimensions();
+    window.addEventListener('resize', updateDimensions, { passive: true });
+    
+    return () => window.removeEventListener('resize', updateDimensions);
+  }, []);
+
   // Throttle mouse updates more aggressively to reduce blocking time
   const throttledMouseUpdate = useCallback((e: MouseEvent) => {
-    const x = (e.clientX / window.innerWidth - 0.5) * 2;
-    const y = (e.clientY / window.innerHeight - 0.5) * 2;
+    const { width, height } = windowDimensionsRef.current;
+    if (width === 0 || height === 0) return; // Skip if dimensions not cached yet
+    
+    const x = (e.clientX / width - 0.5) * 2;
+    const y = (e.clientY / height - 0.5) * 2;
     setMousePosition({
       x,
       y

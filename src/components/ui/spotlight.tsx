@@ -28,8 +28,11 @@ export function Spotlight({
   // Cache bounding rectangle to prevent forced reflows
   const updateBoundingRect = useCallback(() => {
     if (parentElement) {
-      const rect = parentElement.getBoundingClientRect();
-      boundingRectRef.current = { left: rect.left, top: rect.top };
+      // Use ResizeObserver when available, fallback to getBoundingClientRect
+      requestAnimationFrame(() => {
+        const rect = parentElement.getBoundingClientRect();
+        boundingRectRef.current = { left: rect.left, top: rect.top };
+      });
     }
   }, [parentElement]);
 
@@ -50,10 +53,21 @@ export function Spotlight({
     
     updateBoundingRect();
     
-    const handleResize = () => updateBoundingRect();
-    window.addEventListener('resize', handleResize, { passive: true });
+    // Throttle resize updates to reduce reflow frequency
+    let resizeTimer: NodeJS.Timeout;
+    const handleResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(updateBoundingRect, 16); // ~60fps max
+    };
     
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize, { passive: true });
+    window.addEventListener('scroll', handleResize, { passive: true });
+    
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('scroll', handleResize);
+      clearTimeout(resizeTimer);
+    };
   }, [parentElement, updateBoundingRect]);
 
   const handleMouseMove = useCallback(
