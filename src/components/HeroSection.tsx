@@ -55,30 +55,25 @@ const HeroSection = () => {
     return () => window.removeEventListener('resize', updateDimensions);
   }, []);
 
-  // Use scheduler.postTask to break up mouse update work
+  // Ultra-minimal mouse tracking to eliminate blocking
   const throttledMouseUpdate = useCallback((e: MouseEvent) => {
     const { width, height } = windowDimensionsRef.current;
     if (width === 0 || height === 0) return;
     
-    // Much more aggressive throttling - only update every 100ms minimum
+    // Only update every 200ms minimum to prevent any blocking
     const now = performance.now();
-    if (now - (throttledMouseUpdate as any).lastCall < 100) return;
+    if (now - (throttledMouseUpdate as any).lastCall < 200) return;
     (throttledMouseUpdate as any).lastCall = now;
     
-    // Use scheduler.postTask for non-urgent updates to prevent blocking
+    // Minimal movement calculation - no complex transforms
+    const x = (e.clientX / width - 0.5) * 0.2; // Very reduced sensitivity
+    const y = (e.clientY / height - 0.5) * 0.2; // Very reduced sensitivity
+    
+    // Use the lowest priority possible
     if ('scheduler' in window && 'postTask' in (window.scheduler as any)) {
       (window.scheduler as any).postTask(() => {
-        const x = (e.clientX / width - 0.5) * 0.5; // Reduced sensitivity
-        const y = (e.clientY / height - 0.5) * 0.5; // Reduced sensitivity
         setMousePosition({ x, y });
       }, { priority: 'background' });
-    } else {
-      // Fallback for browsers without scheduler API
-      setTimeout(() => {
-        const x = (e.clientX / width - 0.5) * 0.5; // Reduced sensitivity
-        const y = (e.clientY / height - 0.5) * 0.5; // Reduced sensitivity
-        setMousePosition({ x, y });
-      }, 0);
     }
   }, []);
   useEffect(() => {
@@ -110,8 +105,17 @@ const HeroSection = () => {
     '--mouse-x': mousePosition.x,
     '--mouse-y': mousePosition.y
   } as React.CSSProperties}>
-      {/* Mesh Gradient Background - Reduced intensity */}
-      <MeshGradientBackground className="z-0" speed={0.05} opacity={0.6} />
+      {/* Lightweight CSS gradient - no JavaScript computation */}
+      <div 
+        className={`absolute inset-0 z-0`} 
+        style={{ 
+          background: `
+            radial-gradient(circle at 30% 40%, rgba(238, 223, 203, 0.08) 0%, transparent 50%),
+            radial-gradient(circle at 70% 60%, rgba(206, 192, 173, 0.06) 0%, transparent 50%),
+            linear-gradient(135deg, #0B0B0C 0%, #1E1E1F 40%, #0B0B0C 100%)
+          `
+        }}
+      />
       
       {/* Animated Background */}
       <div className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-100 ease-out opacity-30 z-10" style={{

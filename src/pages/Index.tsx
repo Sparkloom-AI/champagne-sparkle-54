@@ -14,20 +14,31 @@ const Footer = lazy(() => import("@/components/Footer"));
 const Index = () => {
   const [showBelowFold, setShowBelowFold] = useState(false);
 
-  // Defer below-the-fold content more aggressively
+  // Much more aggressive deferral to prevent blocking
   useEffect(() => {
-    // Use scheduler.postTask if available for better performance
-    if ('scheduler' in window && 'postTask' in (window.scheduler as any)) {
-      (window.scheduler as any).postTask(() => {
-        setShowBelowFold(true);
-      }, { priority: 'background' });
+    // Don't load anything below fold until page is fully interactive
+    const loadBelowFold = () => {
+      // Use scheduler.postTask if available for better performance
+      if ('scheduler' in window && 'postTask' in (window.scheduler as any)) {
+        (window.scheduler as any).postTask(() => {
+          setShowBelowFold(true);
+        }, { priority: 'background' });
+      } else {
+        // Much longer delay to ensure initial render is complete
+        setTimeout(() => {
+          setShowBelowFold(true);
+        }, 2000);
+      }
+    };
+    
+    // Wait for multiple indicators that page is ready
+    if (document.readyState === 'complete') {
+      loadBelowFold();
     } else {
-      // Increase delay to allow hero section to fully render
-      const timer = setTimeout(() => {
-        setShowBelowFold(true);
-      }, 300);
-      return () => clearTimeout(timer);
+      window.addEventListener('load', loadBelowFold);
     }
+    
+    return () => window.removeEventListener('load', loadBelowFold);
   }, []);
 
   const LoadingFallback = ({ height = "py-24" }: { height?: string }) => (
