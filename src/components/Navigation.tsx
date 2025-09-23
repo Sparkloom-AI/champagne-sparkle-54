@@ -1,99 +1,61 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { useLocation } from "react-router-dom";
 
 const Navigation = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+  
+  const handleNavigation = (id: string) => {
+    if (isHomePage) {
+      // If on homepage, scroll to section
+      document.getElementById(id)?.scrollIntoView({
+        behavior: 'smooth'
+      });
+    } else {
+      // If on other pages, navigate to homepage with anchor
+      window.location.href = `/#${id}`;
+    }
+  };
 
-  const navItems = [
-    { href: "#process", label: "Process" },
-    { href: "#services", label: "Services" },
-    { href: "#results", label: "Results" },
-    { href: "#faq", label: "FAQ" },
-    { href: "#contact", label: "Contact" },
-    { href: "/about", label: "About" },
-    { href: "/careers", label: "Careers" },
-  ];
-
-  return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <span className="text-xl font-bold text-foreground">SP SparkloomAI</span>
+  return <nav className="fixed top-0 left-0 right-0 z-50 bg-sl-obsidian/80 backdrop-blur-xl border-b border-border">
+      <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
+          <div className="w-8 h-8 bg-gradient-to-r from-accent to-accent-light rounded-lg flex items-center justify-center">
+            <span className="text-sl-obsidian font-bold text-sm">SP</span>
           </div>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
-              {navItems.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className="text-foreground hover:text-accent-neon px-3 py-2 text-sm font-medium transition-colors"
-                >
-                  {item.label}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Desktop CTA */}
-          <div className="hidden md:block">
-            <Button
-              variant="neon"
-              size="sm"
-              onClick={() => window.open('https://calendar.app.google/hnNuZRVCdZwq5cMU8', '_blank')}
-            >
-              Talk to an Expert
-            </Button>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-foreground hover:text-accent-neon p-2"
-            >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
+          <span className="text-xl font-bold text-foreground">SparkloomAI</span>
+        </a>
+        
+        <div className="hidden md:flex items-center space-x-8">
+          <button onClick={() => handleNavigation('process-section')} className="text-text-muted hover:text-accent transition-colors">
+            Process
+          </button>
+          <button onClick={() => handleNavigation('services')} className="text-text-muted hover:text-accent transition-colors">
+            Services
+          </button>
+          <button onClick={() => handleNavigation('results-section')} className="text-text-muted hover:text-accent transition-colors">
+            Results
+          </button>
+          <button onClick={() => handleNavigation('faq')} className="text-text-muted hover:text-accent transition-colors">
+            FAQ
+          </button>
+          <button onClick={() => handleNavigation('contact')} className="text-text-muted hover:text-accent transition-colors">
+            Contact
+          </button>
+          <a href="/about" className={`text-text-muted hover:text-accent transition-colors ${location.pathname === '/about' ? 'text-accent' : ''}`}>
+            About
+          </a>
+          <a href="/careers" className={`text-text-muted hover:text-accent transition-colors ${location.pathname === '/careers' ? 'text-accent' : ''}`}>
+            Careers
+          </a>
         </div>
 
-        {/* Mobile Navigation */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-background/95 backdrop-blur-md rounded-lg mt-2">
-              {navItems.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className="text-foreground hover:text-accent-neon block px-3 py-2 text-base font-medium"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {item.label}
-                </a>
-              ))}
-              <div className="pt-4">
-                <Button
-                  variant="neon"
-                  size="sm"
-                  className="w-full"
-                  onClick={() => {
-                    window.open('https://calendar.app.google/hnNuZRVCdZwq5cMU8', '_blank');
-                    setIsMobileMenuOpen(false);
-                  }}
-                >
-                  Talk to an Expert
-                </Button>
-              </div>
-            </div>
-          </div>
-        )}
+        <Button variant="outline" className="border-accent-neon text-accent-neon hover:bg-accent-neon hover:text-sl-obsidian hover:shadow-neon transition-all duration-300" onClick={() => {
+        window.open('https://calendar.app.google/hnNuZRVCdZwq5cMU8', '_blank');
+      }}>
+          Talk to an Expert
+        </Button>
       </div>
-    </nav>
-  );
+    </nav>;
 };
-
 export default Navigation;
