@@ -2,11 +2,13 @@ import { Button } from "@/components/ui/button";
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { navigateToSection, useHashNavigation } from "@/lib/navigation";
 
 const Navigation = () => {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { handleHashChange } = useHashNavigation();
   
   // Handle initial hash navigation when page loads
   useEffect(() => {
@@ -27,26 +29,14 @@ const Navigation = () => {
     }
   }, [isHomePage]);
   
+  // Handle hash changes for browser back/forward navigation
+  useEffect(() => {
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, [handleHashChange]);
+  
   const handleNavigation = (id: string) => {
-    if (isHomePage) {
-      // If on homepage, scroll to section and update URL
-      const element = document.getElementById(id);
-      if (element) {
-        // Calculate offset for fixed navigation (assuming nav height ~80px)
-        const navHeight = 80;
-        const elementPosition = element.offsetTop - navHeight;
-        
-        window.scrollTo({
-          top: elementPosition,
-          behavior: 'smooth'
-        });
-        // Update URL hash for proper browser navigation
-        window.history.pushState(null, '', `#${id}`);
-      }
-    } else {
-      // If on other pages, navigate to homepage with anchor
-      window.location.href = `/#${id}`;
-    }
+    navigateToSection(id);
     // Close mobile menu after navigation
     setIsMobileMenuOpen(false);
   };

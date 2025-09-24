@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection"; 
 import { lazy, Suspense, useEffect, useState } from "react";
+import { handleInitialHashNavigation } from "@/lib/navigation";
 
 // Lazy load heavy components to reduce main-thread work
 const ProcessSection = lazy(() => import("@/components/ProcessSection"));
@@ -13,6 +14,11 @@ const Footer = lazy(() => import("@/components/Footer"));
 
 const Index = () => {
   const [showBelowFold, setShowBelowFold] = useState(false);
+
+  // Handle initial hash navigation when page loads
+  useEffect(() => {
+    handleInitialHashNavigation();
+  }, []);
 
   // Optimized deferral for better user experience while maintaining performance
   useEffect(() => {

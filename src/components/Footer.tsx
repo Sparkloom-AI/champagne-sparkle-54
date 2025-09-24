@@ -1,3 +1,5 @@
+import { navigateToSection } from "@/lib/navigation";
+
 const Footer = () => {
   return <footer className="bg-sl-basalt-900 border-t border-border py-12">
       <div className="container mx-auto px-6">
@@ -17,11 +19,11 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold text-foreground mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              <li><a href="#process-section" className="text-text-muted hover:text-accent transition-colors">Process</a></li>
-              <li><a href="#services" className="text-text-muted hover:text-accent transition-colors">Services</a></li>
-              <li><a href="#results-section" className="text-text-muted hover:text-accent transition-colors">Results</a></li>
-              <li><a href="#faq" className="text-text-muted hover:text-accent transition-colors">FAQ</a></li>
-              <li><a href="#contact" className="text-text-muted hover:text-accent transition-colors">Contact</a></li>
+              <li><button onClick={() => navigateToSection('process-section')} className="text-text-muted hover:text-accent transition-colors">Process</button></li>
+              <li><button onClick={() => navigateToSection('services')} className="text-text-muted hover:text-accent transition-colors">Services</button></li>
+              <li><button onClick={() => navigateToSection('results-section')} className="text-text-muted hover:text-accent transition-colors">Results</button></li>
+              <li><button onClick={() => navigateToSection('faq')} className="text-text-muted hover:text-accent transition-colors">FAQ</button></li>
+              <li><button onClick={() => navigateToSection('contact')} className="text-text-muted hover:text-accent transition-colors">Contact</button></li>
               <li><a href="/about" className="text-text-muted hover:text-accent transition-colors">About</a></li>
               <li><a href="/careers" className="text-text-muted hover:text-accent transition-colors">Careers</a></li>
             </ul>
