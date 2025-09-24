@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { ArrowRight, Mail, TrendingUp, Globe, Zap, X } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogFooter } from "@/components/ui/dialog";
+import { ArrowRight, Mail, TrendingUp, Globe, Zap, X, Copy, ExternalLink } from "lucide-react";
 import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -13,6 +13,12 @@ import teamMember5 from "@/assets/team-member-5.png";
 import teamMember6 from "@/assets/team-member-6.png";
 const Careers = () => {
   const [selectedJob, setSelectedJob] = useState<number | null>(null);
+  const [showEmailFallback, setShowEmailFallback] = useState(false);
+  const [emailFallbackData, setEmailFallbackData] = useState({
+    email: 'hello@sparkloomai.com',
+    subject: '',
+    body: ''
+  });
   
   const jobs = [
     {
@@ -127,6 +133,58 @@ const Careers = () => {
       }
     }
   ];
+  // Hybrid email handler - tries mailto first, shows fallback modal if it fails
+  const handleEmailWithFallback = (email: string, subject: string, body: string) => {
+    const emailUrl = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    // Try to open mailto link
+    const link = document.createElement('a');
+    link.href = emailUrl;
+
+    // Check if mailto is supported by attempting to open it
+    const mailtoSupported = () => {
+      link.click();
+
+      // If mailto fails, show fallback modal after a short delay
+      setTimeout(() => {
+        // Check if the page navigated away (indicating mailto worked)
+        if (document.hasFocus()) {
+          // Mailto didn't work, show fallback
+          setEmailFallbackData({ email, subject, body });
+          setShowEmailFallback(true);
+        }
+      }, 1000);
+    };
+
+    mailtoSupported();
+  };
+
+  const handleEmailCV = () => {
+    handleEmailWithFallback(
+      'hello@sparkloomai.com',
+      'CV Submission',
+      'Hi, I would like to submit my CV for consideration.'
+    );
+  };
+
+  const handleApply = (jobTitle: string) => {
+    handleEmailWithFallback(
+      'hello@sparkloomai.com',
+      `Application for ${jobTitle}`,
+      `Hi, I would like to apply for the ${jobTitle} position.`
+    );
+  };
+
+  const copyEmailToClipboard = () => {
+    navigator.clipboard.writeText(emailFallbackData.email);
+    // You could add a toast notification here
+  };
+
+  const openInGmail = () => {
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(emailFallbackData.email)}&su=${encodeURIComponent(emailFallbackData.subject)}&body=${encodeURIComponent(emailFallbackData.body)}`;
+    window.open(gmailUrl, '_blank');
+  };
+
   const teamMembers = [{
     image: teamMember1,
     position: "top-16 left-20",
@@ -419,6 +477,47 @@ const Careers = () => {
       </section>
 
       <Footer />
+
+      {/* Email Fallback Modal */}
+      <Dialog open={showEmailFallback} onOpenChange={setShowEmailFallback}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-center text-xl">Email Application</DialogTitle>
+          </DialogHeader>
+
+          <div className="space-y-4">
+            <div className="text-center">
+              <p className="text-sm text-muted-foreground mb-2">Email us directly:</p>
+              <div className="bg-muted p-3 rounded-md">
+                <p className="font-mono text-lg font-semibold text-primary">{emailFallbackData.email}</p>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <Button onClick={copyEmailToClipboard} variant="outline" className="w-full">
+                <Copy className="w-4 h-4 mr-2" />
+                Copy Email Address
+              </Button>
+
+              <Button onClick={openInGmail} variant="outline" className="w-full">
+                <ExternalLink className="w-4 h-4 mr-2" />
+                Open in Gmail
+              </Button>
+            </div>
+
+            <div className="text-center text-sm text-muted-foreground">
+              <p><strong>Subject:</strong> {emailFallbackData.subject}</p>
+              <p><strong>Body:</strong> {emailFallbackData.body}</p>
+            </div>
+          </div>
+
+          <DialogFooter className="flex-col sm:flex-col gap-2">
+            <Button onClick={() => setShowEmailFallback(false)} className="w-full">
+              Close
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>;
 };
 export default Careers;
