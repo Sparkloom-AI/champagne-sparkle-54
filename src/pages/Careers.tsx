@@ -11,6 +11,7 @@ import teamMember3 from "@/assets/team-member-3.png";
 import teamMember4 from "@/assets/team-member-4.png";
 import teamMember5 from "@/assets/team-member-5.png";
 import teamMember6 from "@/assets/team-member-6.png";
+
 const Careers = () => {
   const [selectedJob, setSelectedJob] = useState<number | null>(null);
   const [showEmailFallback, setShowEmailFallback] = useState(false);
@@ -133,6 +134,7 @@ const Careers = () => {
       }
     }
   ];
+
   // Hybrid email handler - tries mailto first, shows fallback modal if it fails
   const handleEmailWithFallback = (email: string, subject: string, body: string) => {
     const emailUrl = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
@@ -210,13 +212,7 @@ const Careers = () => {
     position: "bottom-80 left-80",
     size: "w-58 h-58"
   }];
-  const handleEmailCV = () => {
-    window.open('mailto:hello@sparkloomai.com?subject=CV Submission&body=Hi, I would like to submit my CV for consideration.', '_blank');
-  };
 
-  const handleApply = (jobTitle: string) => {
-    window.open(`mailto:hello@sparkloomai.com?subject=Application for ${jobTitle}&body=Hi, I would like to apply for the ${jobTitle} position.`, '_blank');
-  };
   return <div className="min-h-screen bg-background">
       <Navigation />
       
@@ -520,4 +516,5 @@ const Careers = () => {
       </Dialog>
     </div>;
 };
+
 export default Careers;
