@@ -31,7 +31,7 @@ const ContactSection = () => {
             </div>
 
             {/* Right content - 3D Robot Scene */}
-            <div className="flex-1 relative min-h-[300px] lg:min-h-full">
+            <div className="flex-1 relative h-[450px] py-8 lg:h-auto lg:py-0 lg:min-h-full">
               <SplineScene scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode" className="w-full h-full" />
               
               {/* Overlay gradient for better text readability on mobile */}
