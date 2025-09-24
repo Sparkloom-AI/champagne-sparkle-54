@@ -51,7 +51,7 @@ export function SplineScene({ scene, className }: SplineSceneProps) {
   }
 
   return (
-    <div className={`${className} bg-gradient-to-br from-sl-obsidian via-sl-slate-800 to-sl-obsidian relative overflow-visible`}>
+    <div className={`${className} bg-gradient-to-br from-sl-obsidian via-sl-slate-800 to-sl-obsidian relative overflow-hidden`}>
       <Suspense fallback={<SplinePlaceholder />}>
         {!isLoaded && <SplinePlaceholder />}
         <Spline

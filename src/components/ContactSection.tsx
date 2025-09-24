@@ -3,7 +3,7 @@ import { SplineScene } from "@/components/ui/splite";
 const ContactSection = () => {
   return <section id="contact" className="py-20 bg-sl-obsidian relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Card className="w-full h-contact-mobile sm:h-contact-desktop bg-sl-obsidian/80 relative overflow-hidden border-sl-iron-600/30 rounded-2xl hover:border-accent-neon/20 hover:shadow-neon/30 transition-all duration-500">
+        <Card className="w-full h-[1000px] sm:h-[600px] bg-sl-obsidian/80 relative overflow-hidden border-sl-iron-600/30 rounded-2xl hover:border-accent-neon/20 hover:shadow-neon/30 transition-all duration-500">
           
           <div className="flex h-full flex-col lg:flex-row">
             {/* Left content */}
@@ -31,13 +31,8 @@ const ContactSection = () => {
             </div>
 
             {/* Right content - 3D Robot Scene */}
-            <div className="flex-1 relative h-screen-safe py-8 px-4 sm:px-6 lg:h-auto lg:py-0 lg:px-0 lg:min-h-full">
-              {/* Enhanced mobile wrapper for consistent robot display */}
-              <div className="robot-mobile-wrapper">
-                <div className="w-full h-full robot-container-mobile sm:scale-100">
-                  <SplineScene scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode" className="w-full h-full" />
-                </div>
-              </div>
+            <div className="flex-1 relative h-[800px] py-8 lg:h-auto lg:py-0 lg:min-h-full">
+              <SplineScene scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode" className="w-full h-full" />
               
               {/* Overlay gradient for better text readability on mobile */}
               <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-sl-obsidian/20 pointer-events-none lg:hidden" />
