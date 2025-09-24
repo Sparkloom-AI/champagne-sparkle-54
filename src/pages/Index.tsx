@@ -20,6 +20,42 @@ const Index = () => {
     handleInitialHashNavigation();
   }, []);
 
+  // Handle hash navigation from other pages and hash changes
+  useEffect(() => {
+    const handleHashNavigation = () => {
+      if (window.location.hash) {
+        const hash = window.location.hash.substring(1);
+        const element = document.getElementById(hash);
+        
+        if (element) {
+          // Calculate offset for fixed navigation (80px)
+          const navHeight = 80;
+          const elementPosition = element.offsetTop - navHeight;
+          
+          // Scroll to section with smooth behavior
+          window.scrollTo({
+            top: elementPosition,
+            behavior: 'smooth'
+          });
+        }
+      }
+    };
+
+    // Handle initial hash on mount
+    handleHashNavigation();
+
+    // Handle hash changes (browser back/forward)
+    const handleHashChange = () => {
+      handleHashNavigation();
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+    };
+  }, []);
+
   // Optimized deferral for better user experience while maintaining performance
   useEffect(() => {
     // Load below-fold content after critical rendering is complete
