@@ -31,8 +31,11 @@ const ContactSection = () => {
             </div>
 
             {/* Right content - 3D Robot Scene */}
-            <div className="flex-1 relative h-[800px] py-8 lg:h-auto lg:py-0 lg:min-h-full">
-              <SplineScene scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode" className="w-full h-full" />
+            <div className="flex-1 relative h-[800px] py-8 px-4 sm:px-6 lg:h-auto lg:py-0 lg:px-0 lg:min-h-full">
+              {/* Mobile scale wrapper to ensure full robot visibility */}
+              <div className="w-full h-full scale-90 sm:scale-100">
+                <SplineScene scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode" className="w-full h-full" />
+              </div>
               
               {/* Overlay gradient for better text readability on mobile */}
               <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-sl-obsidian/20 pointer-events-none lg:hidden" />
