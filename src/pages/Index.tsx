@@ -25,18 +25,40 @@ const Index = () => {
     const handleHashNavigation = () => {
       if (window.location.hash) {
         const hash = window.location.hash.substring(1);
-        const element = document.getElementById(hash);
         
-        if (element) {
-          // Calculate offset for fixed navigation (80px)
-          const navHeight = 80;
-          const elementPosition = element.offsetTop - navHeight;
+        // Wait for sections to be rendered before attempting to scroll
+        const attemptScroll = () => {
+          const element = document.getElementById(hash);
           
-          // Scroll to section with smooth behavior
-          window.scrollTo({
-            top: elementPosition,
-            behavior: 'smooth'
-          });
+          if (element) {
+            // Use getBoundingClientRect for more accurate positioning
+            const rect = element.getBoundingClientRect();
+            const navHeight = 80;
+            const scrollPosition = window.scrollY + rect.top - navHeight;
+            
+            // Scroll to section with smooth behavior
+            window.scrollTo({
+              top: scrollPosition,
+              behavior: 'smooth'
+            });
+            return true; // Success
+          }
+          return false; // Element not found yet
+        };
+
+        // Try immediately first
+        if (!attemptScroll()) {
+          // If element doesn't exist yet, wait for sections to load
+          const checkForElement = () => {
+            if (showBelowFold) {
+              // Sections are now rendered, try scrolling
+              attemptScroll();
+            } else {
+              // Keep checking until sections are loaded
+              requestAnimationFrame(checkForElement);
+            }
+          };
+          checkForElement();
         }
       }
     };
@@ -54,7 +76,7 @@ const Index = () => {
     return () => {
       window.removeEventListener('hashchange', handleHashChange);
     };
-  }, []);
+  }, [showBelowFold]); // Add showBelowFold as dependency
 
   // Optimized deferral for better user experience while maintaining performance
   useEffect(() => {
