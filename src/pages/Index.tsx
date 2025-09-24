@@ -25,17 +25,17 @@ const Index = () => {
     const handleHashNavigation = () => {
       if (window.location.hash) {
         const hash = window.location.hash.substring(1);
-        
-        // Wait for sections to be rendered before attempting to scroll
-        const attemptScroll = () => {
+
+        // Robust function that waits for DOM element to exist
+        const waitForElementAndScroll = () => {
           const element = document.getElementById(hash);
-          
+
           if (element) {
             // Use getBoundingClientRect for more accurate positioning
             const rect = element.getBoundingClientRect();
             const navHeight = 80;
             const scrollPosition = window.scrollY + rect.top - navHeight;
-            
+
             // Scroll to section with smooth behavior
             window.scrollTo({
               top: scrollPosition,
@@ -43,40 +43,39 @@ const Index = () => {
             });
             return true; // Success
           }
-          return false; // Element not found yet
+
+          // Element doesn't exist yet, check if sections are loaded
+          if (showBelowFold) {
+            // Sections are loaded but element still not found - might be a mismatch
+            console.warn(`Element with ID "${hash}" not found after sections loaded`);
+            return false;
+          }
+
+          // Keep trying until element is found or sections are loaded
+          setTimeout(waitForElementAndScroll, 50);
+          return false;
         };
 
-        // Try immediately first
-        if (!attemptScroll()) {
-          // If element doesn't exist yet, wait for sections to load
-          const checkForElement = () => {
-            if (showBelowFold) {
-              // Sections are now rendered, try scrolling
-              attemptScroll();
-            } else {
-              // Keep checking until sections are loaded
-              requestAnimationFrame(checkForElement);
-            }
-          };
-          checkForElement();
-        }
+        // Start waiting for element
+        waitForElementAndScroll();
       }
     };
 
-    // Handle initial hash on mount
-    handleHashNavigation();
+    // Handle initial hash on mount with a small delay to ensure DOM is ready
+    const initialHashTimer = setTimeout(handleHashNavigation, 100);
 
     // Handle hash changes (browser back/forward)
     const handleHashChange = () => {
-      handleHashNavigation();
+      setTimeout(handleHashNavigation, 100); // Small delay for hash change
     };
 
     window.addEventListener('hashchange', handleHashChange);
-    
+
     return () => {
+      clearTimeout(initialHashTimer);
       window.removeEventListener('hashchange', handleHashChange);
     };
-  }, [showBelowFold]); // Add showBelowFold as dependency
+  }, [showBelowFold]);
 
   // Optimized deferral for better user experience while maintaining performance
   useEffect(() => {
