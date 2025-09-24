@@ -1,72 +1,53 @@
 import Navigation from "@/components/Navigation";
-import HeroSection from "@/components/HeroSection"; 
-import { lazy, Suspense, useEffect, useState } from "react";
+import HeroSection from "@/components/HeroSection";
+import { lazy, Suspense, useEffect } from "react";
 import { handleInitialHashNavigation } from "@/lib/navigation";
 
-// Lazy load heavy components to reduce main-thread work
-const ProcessSection = lazy(() => import("@/components/ProcessSection"));
-const ServicesSection = lazy(() => import("@/components/ServicesSection"));
+// Import main sections directly (no lazy loading for immediate rendering)
+import ProcessSection from "@/components/ProcessSection";
+import ServicesSection from "@/components/ServicesSection";
+import ResultsSection from "@/components/ResultsSection";
+import FAQSection from "@/components/FAQSection";
+import ContactSection from "@/components/ContactSection";
 
-const ResultsSection = lazy(() => import("@/components/ResultsSection"));
-const FAQSection = lazy(() => import("@/components/FAQSection"));
-const ContactSection = lazy(() => import("@/components/ContactSection"));
+// Keep only Footer lazy-loaded as it's not critical to LCP
 const Footer = lazy(() => import("@/components/Footer"));
 
 const Index = () => {
-  const [showBelowFold, setShowBelowFold] = useState(false);
 
   // Handle initial hash navigation when page loads
   useEffect(() => {
     handleInitialHashNavigation();
   }, []);
 
-  // Handle hash navigation from other pages and hash changes
+  // Simplified hash navigation - sections are now immediately available
   useEffect(() => {
     const handleHashNavigation = () => {
       if (window.location.hash) {
         const hash = window.location.hash.substring(1);
+        const element = document.getElementById(hash);
 
-        // Robust function that waits for DOM element to exist
-        const waitForElementAndScroll = () => {
-          const element = document.getElementById(hash);
+        if (element) {
+          // Use getBoundingClientRect for accurate positioning
+          const rect = element.getBoundingClientRect();
+          const navHeight = 80;
+          const scrollPosition = window.scrollY + rect.top - navHeight;
 
-          if (element) {
-            // Use getBoundingClientRect for more accurate positioning
-            const rect = element.getBoundingClientRect();
-            const navHeight = 80;
-            const scrollPosition = window.scrollY + rect.top - navHeight;
-
-            // Scroll to section with smooth behavior
-            window.scrollTo({
-              top: scrollPosition,
-              behavior: 'smooth'
-            });
-            return true; // Success
-          }
-
-          // Element doesn't exist yet, check if sections are loaded
-          if (showBelowFold) {
-            // Sections are loaded but element still not found - might be a mismatch
-            console.warn(`Element with ID "${hash}" not found after sections loaded`);
-            return false;
-          }
-
-          // Keep trying until element is found or sections are loaded
-          setTimeout(waitForElementAndScroll, 50);
-          return false;
-        };
-
-        // Start waiting for element
-        waitForElementAndScroll();
+          // Scroll to section with smooth behavior
+          window.scrollTo({
+            top: scrollPosition,
+            behavior: 'smooth'
+          });
+        }
       }
     };
 
-    // Handle initial hash on mount with a small delay to ensure DOM is ready
+    // Handle initial hash on mount with small delay for DOM readiness
     const initialHashTimer = setTimeout(handleHashNavigation, 100);
 
     // Handle hash changes (browser back/forward)
     const handleHashChange = () => {
-      setTimeout(handleHashNavigation, 100); // Small delay for hash change
+      setTimeout(handleHashNavigation, 100);
     };
 
     window.addEventListener('hashchange', handleHashChange);
@@ -75,39 +56,9 @@ const Index = () => {
       clearTimeout(initialHashTimer);
       window.removeEventListener('hashchange', handleHashChange);
     };
-  }, [showBelowFold]);
-
-  // Optimized deferral for better user experience while maintaining performance
-  useEffect(() => {
-    // Load below-fold content after critical rendering is complete
-    const loadBelowFold = () => {
-      // Use scheduler.postTask if available for better performance
-      if ('scheduler' in window && 'postTask' in (window.scheduler as any)) {
-        (window.scheduler as any).postTask(() => {
-          setShowBelowFold(true);
-        }, { priority: 'background' });
-      } else {
-        // Reduced delay for better user experience
-        setTimeout(() => {
-          setShowBelowFold(true);
-        }, 1000); // Reduced from 5000ms to 1000ms
-      }
-    };
-    
-    // Wait for page to be ready with reduced delay
-    const checkReadiness = () => {
-      // Reduced delay for faster interaction
-      setTimeout(loadBelowFold, 500); // Reduced from 3000ms to 500ms
-    };
-    
-    if (document.readyState === 'complete') {
-      checkReadiness();
-    } else {
-      window.addEventListener('load', checkReadiness, { once: true });
-    }
   }, []);
 
-  const LoadingFallback = ({ height = "py-24" }: { height?: string }) => (
+  const LoadingFallback = ({ height = "py-12" }: { height?: string }) => (
     <div className={`${height} bg-background flex items-center justify-center`}>
       <div className="animate-pulse text-muted-foreground">Loading...</div>
     </div>
@@ -117,29 +68,18 @@ const Index = () => {
     <div className="min-h-screen bg-background text-foreground">
       <Navigation />
       <HeroSection />
-      
-      {showBelowFold && (
-        <>
-          <Suspense fallback={<LoadingFallback />}>
-            <ProcessSection />
-          </Suspense>
-          <Suspense fallback={<LoadingFallback />}>
-            <ServicesSection />
-          </Suspense>
-          <Suspense fallback={<LoadingFallback />}>
-            <ResultsSection />
-          </Suspense>
-          <Suspense fallback={<LoadingFallback />}>
-            <FAQSection />
-          </Suspense>
-          <Suspense fallback={<LoadingFallback />}>
-            <ContactSection />
-          </Suspense>
-          <Suspense fallback={<LoadingFallback height="py-12" />}>
-            <Footer />
-          </Suspense>
-        </>
-      )}
+
+      {/* All main sections now render immediately - no showBelowFold gating */}
+      <ProcessSection />
+      <ServicesSection />
+      <ResultsSection />
+      <FAQSection />
+      <ContactSection />
+
+      {/* Footer remains lazy-loaded as it's not critical to LCP */}
+      <Suspense fallback={<LoadingFallback />}>
+        <Footer />
+      </Suspense>
     </div>
   );
 };
