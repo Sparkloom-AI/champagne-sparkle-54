@@ -1,18 +1,15 @@
 import { useEffect, useState, useMemo, useCallback, useRef } from "react";
-import heroBackground from "@/assets/hero-bg.jpg";
-import heroBackgroundWebP from "@/assets/hero-bg.webp";
+import AetherFlowHero from "@/components/AetherFlowHero";
 
 const InteractiveHeroSection = () => {
   const [isFullyInteractive, setIsFullyInteractive] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [backgroundImage, setBackgroundImage] = useState(heroBackgroundWebP);
   
   // Cache window dimensions to prevent forced reflows
   const windowDimensionsRef = useRef({ width: 0, height: 0 });
 
   // Static styles for initial render - no JavaScript computation
   const staticStyles = {
-    backgroundTransform: 'translate(0px, 0px) scale(1.1)',
     gradientPosition: '50% 50%',
     lightEffectLeft: '50%',
     lightEffectTop: '50%',
@@ -29,7 +26,6 @@ const InteractiveHeroSection = () => {
     if (!isFullyInteractive) return staticStyles;
     
     return {
-      backgroundTransform: `translate(${mousePosition.x * 10}px, ${mousePosition.y * 10}px) scale(1.1)`,
       gradientPosition: `${50 + mousePosition.x * 20}% ${50 + mousePosition.y * 20}%`,
       lightEffectLeft: `${50 + mousePosition.x * 30}%`,
       lightEffectTop: `${50 + mousePosition.y * 30}%`,
@@ -50,28 +46,11 @@ const InteractiveHeroSection = () => {
       if ('scheduler' in window && 'postTask' in (window.scheduler as any)) {
         (window.scheduler as any).postTask(() => {
           setIsFullyInteractive(true);
-          
-          // Test WebP support and fallback to JPG if needed (for old browsers)
-          const webp = new Image();
-          webp.onload = webp.onerror = () => {
-            if (webp.height !== 2) {
-              setBackgroundImage(heroBackground); // Fallback to JPG for unsupported browsers
-            }
-          };
-          webp.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
         }, { priority: 'background' });
       } else {
         // Much longer delay to ensure TTI is achieved first
         setTimeout(() => {
           setIsFullyInteractive(true);
-          
-          const webp = new Image();
-          webp.onload = webp.onerror = () => {
-            if (webp.height !== 2) {
-              setBackgroundImage(heroBackground);
-            }
-          };
-          webp.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiUiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
         }, 5000); // 5 second delay to ensure TTI
       }
     };
@@ -167,47 +146,8 @@ const InteractiveHeroSection = () => {
         }}
       />
       
-      {/* Animated Background - Optimized for Speed Index */}
-      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-100 ease-out opacity-30 z-10" style={{
-        backgroundImage: `url(${backgroundImage})`,
-        transform: dynamicStyles.backgroundTransform
-      }} />
-      
-      {/* Dynamic Gradient Overlay */}
-      <div className="absolute inset-0 transition-all duration-300 ease-out z-10" style={{
-        background: `radial-gradient(circle at ${dynamicStyles.gradientPosition}, 
-                hsl(var(--sl-obsidian) / 0.2) 0%, 
-                hsl(var(--sl-obsidian) / 0.6) 100%)`
-      }} />
-      
-      {/* Animated Floating Orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-orb animate-float opacity-20 transition-transform duration-200 ease-out z-10" style={{
-        transform: dynamicStyles.orb1Transform
-      }} />
-      <div className="absolute bottom-1/3 right-1/4 w-64 h-64 bg-gradient-neon-glow animate-float opacity-20 transition-transform duration-200 ease-out z-10" style={{
-        animationDelay: '2s',
-        transform: dynamicStyles.orb2Transform
-      }} />
-      <div className="absolute top-1/2 right-1/3 w-48 h-48 bg-gradient-orb animate-pulse-glow opacity-10 transition-transform duration-200 ease-out z-10" style={{
-        animationDelay: '4s',
-        transform: dynamicStyles.orb3Transform
-      }} />
-      
-      {/* Mouse-responsive Light Effects */}
-      <div className="absolute w-96 h-96 opacity-15 pointer-events-none transition-all duration-300 ease-out z-10" style={{
-        background: `radial-gradient(circle, hsl(var(--sl-auric-700) / 0.3) 0%, transparent 70%)`,
-        left: dynamicStyles.lightEffectLeft,
-        top: dynamicStyles.lightEffectTop,
-        transform: 'translate(-50%, -50%)',
-        filter: 'blur(40px)'
-      }} />
-      
-      {/* Particle Effect */}
-      <div className="absolute inset-0 opacity-20 z-10" style={{
-        background: dynamicStyles.particleBackground,
-        backgroundRepeat: 'repeat',
-        backgroundSize: '100px 100px, 150px 150px, 200px 200px'
-      }} />
+      {/* AetherFlowHero Background */}
+      <AetherFlowHero className="absolute inset-0 z-10" />
       
       {/* Content - Critical text rendered immediately for LCP optimization */}
       <div className="relative z-20 text-center max-w-5xl mx-auto px-6 opacity-100">
