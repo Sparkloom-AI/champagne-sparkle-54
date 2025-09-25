@@ -1,5 +1,5 @@
 import { lazy, Suspense, useState, useEffect } from "react";
-import heroBackgroundWebP from "@/assets/hero-bg.webp";
+import AetherFlowHero from "@/components/AetherFlowHero";
 
 // Lazy load the interactive version only when needed
 const InteractiveHeroSection = lazy(() => import("./InteractiveHeroSection"));
@@ -58,66 +58,8 @@ const HeroSection = () => {
 const StaticHeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Lightweight CSS gradient - no JavaScript computation */}
-      <div 
-        className="absolute inset-0 z-0" 
-        style={{ 
-          background: `
-            radial-gradient(circle at 30% 40%, rgba(238, 223, 203, 0.08) 0%, transparent 50%),
-            radial-gradient(circle at 70% 60%, rgba(206, 192, 173, 0.06) 0%, transparent 50%),
-            linear-gradient(135deg, #0B0B0C 0%, #1E1E1F 40%, #0B0B0C 100%)
-          `
-        }}
-      />
-      
-      {/* Static Background - Optimized for faster loading */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30 z-10" 
-        style={{
-          backgroundImage: `url(${heroBackgroundWebP})`,
-          transform: 'translate(0px, 0px) scale(1.1)',
-          willChange: 'transform'
-        }} 
-      />
-      
-      {/* Static Gradient Overlay */}
-      <div 
-        className="absolute inset-0 z-10" 
-        style={{
-          background: `radial-gradient(circle at 50% 50%, 
-                  hsl(var(--sl-obsidian) / 0.2) 0%, 
-                  hsl(var(--sl-obsidian) / 0.6) 100%)`
-        }} 
-      />
-      
-      {/* Static Floating Orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-orb animate-float opacity-20 z-10" />
-      <div className="absolute bottom-1/3 right-1/4 w-64 h-64 bg-gradient-neon-glow animate-float opacity-20 z-10" style={{ animationDelay: '2s' }} />
-      <div className="absolute top-1/2 right-1/3 w-48 h-48 bg-gradient-orb animate-pulse-glow opacity-10 z-10" style={{ animationDelay: '4s' }} />
-      
-      {/* Static Light Effects */}
-      <div 
-        className="absolute w-96 h-96 opacity-15 pointer-events-none z-10" 
-        style={{
-          background: `radial-gradient(circle, hsl(var(--sl-auric-700) / 0.3) 0%, transparent 70%)`,
-          left: '50%',
-          top: '50%',
-          transform: 'translate(-50%, -50%)',
-          filter: 'blur(40px)'
-        }} 
-      />
-      
-      {/* Static Particle Effect */}
-      <div 
-        className="absolute inset-0 opacity-20 z-10" 
-        style={{
-          background: `radial-gradient(2px 2px at 20px 30px, hsl(var(--sl-auric-700)), transparent),
-                       radial-gradient(2px 2px at 40px 70px, hsl(var(--sl-pearl-100)), transparent),
-                       radial-gradient(1px 1px at 90px 40px, hsl(var(--sl-auric-500)), transparent)`,
-          backgroundRepeat: 'repeat',
-          backgroundSize: '100px 100px, 150px 150px, 200px 200px'
-        }} 
-      />
+      {/* AetherFlowHero Background */}
+      <AetherFlowHero className="absolute inset-0 z-10" />
       
       {/* Content - Critical text rendered immediately for LCP optimization */}
       <div className="relative z-20 text-center max-w-5xl mx-auto px-6 opacity-100">
