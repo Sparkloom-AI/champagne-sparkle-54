@@ -28,45 +28,14 @@ const AetherFlowHero: React.FC<AetherFlowHeroProps> = ({ className = "" }) => {
         <div className="absolute top-1/2 right-1/3 w-48 h-48 bg-gradient-orb animate-pulse-glow opacity-15" style={{ animationDelay: '4s' }} />
 
         {/* Central energy core */}
-        <div
-          className="absolute w-96 h-96 opacity-20 pointer-events-none"
-          style={{
-            background: `radial-gradient(circle, hsl(var(--sl-auric-700) / 0.4) 0%, transparent 70%)`,
-            left: '50%',
-            top: '50%',
-            transform: 'translate(-50%, -50%)',
-            filter: 'blur(40px)',
-            animation: 'pulse-glow 6s ease-in-out infinite'
-          }}
-        />
+        <div className="absolute w-96 h-96 opacity-20 pointer-events-none aether-energy-core" />
 
         {/* Flowing particle streams */}
-        <div
-          className="absolute inset-0 opacity-30"
-          style={{
-            background: `
-              radial-gradient(1px 1px at 20px 30px, hsl(var(--sl-auric-700)), transparent),
-              radial-gradient(1px 1px at 40px 70px, hsl(var(--sl-pearl-100)), transparent),
-              radial-gradient(1px 1px at 90px 40px, hsl(var(--sl-auric-500)), transparent),
-              radial-gradient(1px 1px at 130px 90px, hsl(var(--sl-neon-pink-500)), transparent),
-              radial-gradient(1px 1px at 160px 30px, hsl(var(--sl-auric-700)), transparent)
-            `,
-            backgroundRepeat: 'repeat',
-            backgroundSize: '200px 200px, 150px 150px, 180px 180px, 220px 220px, 170px 170px',
-            animation: 'gradient-shift 12s ease-in-out infinite'
-          }}
-        />
+        <div className="absolute inset-0 opacity-30 aether-particle-streams" />
       </div>
 
       {/* Subtle overlay for depth */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background: `radial-gradient(circle at 50% 50%,
-                  hsl(var(--sl-obsidian) / 0.1) 0%,
-                  hsl(var(--sl-obsidian) / 0.5) 100%)`
-        }}
-      />
+      <div className="absolute inset-0 aether-overlay" />
     </div>
   );
 };

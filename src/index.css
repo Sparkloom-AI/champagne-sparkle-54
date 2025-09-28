@@ -183,4 +183,30 @@ All colors MUST be HSL.
   .animate-gradient-shift {
     animation: gradient-shift 12s ease-in-out infinite;
   }
+
+  /* AetherFlowHero specific styles */
+  .aether-energy-core {
+    background: radial-gradient(circle, rgba(238, 223, 203, 0.4) 0%, transparent 70%);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    filter: blur(40px);
+    animation: pulse-glow 6s ease-in-out infinite;
+  }
+
+  .aether-particle-streams {
+    background: 
+      radial-gradient(1px 1px at 20px 30px, #EEDFCB, transparent),
+      radial-gradient(1px 1px at 40px 70px, #E8E2DC, transparent),
+      radial-gradient(1px 1px at 90px 40px, #CEC0AD, transparent),
+      radial-gradient(1px 1px at 130px 90px, #FE347E, transparent),
+      radial-gradient(1px 1px at 160px 30px, #EEDFCB, transparent);
+    background-repeat: repeat;
+    background-size: 200px 200px, 150px 150px, 180px 180px, 220px 220px, 170px 170px;
+    animation: gradient-shift 12s ease-in-out infinite;
+  }
+
+  .aether-overlay {
+    background: radial-gradient(circle at 50% 50%, rgba(11, 11, 12, 0.1) 0%, rgba(11, 11, 12, 0.5) 100%);
+  }
 }
