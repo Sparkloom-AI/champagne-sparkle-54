@@ -8,7 +8,7 @@ const Footer = () => {
           <div className="md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
               <div className="w-9 h-9 bg-gradient-to-r from-accent to-accent-light rounded-lg flex items-center justify-center">
-                <span className="text-sl-obsidian font-bold text-base">SL</span>
+                <span className="text-sl-obsidian font-bold text-base">SP</span>
               </div>
               <span className="text-xl font-bold text-foreground">SparkloomAI</span>
             </div>
