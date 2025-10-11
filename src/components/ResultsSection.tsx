@@ -103,7 +103,7 @@ const ResultsSection = () => {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
             Real Results. <span className="text-accent-neon">Real Impact.</span>
           </h2>
-          <p className="text-lg md:text-xl text-text-muted max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base md:text-lg text-text-muted max-w-3xl mx-auto leading-relaxed">
             See how we've transformed businesses with AI automation, delivering measurable results and exceptional ROI.
           </p>
         </div>

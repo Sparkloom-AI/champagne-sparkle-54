@@ -45,7 +45,7 @@ const ProcessSection = () => {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
             The 5-Step Process
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Our proven methodology transforms your business in 30 days with structured AI implementation
           </p>
         </div>
@@ -101,7 +101,7 @@ const ProcessSection = () => {
         <div className="text-center mt-16 animate-fade-in-up" style={{ animationDelay: '1.2s', animationFillMode: 'both' }}>
           <div className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-accent-neon/20 to-sl-auric-700/20 border border-accent-neon/30 rounded-2xl backdrop-blur-sm hover:shadow-neon transition-all duration-300">
             <div className="w-3 h-3 bg-accent-neon rounded-full animate-pulse"></div>
-            <span className="text-foreground font-semibold text-lg">
+            <span className="text-foreground font-semibold text-base md:text-lg">
               Complete transformation in just 30 days
             </span>
             <div className="w-3 h-3 bg-accent-neon rounded-full animate-pulse"></div>

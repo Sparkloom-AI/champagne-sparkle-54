@@ -34,7 +34,7 @@ const ServicesSection = () => {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground">
             Our <span className="text-accent">Services</span>
           </h2>
-          <p className="text-lg md:text-xl text-text-muted max-w-2xl mx-auto mb-8 leading-relaxed">
+          <p className="text-base md:text-lg text-text-muted max-w-2xl mx-auto mb-8 leading-relaxed">
             Comprehensive AI solutions tailored to your business needs. From simple automation to enterprise transformation.
           </p>
           
