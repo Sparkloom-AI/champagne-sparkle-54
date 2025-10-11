@@ -91,10 +91,10 @@ const ResultsSection = () => {
     }
   }];
   return <section id="results-section" className="py-28 md:py-32 bg-gradient-to-b from-sl-obsidian to-sl-graphite-900 relative overflow-hidden">
-      {/* Subtle Background Effects */}
+      {/* Background Effects */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-accent-neon/20 to-accent/20 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-accent/20 to-accent-neon/20 rounded-full blur-3xl" />
       </div>
       
       <div className="container mx-auto px-6 relative z-10">
@@ -103,45 +103,45 @@ const ResultsSection = () => {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold mb-6">
             Real Results. <span className="text-accent-neon">Real Impact.</span>
           </h2>
-          <p className="text-base md:text-lg text-text-muted max-w-3xl mx-auto leading-loose">
+          <p className="text-base md:text-lg text-text-muted max-w-3xl mx-auto leading-relaxed">
             See how we've transformed businesses with AI automation, delivering measurable results and exceptional ROI.
           </p>
         </div>
 
         {/* Case Studies Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {caseStudies.map((study, index) => <Dialog key={index}>
               <DialogTrigger asChild>
-                <Card className="bg-sl-graphite-800 border-border hover:-translate-y-2 hover:border-accent/50 hover:shadow-lg transition-all duration-200 group animate-fade-in cursor-pointer overflow-hidden relative" style={{
+                <Card className={`bg-sl-graphite-800 border-border hover:-translate-y-2 transition-all duration-200 group animate-fade-in cursor-pointer overflow-hidden relative hover:shadow-xl hover:border-accent-neon/80 hover:bg-sl-graphite-700`} style={{
               animationDelay: `${index * 150}ms`
             }}>
-                  <CardHeader className="pb-4 p-8">
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center">
-                        <span className="text-accent font-bold text-sm">
+                  <CardHeader className="pb-4">
+                    <div className="flex items-center justify-between mb-2">
+                      <div className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:scale-110 ${study.isNeon ? 'bg-gradient-neon group-hover:shadow-neon' : 'bg-gradient-to-r from-accent to-accent-light group-hover:shadow-glow'}`}>
+                        <span className="text-sl-obsidian font-bold text-sm">
                           {study.client.split(' ').map(word => word[0]).join('').slice(0, 2)}
                         </span>
                       </div>
-                      <span className="text-xs text-text-muted bg-sl-graphite-700 px-3 py-1 rounded-full">
+                      <span className="text-xs text-text-muted bg-sl-graphite-700 px-2 py-1 rounded-full group-hover:bg-sl-graphite-600 transition-colors duration-300">
                         {study.deliveryTime}
                       </span>
                     </div>
-                    <CardTitle className="text-xl md:text-2xl font-medium mb-2 leading-snug group-hover:text-accent transition-colors duration-200">{study.client}</CardTitle>
+                    <CardTitle className="text-xl md:text-2xl font-medium mb-2 leading-snug group-hover:text-accent-neon transition-colors duration-200">{study.client}</CardTitle>
                     
                   </CardHeader>
                   
-                  <CardContent className="pt-0 p-8">
-                    <p className="text-sm md:text-base text-text-muted mb-6 leading-loose">
+                  <CardContent className="pt-0">
+                    <p className="text-sm md:text-base text-text-muted mb-4 leading-relaxed group-hover:text-text transition-colors duration-300">
                       {study.description}
                     </p>
                     
-                    <div className="flex flex-wrap gap-2 mb-8">
-                      {study.techStack.map((tech, techIndex) => <span key={techIndex} className="text-xs px-3 py-1 rounded-full bg-accent/10 text-accent">
+                    <div className="flex flex-wrap gap-1 mb-6">
+                      {study.techStack.map((tech, techIndex) => <span key={techIndex} className={`text-xs px-2 py-1 rounded-full transition-all duration-300 ${study.isNeon ? 'bg-accent-neon/10 text-accent-neon group-hover:bg-accent-neon/20 group-hover:shadow-sm' : 'bg-accent/10 text-accent group-hover:bg-accent/20 group-hover:shadow-sm'}`}>
                           {tech}
                         </span>)}
                     </div>
                     
-                    <Button variant="outline" size="sm" className="w-full border-accent/30 text-accent hover:bg-accent hover:text-accent-foreground transition-all duration-200">
+                    <Button variant="outline" size="sm" className={`w-full transition-all duration-200 ${study.isNeon ? 'border-accent-neon/30 text-accent-neon hover:bg-accent-neon hover:text-sl-obsidian group-hover:border-accent-neon' : 'border-accent/30 text-accent hover:bg-accent hover:text-accent-foreground group-hover:border-accent'}`}>
                       View Full Case Study
                       <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform duration-200" />
                     </Button>
@@ -154,9 +154,9 @@ const ResultsSection = () => {
                 <div className="fixed inset-0 bg-black/95 backdrop-blur-sm -z-10" />
                 
                 <DialogHeader>
-                  <DialogTitle className="text-2xl md:text-3xl font-semibold mb-6 leading-tight text-accent flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-lg bg-accent/20 flex items-center justify-center">
-                      <span className="text-accent font-bold">
+                  <DialogTitle className="text-2xl md:text-3xl font-semibold mb-6 leading-tight text-accent-neon flex items-center gap-3">
+                    <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${study.isNeon ? 'bg-gradient-neon shadow-neon' : 'bg-gradient-to-r from-accent to-accent-light shadow-glow'}`}>
+                      <span className="text-sl-obsidian font-bold">
                         {study.client.split(' ').map(word => word[0]).join('').slice(0, 2)}
                       </span>
                     </div>
@@ -166,11 +166,11 @@ const ResultsSection = () => {
                 
                 <div className="space-y-8">
                   {/* Metric Highlight */}
-                  <div className="text-center p-8 bg-sl-graphite-800 rounded-lg">
-                    <div className="text-4xl font-bold mb-3 text-accent">
+                  <div className="text-center p-6 bg-gradient-to-r from-sl-graphite-800 to-sl-graphite-700 rounded-lg">
+                    <div className={`text-4xl font-bold mb-2 ${study.isNeon ? 'text-accent-neon' : 'text-accent'}`}>
                       {study.metric}
                     </div>
-                    <p className="text-text-muted leading-loose">{study.description}</p>
+                    <p className="text-text-muted">{study.description}</p>
                   </div>
                   
                   {/* Problem Section */}
@@ -178,26 +178,26 @@ const ResultsSection = () => {
                     <h3 className="text-xl md:text-2xl font-medium text-accent flex items-center leading-snug">
                       ⚡ {study.problem.title}
                     </h3>
-                    <p className="text-text-muted leading-loose bg-sl-graphite-800/50 p-6 rounded-lg">
+                    <p className="text-text-muted leading-relaxed bg-sl-graphite-800/50 p-4 rounded-lg">
                       {study.problem.content}
                     </p>
                   </div>
                   
                   {/* Solution Section */}
                   <div className="space-y-4">
-                    <h3 className="text-xl md:text-2xl font-medium text-accent flex items-center leading-snug">
+                    <h3 className="text-xl md:text-2xl font-medium text-accent-neon flex items-center leading-snug">
                       ✅ {study.solution.title}
                     </h3>
-                    <p className="text-text-muted leading-loose bg-sl-graphite-800/50 p-6 rounded-lg">
+                    <p className="text-text-muted leading-relaxed bg-sl-graphite-800/50 p-4 rounded-lg">
                       {study.solution.content}
                     </p>
                     
                     {/* Results Grid */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-                      {study.solution.results.map((result, resultIndex) => <div key={resultIndex} className="bg-sl-graphite-800 p-6 rounded-lg text-center">
-                          <result.icon className="w-8 h-8 mx-auto mb-3 text-accent" />
-                          <div className="text-sm text-text-muted mb-2">{result.label}</div>
-                          <div className="font-semibold text-accent">
+                      {study.solution.results.map((result, resultIndex) => <div key={resultIndex} className="bg-sl-graphite-800 p-4 rounded-lg text-center">
+                          <result.icon className={`w-8 h-8 mx-auto mb-2 ${study.isNeon ? 'text-accent-neon' : 'text-accent'}`} />
+                          <div className="text-sm text-text-muted mb-1">{result.label}</div>
+                          <div className={`font-semibold ${study.isNeon ? 'text-accent-neon' : 'text-accent'}`}>
                             {result.value}
                           </div>
                         </div>)}
@@ -206,18 +206,18 @@ const ResultsSection = () => {
                   
                   {/* Tech Stack */}
                   <div className="space-y-4">
-                    <h3 className="text-lg font-medium">Technologies Used</h3>
+                    <h3 className="text-lg font-semibold">Technologies Used</h3>
                     <div className="flex flex-wrap gap-2">
-                      {study.techStack.map((tech, techIndex) => <span key={techIndex} className="px-3 py-2 rounded-full text-sm bg-accent/10 text-accent">
+                      {study.techStack.map((tech, techIndex) => <span key={techIndex} className={`px-3 py-2 rounded-full text-sm ${study.isNeon ? 'bg-accent-neon/10 text-accent-neon' : 'bg-accent/10 text-accent'}`}>
                           {tech}
                         </span>)}
                     </div>
                   </div>
                   
                   {/* CTA */}
-                  <div className="text-center pt-8 border-t border-border">
-                    <p className="text-text-muted mb-6 leading-loose">Interested in similar results for your business?</p>
-                    <Button variant="default" size="lg" className="bg-accent hover:bg-accent/90" onClick={() => {
+                  <div className="text-center pt-6 border-t border-border">
+                    <p className="text-text-muted mb-4">Interested in similar results for your business?</p>
+                    <Button variant="neon" size="lg" onClick={() => {
                   window.open('https://calendar.app.google/hnNuZRVCdZwq5cMU8', '_blank');
                 }}>
                       Schedule Your Free Consultation
@@ -233,10 +233,10 @@ const ResultsSection = () => {
         <div className="text-center mt-16 animate-fade-in" style={{
         animationDelay: '600ms'
       }}>
-          <p className="text-text-muted mb-6 leading-loose">
+          <p className="text-text-muted mb-6">
             Ready to see similar results for your business?
           </p>
-          <Button variant="default" size="lg" className="bg-accent hover:bg-accent/90" onClick={() => {
+          <Button variant="neon" size="lg" onClick={() => {
           window.open('https://calendar.app.google/hnNuZRVCdZwq5cMU8', '_blank');
         }}>
             Schedule Your Free Consultation

@@ -45,42 +45,50 @@ const ProcessSection = () => {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-6">
             The 5-Step Process
           </h2>
-          <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto leading-loose">
+          <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Our proven methodology transforms your business in 30 days with structured AI implementation
           </p>
         </div>
 
         {/* Process Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
           {processSteps.map((step, index) => {
             const Icon = step.icon;
             return (
               <Card 
                 key={step.number} 
-                className="bg-sl-slate-800/50 border-sl-iron-600/30 backdrop-blur-sm hover:bg-sl-slate-800/70 hover:-translate-y-2 hover:border-accent/30 transition-all duration-200 group h-full animate-fade-in-up hover:shadow-lg"
+                className={`bg-sl-slate-800/50 border-sl-iron-600/30 backdrop-blur-sm hover:bg-sl-slate-800/70 hover:-translate-y-2 transition-all duration-200 group h-full animate-fade-in-up ${
+                  step.isNeon ? 'hover:shadow-xl hover:border-accent-neon/50' : 'hover:shadow-xl'
+                }`}
                 style={{
                   animationDelay: `${index * 0.2}s`,
                   animationFillMode: 'both'
                 }}
               >
-                <CardContent className="p-8 h-full flex flex-col">
+                <CardContent className="p-6 h-full flex flex-col">
                   {/* Large Number */}
-                  <div className="text-6xl font-bold mb-4 text-muted-foreground/20">
+                  <div className={`text-6xl font-bold mb-4 ${
+                    step.isNeon ? 'text-accent-neon/30' : 'text-muted-foreground/30'
+                  }`}>
                     {step.number.toString().padStart(2, '0')}
                   </div>
                   
                   {/* Icon */}
-                  <div className="mb-6">
-                    <Icon className="w-8 h-8 text-accent" />
+                  <div className="mb-4">
+                    <Icon className={`w-8 h-8 ${
+                      step.isNeon ? 'text-accent-neon' : 'text-sl-auric-700'
+                    }`} />
                   </div>
                   
                   {/* Title */}
-                  <h3 className="text-xl md:text-2xl font-medium text-foreground mb-4 leading-snug transition-colors duration-200 group-hover:text-accent">
+                  <h3 className={`text-xl md:text-2xl font-medium text-foreground mb-3 leading-snug transition-colors duration-200 ${
+                    step.isNeon ? 'group-hover:text-accent-neon' : 'group-hover:text-sl-auric-700'
+                  }`}>
                     {step.title}
                   </h3>
                   
                   {/* Description */}
-                  <p className="text-sm leading-relaxed text-muted-foreground flex-grow">
+                  <p className="text-sm leading-normal text-muted-foreground flex-grow">
                     {step.description}
                   </p>
                 </CardContent>
@@ -91,10 +99,12 @@ const ProcessSection = () => {
 
         {/* Bottom CTA */}
         <div className="text-center mt-16 animate-fade-in-up" style={{ animationDelay: '1.2s', animationFillMode: 'both' }}>
-          <div className="inline-flex items-center gap-3 px-8 py-4 bg-accent/5 border border-accent/20 rounded-2xl backdrop-blur-sm">
-            <span className="text-foreground font-medium text-base md:text-lg">
+          <div className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-accent-neon/20 to-sl-auric-700/20 border border-accent-neon/30 rounded-2xl backdrop-blur-sm hover:shadow-neon transition-all duration-300">
+            <div className="w-3 h-3 bg-accent-neon rounded-full animate-pulse"></div>
+            <span className="text-foreground font-semibold text-base md:text-lg">
               Complete transformation in just 30 days
             </span>
+            <div className="w-3 h-3 bg-accent-neon rounded-full animate-pulse"></div>
           </div>
         </div>
       </div>
