@@ -38,7 +38,7 @@ const processSteps = [{
 }];
 const ProcessSection = () => {
   return (
-    <section id="process-section" className="py-28 md:py-32 bg-gradient-to-b from-sl-obsidian/30 to-background">
+    <section id="process-section" className="py-28 md:py-32 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in-up">

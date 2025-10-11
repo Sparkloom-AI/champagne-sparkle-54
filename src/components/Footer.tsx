@@ -1,7 +1,7 @@
 import { navigateToSection } from "@/lib/navigation";
 
 const Footer = () => {
-  return <footer className="bg-sl-basalt-900 border-t border-border py-12">
+  return <footer className="bg-background border-t border-border py-12">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}

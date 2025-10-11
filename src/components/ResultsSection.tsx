@@ -90,7 +90,7 @@ const ResultsSection = () => {
       }]
     }
   }];
-  return <section id="results-section" className="py-28 md:py-32 bg-gradient-to-b from-sl-obsidian to-sl-graphite-900 relative overflow-hidden">
+  return <section id="results-section" className="py-28 md:py-32 bg-background relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-accent-neon/20 to-accent/20 rounded-full blur-3xl" />
@@ -112,7 +112,7 @@ const ResultsSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {caseStudies.map((study, index) => <Dialog key={index}>
               <DialogTrigger asChild>
-                <Card className={`bg-sl-graphite-800 border-border hover:-translate-y-2 transition-all duration-200 group animate-fade-in cursor-pointer overflow-hidden relative hover:shadow-xl hover:border-accent-neon/80 hover:bg-sl-graphite-700`} style={{
+                <Card className={`bg-sl-slate-800/50 border-border hover:-translate-y-2 transition-all duration-200 group animate-fade-in cursor-pointer overflow-hidden relative hover:shadow-xl hover:border-accent-neon/80 hover:bg-sl-slate-800/70`} style={{
               animationDelay: `${index * 150}ms`
             }}>
                   <CardHeader className="pb-4">
@@ -149,7 +149,7 @@ const ResultsSection = () => {
                 </Card>
               </DialogTrigger>
               
-              <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-sl-obsidian border border-accent-neon/20 shadow-2xl">
+              <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-background border border-accent-neon/20 shadow-2xl">
                 {/* Black overlay background */}
                 <div className="fixed inset-0 bg-black/95 backdrop-blur-sm -z-10" />
                 
