@@ -41,7 +41,7 @@ const ServicesSection = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-2 max-w-6xl mx-auto">
-          {plans.map((plan, index) => <Card key={index} className={`relative p-8 transition-all duration-200 hover:-translate-y-2 animate-fade-in-up ${plan.popular ? 'bg-surface border-accent-neon shadow-neon scale-105 hover:shadow-xl' : 'bg-surface border-border hover:border-accent/50 hover:shadow-xl'}`} style={{
+          {plans.map((plan, index) => <Card key={index} className={`relative p-8 transition-all duration-200 hover:-translate-y-2 animate-fade-in-up ${plan.popular ? 'bg-sl-slate-800/50 border-accent-neon shadow-neon scale-105 hover:bg-sl-slate-800/70 hover:shadow-xl backdrop-blur-sm' : 'bg-sl-slate-800/50 border-sl-iron-600/30 backdrop-blur-sm hover:bg-sl-slate-800/70 hover:border-accent/50 hover:shadow-xl'}`} style={{
           animationDelay: `${index * 0.2}s`
         }}>
               {plan.popular && <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
