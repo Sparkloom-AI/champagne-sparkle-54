@@ -1,11 +1,6 @@
 "use client";
 
 import React from 'react';
-import { motion, Variants } from 'framer-motion';
-import { ArrowRight, Zap } from 'lucide-react';
-
-// A utility function for class names
-const cn = (...classes: (string | boolean | undefined)[]) => classes.filter(Boolean).join(' ');
 
 // The main hero component
 const AetherFlowHero = () => {
@@ -165,54 +160,9 @@ const AetherFlowHero = () => {
 
 
     return (
-        // Removed bg-black from this container
-        <div className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden">
-            {/* The canvas is now the primary background */}
-            <canvas ref={canvasRef} className="absolute top-0 left-0 w-full h-full"></canvas>
-            
-            {/* Overlay HTML Content */}
-            <div className="relative z-10 text-center p-6">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5, duration: 0.8 }}
-                    className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 mb-6 backdrop-blur-sm"
-                >
-                    <Zap className="h-4 w-4 text-purple-400" />
-                    <span className="text-sm font-medium text-gray-200">
-                        Dynamic Rendering Engine
-                    </span>
-                </motion.div>
-
-                <motion.h1
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.7, duration: 0.8 }}
-                    className="text-5xl md:text-8xl font-bold tracking-tighter mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-400"
-                >
-                    Aether Flow
-                </motion.h1>
-
-                <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.9, duration: 0.8 }}
-                    className="max-w-2xl mx-auto text-lg text-gray-400 mb-10"
-                >
-                    An intelligent, adaptive framework for creating fluid digital experiences that feel alive and respond to user interaction in real-time.
-                </motion.p>
-
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.1, duration: 0.8 }}
-                >
-                    <button className="px-8 py-4 bg-white text-black font-semibold rounded-lg shadow-lg hover:bg-gray-200 transition-colors duration-300 flex items-center gap-2 mx-auto">
-                        Explore the Engine
-                        <ArrowRight className="h-5 w-5" />
-                    </button>
-                </motion.div>
-            </div>
+        <div className="absolute inset-0 w-full h-full">
+            {/* Just the canvas animation - no overlay content */}
+            <canvas ref={canvasRef} className="w-full h-full"></canvas>
         </div>
     );
 };
