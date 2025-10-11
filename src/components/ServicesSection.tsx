@@ -26,7 +26,7 @@ const ServicesSection = () => {
   }];
   return <section id="services" className="py-28 md:py-32 bg-gradient-surface relative">
       {/* Floating Orbs */}
-      <div className="absolute top-20 right-20 w-32 h-32 bg-gradient-orb animate-pulse-glow opacity-20" />
+      <div className="absolute top-20 right-20 w-32 h-32 bg-gradient-orb opacity-20" />
       <div className="absolute bottom-20 left-20 w-48 h-48 bg-gradient-orb animate-float opacity-15" />
       
       <div className="container mx-auto px-6 relative">
