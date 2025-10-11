@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo, useCallback, useRef } from "react";
-import AetherFlowHero from "@/components/AetherFlowHero";
+import AetherFlowHero from "@/components/ui/aether-flow-hero";
 
 const InteractiveHeroSection = () => {
   const [isFullyInteractive, setIsFullyInteractive] = useState(false);
@@ -146,8 +146,10 @@ const InteractiveHeroSection = () => {
         }}
       />
       
-      {/* AetherFlowHero Background */}
-      <AetherFlowHero className="absolute inset-0 z-10" />
+      {/* AetherFlowHero Background - now renders complete */}
+      <div className="absolute inset-0 z-10">
+        <AetherFlowHero />
+      </div>
       
       {/* Content - Critical text rendered immediately for LCP optimization */}
       <div className="relative z-20 text-center max-w-5xl mx-auto px-6 opacity-100">
