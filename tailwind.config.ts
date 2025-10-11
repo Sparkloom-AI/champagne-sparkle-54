@@ -49,6 +49,8 @@ export default {
           auric500: "hsl(var(--sl-auric-500))",
           auric700: "hsl(var(--sl-auric-700))",
           auric800: "hsl(var(--sl-auric-800))",
+          gold500: "hsl(var(--sl-gold-500))",
+          magenta500: "hsl(var(--sl-magenta-500))",
           neonPink400: "hsl(var(--sl-neon-pink-400))",
           neonPink500: "hsl(var(--sl-neon-pink-500))",
           neonPink600: "hsl(var(--sl-neon-pink-600))",
@@ -108,6 +110,8 @@ export default {
         'gradient-orb': 'var(--gradient-orb)',
         'gradient-neon': 'var(--gradient-neon)',
         'gradient-neon-glow': 'var(--gradient-neon-glow)',
+        'gradient-pink-magenta': 'var(--gradient-pink-magenta)',
+        'gradient-hero-wash': 'var(--gradient-hero-wash)',
       },
       boxShadow: {
         'elegant': 'var(--shadow-elegant)',

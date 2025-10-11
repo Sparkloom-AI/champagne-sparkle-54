@@ -91,10 +91,10 @@ const ResultsSection = () => {
     }
   }];
   return <section id="results-section" className="py-28 md:py-32 bg-gradient-to-b from-sl-obsidian to-sl-graphite-900 relative overflow-hidden">
-      {/* Background Effects */}
+      {/* Background Effects - Pink gradient orbs */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-accent-neon/20 to-accent/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-accent/20 to-accent-neon/20 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-neon-glow rounded-full blur-3xl opacity-40" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-neon-glow rounded-full blur-3xl opacity-35" />
       </div>
       
       <div className="container mx-auto px-6 relative z-10">

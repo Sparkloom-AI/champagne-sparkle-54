@@ -23,9 +23,11 @@ All colors MUST be HSL.
     --sl-auric-500: 35 25% 74%;        /* #CEC0AD - muted champagne */
     --sl-auric-700: 34 51% 86%;        /* #EEDFCB - champagne highlight */
     --sl-auric-800: 37 55% 90%;        /* #F3E8D6 - light champagne */
-    --sl-neon-pink-400: 330 97% 70%;   /* #FE5D9A - lighter neon pink */
-    --sl-neon-pink-500: 330 97% 60%;   /* #FE347E - neon pink */
-    --sl-neon-pink-600: 330 97% 50%;   /* #FE0B62 - darker neon pink */
+    --sl-gold-500: 42 100% 65%;        /* #FFD666 - soft gold */
+    --sl-magenta-500: 320 95% 60%;     /* #F932A8 - magenta */
+    --sl-neon-pink-400: 330 100% 72%;  /* #FF5DA1 - lighter refined pink */
+    --sl-neon-pink-500: 330 100% 65%;  /* #FF47A3 - refined neon pink */
+    --sl-neon-pink-600: 330 100% 55%;  /* #FF2E85 - darker refined pink */
 
     /* Semantic design tokens */
     --background: var(--sl-obsidian);
@@ -62,20 +64,22 @@ All colors MUST be HSL.
     --ring: var(--sl-auric-700);
     --radius: 0.75rem;
 
-    /* Premium gradients */
+    /* Premium gradients - Pink → Magenta → Gold system */
     --gradient-hero: linear-gradient(135deg, hsl(var(--sl-obsidian)), hsl(var(--sl-slate-800)));
     --gradient-surface: linear-gradient(180deg, hsl(var(--sl-slate-800)), hsl(var(--sl-graphite-700)));
-    --gradient-accent: linear-gradient(90deg, transparent, hsl(var(--sl-auric-700)) 50%, transparent);
-    --gradient-orb: radial-gradient(circle at center, hsl(var(--sl-auric-700) / 0.3), transparent 70%);
-    --gradient-neon: linear-gradient(135deg, hsl(var(--sl-neon-pink-500)), hsl(var(--sl-auric-700)));
-    --gradient-neon-glow: radial-gradient(circle at center, hsl(var(--sl-neon-pink-500) / 0.4), transparent 70%);
+    --gradient-accent: linear-gradient(90deg, transparent, hsl(var(--sl-neon-pink-500)) 50%, transparent);
+    --gradient-orb: radial-gradient(circle at center, hsl(var(--sl-neon-pink-500) / 0.25), hsl(var(--sl-magenta-500) / 0.15), transparent 70%);
+    --gradient-neon: linear-gradient(135deg, hsl(var(--sl-neon-pink-500)), hsl(var(--sl-magenta-500)), hsl(var(--sl-gold-500)));
+    --gradient-neon-glow: radial-gradient(circle at center, hsl(var(--sl-neon-pink-500) / 0.5), hsl(var(--sl-magenta-500) / 0.3), transparent 70%);
+    --gradient-pink-magenta: linear-gradient(135deg, hsl(var(--sl-neon-pink-500)), hsl(var(--sl-magenta-500)));
+    --gradient-hero-wash: radial-gradient(ellipse 80% 60% at 50% 40%, hsl(var(--sl-neon-pink-500) / 0.12), hsl(var(--sl-magenta-500) / 0.08), transparent);
     
-    /* Premium shadows */
+    /* Premium shadows - Pink accent glow */
     --shadow-elegant: 0 20px 40px -10px hsl(var(--sl-obsidian) / 0.5);
-    --shadow-glow: 0 0 40px hsl(var(--sl-auric-700) / 0.2);
+    --shadow-glow: 0 0 40px hsl(var(--sl-neon-pink-500) / 0.25);
     --shadow-card: 0 8px 32px hsl(var(--sl-obsidian) / 0.3);
-    --shadow-neon: 0 0 30px hsl(var(--sl-neon-pink-500) / 0.3);
-    --shadow-neon-strong: 0 0 50px hsl(var(--sl-neon-pink-500) / 0.5);
+    --shadow-neon: 0 0 30px hsl(var(--sl-neon-pink-500) / 0.4);
+    --shadow-neon-strong: 0 0 60px hsl(var(--sl-neon-pink-500) / 0.6), 0 0 100px hsl(var(--sl-magenta-500) / 0.3);
 
     /* Animations */
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -107,30 +111,30 @@ All colors MUST be HSL.
   }
 
   ::-webkit-scrollbar-thumb {
-    background: hsl(var(--sl-auric-700));
+    background: hsl(var(--sl-neon-pink-500));
     border-radius: 3px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--sl-auric-500));
+    background: hsl(var(--sl-neon-pink-400));
   }
 
   /* Selection styles */
   ::selection {
-    background: hsl(var(--sl-auric-700) / 0.3);
+    background: hsl(var(--sl-neon-pink-500) / 0.3);
     color: hsl(var(--sl-pearl-100));
   }
 
   /* Premium micro-styles */
   .hairline-divider {
-    background: linear-gradient(90deg, transparent, hsl(var(--sl-auric-700)) 50%, transparent);
+    background: linear-gradient(90deg, transparent, hsl(var(--sl-neon-pink-500)) 50%, transparent);
     height: 1px;
     opacity: 0.6;
   }
 
   .button-sheen:hover {
     background: 
-      linear-gradient(180deg, color-mix(in oklab, hsl(var(--sl-auric-700)) 12%, transparent), transparent 40%),
+      linear-gradient(180deg, color-mix(in oklab, hsl(var(--sl-neon-pink-500)) 12%, transparent), transparent 40%),
       hsl(var(--sl-slate-800));
   }
 
@@ -184,26 +188,26 @@ All colors MUST be HSL.
     animation: gradient-shift 12s ease-in-out infinite;
   }
 
-  /* AetherFlowHero specific styles */
+  /* AetherFlowHero specific styles - Pink accent system */
   .aether-energy-core {
-    background: radial-gradient(circle, rgba(238, 223, 203, 0.6) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255, 71, 163, 0.4) 0%, rgba(249, 50, 168, 0.2) 40%, transparent 70%);
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    filter: blur(40px);
+    filter: blur(50px);
     animation: pulse-glow 6s ease-in-out infinite;
   }
 
   .aether-particle-streams {
     background: 
-      radial-gradient(2px 2px at 20px 30px, #EEDFCB, transparent),
-      radial-gradient(2px 2px at 40px 70px, #E8E2DC, transparent),
-      radial-gradient(2px 2px at 90px 40px, #CEC0AD, transparent),
-      radial-gradient(2px 2px at 130px 90px, #FE347E, transparent),
-      radial-gradient(2px 2px at 160px 30px, #EEDFCB, transparent);
+      radial-gradient(2px 2px at 20px 30px, #FF47A3, transparent),
+      radial-gradient(2px 2px at 40px 70px, #F932A8, transparent),
+      radial-gradient(2px 2px at 90px 40px, #FF2E85, transparent),
+      radial-gradient(2px 2px at 130px 90px, #FFD666, transparent),
+      radial-gradient(2px 2px at 160px 30px, #FF5DA1, transparent);
     background-repeat: repeat;
     background-size: 200px 200px, 150px 150px, 180px 180px, 220px 220px, 170px 170px;
-    animation: gradient-shift 12s ease-in-out infinite;
+    animation: gradient-shift 15s ease-in-out infinite;
   }
 
   .aether-overlay {
