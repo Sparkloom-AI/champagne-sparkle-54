@@ -17,7 +17,7 @@ All colors MUST be HSL.
     --sl-iron-600: 240 2% 25%;         /* #3F3F41 */
     --sl-zinc-500: 240 2% 34%;         /* #565658 */
     --sl-ash-400: 12 2% 48%;           /* #7D7A79 */
-    --sl-fog-300: 26 4% 63%;           /* #A39F9C */
+    --sl-fog-300: 26 4% 70%;           /* Higher contrast for better readability */
     --sl-mist-200: 32 12% 79%;         /* #CFC9C2 */
     --sl-pearl-100: 30 21% 89%;        /* #E8E2DC */
     --sl-auric-500: 35 25% 74%;        /* #CEC0AD - muted champagne */

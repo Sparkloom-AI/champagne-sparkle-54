@@ -88,11 +88,11 @@ const StatisticsSection = memo(() => {
   }, [handleIntersection]);
 
   return (
-    <section id="statistics-section" className="py-20 bg-gradient-to-b from-background to-sl-obsidian/50">
+    <section id="statistics-section" className="py-28 md:py-32 bg-gradient-to-b from-background to-sl-obsidian/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-6">
             Maximize Profits by <span className="text-transparent bg-gradient-to-r from-sl-auric-700 to-sl-auric-500 bg-clip-text">Cutting Costs</span>
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
@@ -127,7 +127,7 @@ const StatisticsSection = memo(() => {
           {/* Cost Reduction Chart */}
           <Card className="bg-sl-slate-800/50 border-sl-iron-600/30 backdrop-blur-sm">
             <CardHeader>
-              <CardTitle className="text-xl md:text-2xl font-semibold text-foreground leading-snug">Operational Cost Reduction</CardTitle>
+              <CardTitle className="text-xl md:text-2xl font-medium text-foreground leading-snug">Operational Cost Reduction</CardTitle>
               <p className="text-sm md:text-base text-muted-foreground leading-relaxed">Monthly comparison: Manual vs AI-Automated processes</p>
             </CardHeader>
             <CardContent>
@@ -177,7 +177,7 @@ const StatisticsSection = memo(() => {
           {/* Revenue Growth Chart */}
           <Card className="bg-sl-slate-800/50 border-sl-iron-600/30 backdrop-blur-sm">
             <CardHeader>
-              <CardTitle className="text-xl md:text-2xl font-semibold text-foreground leading-snug">Revenue & Profit Growth</CardTitle>
+              <CardTitle className="text-xl md:text-2xl font-medium text-foreground leading-snug">Revenue & Profit Growth</CardTitle>
               <p className="text-sm md:text-base text-muted-foreground leading-relaxed">Post-AI implementation performance metrics</p>
             </CardHeader>
             <CardContent>

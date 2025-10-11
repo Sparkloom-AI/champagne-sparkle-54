@@ -63,7 +63,7 @@ const StaticHeroSection = () => {
       
       {/* Content - Original hero text */}
       <div className="relative z-20 text-center max-w-5xl mx-auto px-6 opacity-100">
-        <h1 className="text-5xl md:text-6xl font-bold mb-8 opacity-100 leading-tight">
+        <h1 className="text-5xl md:text-6xl font-semibold mb-8 opacity-100 leading-tight">
           <span className="bg-gradient-to-r from-text via-accent-neon to-accent bg-clip-text text-transparent animate-gradient-shift bg-[length:200%_200%] drop-shadow-[0_0_20px_hsl(var(--sl-neon-pink-500)_/_0.3)] block">
             From Zero to Hero
           </span>

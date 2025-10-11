@@ -24,14 +24,14 @@ const ServicesSection = () => {
     features: ["Multiple AI solution suite", "Phased delivery approach", "Enterprise-grade security", "24/7 premium support", "Ongoing maintenance (12 months)", "Advanced analytics & reporting", "Dedicated development team"],
     popular: false
   }];
-  return <section id="services" className="py-24 bg-gradient-surface relative">
+  return <section id="services" className="py-28 md:py-32 bg-gradient-surface relative">
       {/* Floating Orbs */}
       <div className="absolute top-20 right-20 w-32 h-32 bg-gradient-orb animate-pulse-glow opacity-20" />
       <div className="absolute bottom-20 left-20 w-48 h-48 bg-gradient-orb animate-float opacity-15" />
       
       <div className="container mx-auto px-6 relative">
         <div className="text-center mb-16 animate-fade-in-up">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold mb-6 text-foreground">
             Our <span className="text-accent">Services</span>
           </h2>
           <p className="text-base md:text-lg text-text-muted max-w-2xl mx-auto mb-8 leading-relaxed">
@@ -41,7 +41,7 @@ const ServicesSection = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-2 max-w-6xl mx-auto">
-          {plans.map((plan, index) => <Card key={index} className={`relative p-8 transition-all duration-500 hover:-translate-y-2 animate-fade-in-up ${plan.popular ? 'bg-surface border-accent-neon shadow-neon scale-105 hover:shadow-neon-strong' : 'bg-surface border-border hover:border-accent/50 hover:shadow-glow'}`} style={{
+          {plans.map((plan, index) => <Card key={index} className={`relative p-8 transition-all duration-200 hover:-translate-y-2 animate-fade-in-up ${plan.popular ? 'bg-surface border-accent-neon shadow-neon scale-105 hover:shadow-xl' : 'bg-surface border-border hover:border-accent/50 hover:shadow-xl'}`} style={{
           animationDelay: `${index * 0.2}s`
         }}>
               {plan.popular && <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
@@ -51,7 +51,7 @@ const ServicesSection = () => {
                 </div>}
               
               <div className="text-center mb-8">
-                <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-4 leading-snug">{plan.name}</h3>
+                <h3 className="text-xl md:text-2xl font-medium text-foreground mb-4 leading-snug">{plan.name}</h3>
                 <p className="text-sm md:text-base text-text-muted leading-relaxed">{plan.description}</p>
               </div>
 

@@ -90,7 +90,7 @@ const ResultsSection = () => {
       }]
     }
   }];
-  return <section id="results-section" className="py-24 bg-gradient-to-b from-sl-obsidian to-sl-graphite-900 relative overflow-hidden">
+  return <section id="results-section" className="py-28 md:py-32 bg-gradient-to-b from-sl-obsidian to-sl-graphite-900 relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-accent-neon/20 to-accent/20 rounded-full blur-3xl" />
@@ -100,7 +100,7 @@ const ResultsSection = () => {
       <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold mb-6">
             Real Results. <span className="text-accent-neon">Real Impact.</span>
           </h2>
           <p className="text-base md:text-lg text-text-muted max-w-3xl mx-auto leading-relaxed">
@@ -112,7 +112,7 @@ const ResultsSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {caseStudies.map((study, index) => <Dialog key={index}>
               <DialogTrigger asChild>
-                <Card className={`bg-sl-graphite-800 border-border hover:-translate-y-6 hover:scale-[1.05] transition-all duration-700 group animate-fade-in cursor-pointer overflow-hidden relative ${study.isNeon ? 'hover:shadow-[0_30px_60px_rgba(0,255,255,0.4)] hover:border-accent-neon/80 hover:bg-sl-graphite-700' : 'hover:shadow-[0_30px_60px_rgba(139,92,246,0.4)] hover:border-accent/80 hover:bg-sl-graphite-700'}`} style={{
+                <Card className={`bg-sl-graphite-800 border-border hover:-translate-y-2 transition-all duration-200 group animate-fade-in cursor-pointer overflow-hidden relative hover:shadow-xl hover:border-accent-neon/80 hover:bg-sl-graphite-700`} style={{
               animationDelay: `${index * 150}ms`
             }}>
                   <CardHeader className="pb-4">
@@ -126,7 +126,7 @@ const ResultsSection = () => {
                         {study.deliveryTime}
                       </span>
                     </div>
-                    <CardTitle className="text-xl md:text-2xl font-semibold mb-2 leading-snug group-hover:text-accent-neon transition-colors duration-300">{study.client}</CardTitle>
+                    <CardTitle className="text-xl md:text-2xl font-medium mb-2 leading-snug group-hover:text-accent-neon transition-colors duration-200">{study.client}</CardTitle>
                     
                   </CardHeader>
                   
@@ -141,9 +141,9 @@ const ResultsSection = () => {
                         </span>)}
                     </div>
                     
-                    <Button variant="outline" size="sm" className={`w-full transition-all duration-300 ${study.isNeon ? 'border-accent-neon/30 text-accent-neon hover:bg-accent-neon hover:text-sl-obsidian group-hover:border-accent-neon hover:shadow-neon group-hover:scale-105' : 'border-accent/30 text-accent hover:bg-accent hover:text-accent-foreground group-hover:border-accent group-hover:scale-105'}`}>
+                    <Button variant="outline" size="sm" className={`w-full transition-all duration-200 ${study.isNeon ? 'border-accent-neon/30 text-accent-neon hover:bg-accent-neon hover:text-sl-obsidian group-hover:border-accent-neon' : 'border-accent/30 text-accent hover:bg-accent hover:text-accent-foreground group-hover:border-accent'}`}>
                       View Full Case Study
-                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform duration-300" />
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform duration-200" />
                     </Button>
                   </CardContent>
                 </Card>
@@ -175,7 +175,7 @@ const ResultsSection = () => {
                   
                   {/* Problem Section */}
                   <div className="space-y-4">
-                    <h3 className="text-xl md:text-2xl font-semibold text-accent flex items-center leading-snug">
+                    <h3 className="text-xl md:text-2xl font-medium text-accent flex items-center leading-snug">
                       ⚡ {study.problem.title}
                     </h3>
                     <p className="text-text-muted leading-relaxed bg-sl-graphite-800/50 p-4 rounded-lg">
@@ -185,7 +185,7 @@ const ResultsSection = () => {
                   
                   {/* Solution Section */}
                   <div className="space-y-4">
-                    <h3 className="text-xl md:text-2xl font-semibold text-accent-neon flex items-center leading-snug">
+                    <h3 className="text-xl md:text-2xl font-medium text-accent-neon flex items-center leading-snug">
                       ✅ {study.solution.title}
                     </h3>
                     <p className="text-text-muted leading-relaxed bg-sl-graphite-800/50 p-4 rounded-lg">

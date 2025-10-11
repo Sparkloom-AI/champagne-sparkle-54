@@ -18,12 +18,12 @@ const FAQSection = () => {
     question: "What technologies do you use?",
     answer: "We use modern, scalable technologies like React, Next.js, Node.js, and PostgreSQL. Our stack is chosen for reliability and future scalability, ensuring your MVP can grow with your business needs."
   }];
-  return <section id="faq" className="py-20 bg-sl-obsidian relative overflow-hidden">
+  return <section id="faq" className="py-28 md:py-32 bg-sl-obsidian relative overflow-hidden">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-20">
           {/* Left side - Title and CTA */}
           <div className="lg:w-1/3 space-y-6">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-sl-pearl-100">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-sl-pearl-100">
               Frequently asked questions.
             </h2>
             
@@ -38,11 +38,11 @@ const FAQSection = () => {
                   <AccordionItem 
                     key={index} 
                     value={`item-${index}`} 
-                    className={`border-sl-iron-600/30 bg-sl-obsidian/50 rounded-lg px-6 transition-all duration-300 hover:bg-sl-slate-800/30 ${
-                      isNeonHighlight ? 'hover:border-accent-neon/30 hover:shadow-neon/50' : ''
+                    className={`border-sl-iron-600/30 bg-sl-obsidian/50 rounded-lg px-6 transition-all duration-200 hover:bg-sl-slate-800/30 ${
+                      isNeonHighlight ? 'hover:border-accent-neon/30' : ''
                     }`}
                   >
-                    <AccordionTrigger className={`text-left text-sl-pearl-100 py-6 text-lg font-medium hover:no-underline transition-colors duration-300 ${
+                    <AccordionTrigger className={`text-left text-sl-pearl-100 py-6 text-lg font-medium hover:no-underline transition-colors duration-200 ${
                       isNeonHighlight ? 'hover:text-accent-neon' : 'hover:text-sl-auric-700'
                     }`}>
                       {faq.question}

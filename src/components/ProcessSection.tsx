@@ -38,11 +38,11 @@ const processSteps = [{
 }];
 const ProcessSection = () => {
   return (
-    <section id="process-section" className="py-20 bg-gradient-to-b from-sl-obsidian/30 to-background">
+    <section id="process-section" className="py-28 md:py-32 bg-gradient-to-b from-sl-obsidian/30 to-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in-up">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-6">
             The 5-Step Process
           </h2>
           <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
@@ -57,8 +57,8 @@ const ProcessSection = () => {
             return (
               <Card 
                 key={step.number} 
-                className={`bg-sl-slate-800/50 border-sl-iron-600/30 backdrop-blur-sm hover:bg-sl-slate-800/70 hover:-translate-y-2 transition-all duration-500 group h-full animate-fade-in-up ${
-                  step.isNeon ? 'hover:shadow-neon hover:border-accent-neon/50' : 'hover:shadow-glow'
+                className={`bg-sl-slate-800/50 border-sl-iron-600/30 backdrop-blur-sm hover:bg-sl-slate-800/70 hover:-translate-y-2 transition-all duration-200 group h-full animate-fade-in-up ${
+                  step.isNeon ? 'hover:shadow-xl hover:border-accent-neon/50' : 'hover:shadow-xl'
                 }`}
                 style={{
                   animationDelay: `${index * 0.2}s`,
@@ -81,7 +81,7 @@ const ProcessSection = () => {
                   </div>
                   
                   {/* Title */}
-                  <h3 className={`text-xl md:text-2xl font-semibold text-foreground mb-3 leading-snug transition-colors duration-500 ${
+                  <h3 className={`text-xl md:text-2xl font-medium text-foreground mb-3 leading-snug transition-colors duration-200 ${
                     step.isNeon ? 'group-hover:text-accent-neon' : 'group-hover:text-sl-auric-700'
                   }`}>
                     {step.title}
