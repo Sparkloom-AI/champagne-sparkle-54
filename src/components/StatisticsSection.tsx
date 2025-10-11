@@ -95,7 +95,7 @@ const StatisticsSection = memo(() => {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-6">
             Maximize Profits by <span className="text-transparent bg-gradient-to-r from-sl-auric-700 to-sl-auric-500 bg-clip-text">Cutting Costs</span>
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-loose">
             See the real impact of AI automation on operational efficiency and revenue growth
           </p>
         </div>
@@ -227,12 +227,11 @@ const StatisticsSection = memo(() => {
 
         {/* Bottom CTA */}
         <div className="text-center mt-16">
-          <p className="text-muted-foreground text-lg mb-4">
+          <p className="text-muted-foreground text-lg mb-6 leading-loose">
             Ready to see similar results for your business?
           </p>
-          <div className="inline-flex items-center gap-2 px-6 py-3 bg-sl-auric-700/10 border border-sl-auric-700/30 rounded-lg">
-            <span className="text-sl-auric-700 font-semibold">💡</span>
-            <span className="text-foreground">Start your 30-day transformation today</span>
+          <div className="inline-flex items-center gap-2 px-6 py-3 bg-accent/5 border border-accent/20 rounded-lg">
+            <span className="text-foreground font-medium">Start your 30-day transformation today</span>
           </div>
         </div>
       </div>
