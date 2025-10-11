@@ -23,7 +23,7 @@ const FAQSection = () => {
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-20">
           {/* Left side - Title and CTA */}
           <div className="lg:w-1/3 space-y-6">
-            <h2 className="text-4xl md:text-5xl font-bold text-sl-pearl-100">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-sl-pearl-100">
               Frequently asked questions.
             </h2>
             

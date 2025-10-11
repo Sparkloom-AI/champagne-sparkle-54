@@ -6,7 +6,7 @@ This document defines the typography hierarchy for the SparkloomAI project to en
 
 | Category | Desktop Size | Mobile Size | Weight | Line Height | Usage |
 |----------|-------------|-------------|---------|-------------|-------|
-| **Display** | 4.5rem (72px) | 3rem (48px) | 700 (Bold) | 1.1 | Hero headlines, landing page main titles |
+| **Display** | 3.75rem (60px) | 3rem (48px) | 700 (Bold) | 1.1 | Hero headlines, landing page main titles |
 | **H1** | 3rem (48px) | 2.25rem (36px) | 700 (Bold) | 1.2 | Page titles, section heroes |
 | **H2** | 2.25rem (36px) | 1.875rem (30px) | 700 (Bold) | 1.2 | Major section headings |
 | **H3 (Card Titles)** | 1.5rem (24px) | 1.25rem (20px) | 600 (Semibold) | 1.3 | Card titles, subsection headings |
@@ -21,6 +21,11 @@ This document defines the typography hierarchy for the SparkloomAI project to en
 | **Dialog Title** | 1.875rem (30px) | 1.5rem (24px) | 600 (Semibold) | 1.3 | Dialog/modal titles |
 
 ## Responsive Patterns
+
+### Hero Titles
+```tsx
+<h1 className="text-5xl md:text-6xl font-bold leading-tight">
+```
 
 ### Section Headings (H2)
 ```tsx
