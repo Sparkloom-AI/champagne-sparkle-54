@@ -42,7 +42,7 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-8 py-5 flex items-center justify-between">
         <a href="/" className="flex items-center space-x-3 hover:opacity-90 transition-opacity">
           <div className="w-9 h-9 bg-gradient-to-r from-accent to-accent-light rounded-lg flex items-center justify-center">
@@ -104,7 +104,7 @@ const Navigation = () => {
 
       {/* Mobile Navigation Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-background/95 backdrop-blur-md border-b border-border/50 shadow-lg">
+        <div className="md:hidden absolute top-full left-0 w-full bg-background/95 backdrop-blur-md shadow-lg">
           <div className="flex flex-col space-y-4 p-6">
             <button onClick={() => handleNavigation('process-section')} className="text-left text-base font-semibold text-muted-foreground hover:text-accent-neon transition-colors">
               Process
