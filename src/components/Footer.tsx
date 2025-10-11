@@ -24,7 +24,7 @@ const Footer = () => {
               <li><button onClick={() => navigateToSection('results-section')} className="text-text-muted hover:text-accent transition-colors">Results</button></li>
               <li><button onClick={() => navigateToSection('faq')} className="text-text-muted hover:text-accent transition-colors">FAQ</button></li>
               <li><button onClick={() => navigateToSection('contact')} className="text-text-muted hover:text-accent transition-colors">Contact</button></li>
-              <li><a href="/about" className="text-text-muted hover:text-accent transition-colors">About</a></li>
+              <li><a href="/our-mission" className="text-text-muted hover:text-accent transition-colors">Our Mission</a></li>
               <li><a href="/careers" className="text-text-muted hover:text-accent transition-colors">Careers</a></li>
             </ul>
           </div>

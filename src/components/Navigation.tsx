@@ -68,8 +68,8 @@ const Navigation = () => {
           <button onClick={() => handleNavigation('contact')} className="text-base font-semibold text-muted-foreground hover:text-accent-neon transition-colors">
             Contact
           </button>
-          <a href="/about" className={`text-base font-semibold text-muted-foreground hover:text-accent-neon transition-colors ${location.pathname === '/about' ? 'text-accent' : ''}`}>
-            About
+          <a href="/our-mission" className={`text-base font-semibold text-muted-foreground hover:text-accent-neon transition-colors ${location.pathname === '/our-mission' ? 'text-accent' : ''}`}>
+            Our Mission
           </a>
           <a href="/careers" className={`text-base font-semibold text-muted-foreground hover:text-accent-neon transition-colors ${location.pathname === '/careers' ? 'text-accent' : ''}`}>
             Careers
@@ -114,8 +114,8 @@ const Navigation = () => {
             <button onClick={() => handleNavigation('contact')} className="text-left text-base font-semibold text-muted-foreground hover:text-accent-neon transition-colors">
               Contact
             </button>
-            <a href="/about" className={`text-left text-base font-semibold text-muted-foreground hover:text-accent-neon transition-colors ${location.pathname === '/about' ? 'text-accent' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>
-              About
+            <a href="/our-mission" className={`text-left text-base font-semibold text-muted-foreground hover:text-accent-neon transition-colors ${location.pathname === '/our-mission' ? 'text-accent' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>
+              Our Mission
             </a>
             <a href="/careers" className={`text-left text-base font-semibold text-muted-foreground hover:text-accent-neon transition-colors ${location.pathname === '/careers' ? 'text-accent' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>
               Careers
