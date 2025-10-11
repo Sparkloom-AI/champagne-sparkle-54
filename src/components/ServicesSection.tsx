@@ -24,7 +24,7 @@ const ServicesSection = () => {
     features: ["Multiple AI solution suite", "Phased delivery approach", "Enterprise-grade security", "24/7 premium support", "Ongoing maintenance (12 months)", "Advanced analytics & reporting", "Dedicated development team"],
     popular: false
   }];
-  return <section id="services" className="py-28 md:py-32 bg-gradient-surface relative">
+  return <section id="services" className="py-28 md:py-32 bg-background relative">
       {/* Floating Orbs */}
       <div className="absolute top-20 right-20 w-32 h-32 bg-gradient-orb opacity-20" />
       <div className="absolute bottom-20 left-20 w-48 h-48 bg-gradient-orb animate-float opacity-15" />
