@@ -61,11 +61,6 @@ const StaticHeroSection = () => {
       {/* Particle Animation Background */}
       <AetherFlowHero />
       
-      {/* Subtle gradient wash behind hero text */}
-      <div className="absolute inset-0 z-10 pointer-events-none" style={{
-        background: 'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(255, 71, 163, 0.12), rgba(249, 50, 168, 0.08), transparent)'
-      }} />
-      
       {/* Content - Original hero text */}
       <div className="relative z-20 text-center max-w-5xl mx-auto px-6 opacity-100">
         <h1 className="text-5xl md:text-6xl font-semibold mb-8 opacity-100 leading-tight">
