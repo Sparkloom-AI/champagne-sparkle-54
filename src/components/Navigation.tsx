@@ -42,44 +42,51 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-background border-b border-border">
-      <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
-          <div className="w-8 h-8 bg-gradient-to-r from-accent to-accent-light rounded-lg flex items-center justify-center">
-            <span className="text-sl-obsidian font-bold text-sm">SP</span>
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
+      <div className="max-w-7xl mx-auto px-8 py-5 flex items-center justify-between">
+        <a href="/" className="flex items-center space-x-3 hover:opacity-90 transition-opacity">
+          <div className="w-9 h-9 bg-gradient-to-r from-accent to-accent-light rounded-lg flex items-center justify-center">
+            <span className="text-sl-obsidian font-bold text-base">SP</span>
           </div>
-          <span className="text-xl font-bold text-foreground">SparkloomAI</span>
+          <span className="text-xl font-bold text-foreground tracking-tight">SparkloomAI</span>
         </a>
         
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-8">
-          <button onClick={() => handleNavigation('process-section')} className="text-base font-semibold text-muted-foreground hover:text-accent-neon transition-colors">
+        <div className="hidden md:flex items-center space-x-10">
+          <button onClick={() => handleNavigation('process-section')} className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors relative group">
             Process
+            <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-accent-neon transition-all duration-300 group-hover:w-full"></span>
           </button>
-          <button onClick={() => handleNavigation('services')} className="text-base font-semibold text-muted-foreground hover:text-accent-neon transition-colors">
+          <button onClick={() => handleNavigation('services')} className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors relative group">
             Services
+            <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-accent-neon transition-all duration-300 group-hover:w-full"></span>
           </button>
-          <button onClick={() => handleNavigation('results-section')} className="text-base font-semibold text-muted-foreground hover:text-accent-neon transition-colors">
+          <button onClick={() => handleNavigation('results-section')} className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors relative group">
             Results
+            <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-accent-neon transition-all duration-300 group-hover:w-full"></span>
           </button>
-          <button onClick={() => handleNavigation('faq')} className="text-base font-semibold text-muted-foreground hover:text-accent-neon transition-colors">
+          <button onClick={() => handleNavigation('faq')} className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors relative group">
             FAQ
+            <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-accent-neon transition-all duration-300 group-hover:w-full"></span>
           </button>
-          <button onClick={() => handleNavigation('contact')} className="text-base font-semibold text-muted-foreground hover:text-accent-neon transition-colors">
+          <button onClick={() => handleNavigation('contact')} className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors relative group">
             Contact
+            <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-accent-neon transition-all duration-300 group-hover:w-full"></span>
           </button>
-          <a href="/our-mission" className={`text-base font-semibold text-muted-foreground hover:text-accent-neon transition-colors ${location.pathname === '/our-mission' ? 'text-accent' : ''}`}>
+          <a href="/our-mission" className={`text-sm font-medium text-foreground/80 hover:text-foreground transition-colors relative group ${location.pathname === '/our-mission' ? 'text-accent' : ''}`}>
             Our Mission
+            <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-accent-neon transition-all duration-300 group-hover:w-full"></span>
           </a>
-          <a href="/careers" className={`text-base font-semibold text-muted-foreground hover:text-accent-neon transition-colors ${location.pathname === '/careers' ? 'text-accent' : ''}`}>
+          <a href="/careers" className={`text-sm font-medium text-foreground/80 hover:text-foreground transition-colors relative group ${location.pathname === '/careers' ? 'text-accent' : ''}`}>
             Careers
+            <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-accent-neon transition-all duration-300 group-hover:w-full"></span>
           </a>
         </div>
 
         {/* Desktop CTA Button */}
         <Button 
-          variant="outline" 
-          className="hidden md:flex border-accent-neon text-accent-neon hover:bg-accent-neon hover:text-sl-obsidian hover:shadow-neon transition-all duration-300" 
+          variant="default" 
+          className="hidden md:flex bg-foreground text-background hover:bg-foreground/90 rounded-full px-6 py-2.5 text-sm font-medium transition-all duration-300 hover:scale-105" 
           onClick={() => window.open('https://calendar.app.google/hnNuZRVCdZwq5cMU8', '_blank')}
         >
           Talk to an Expert
@@ -97,7 +104,7 @@ const Navigation = () => {
 
       {/* Mobile Navigation Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-16 left-0 w-full bg-background border-b border-border shadow-lg">
+        <div className="md:hidden absolute top-full left-0 w-full bg-background/95 backdrop-blur-md border-b border-border/50 shadow-lg">
           <div className="flex flex-col space-y-4 p-6">
             <button onClick={() => handleNavigation('process-section')} className="text-left text-base font-semibold text-muted-foreground hover:text-accent-neon transition-colors">
               Process
@@ -121,8 +128,8 @@ const Navigation = () => {
               Careers
             </a>
             <Button 
-              variant="outline" 
-              className="mt-4 border-accent-neon text-accent-neon hover:bg-accent-neon hover:text-sl-obsidian hover:shadow-neon transition-all duration-300" 
+              variant="default" 
+              className="mt-4 bg-foreground text-background hover:bg-foreground/90 rounded-full w-full" 
               onClick={() => {
                 window.open('https://calendar.app.google/hnNuZRVCdZwq5cMU8', '_blank');
                 setIsMobileMenuOpen(false);
