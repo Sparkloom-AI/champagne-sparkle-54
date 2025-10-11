@@ -25,7 +25,7 @@ const AboutUs = () => {
           {/* Founders Section */}
           <section className="mb-16">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 italic leading-relaxed">Our Mission is to empower organizations with accessible AI tools that solve real business problems and drive innovation.</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 italic leading-relaxed">Our Mission is to empower organizations with accessible AI tools that solve real business problems and drive innovation.</h2>
               <div className="w-24 h-1 bg-gradient-neon mx-auto rounded-full"></div>
             </div>
 
@@ -35,10 +35,10 @@ const AboutUs = () => {
                 <CardContent className="p-4 sm:p-8">
                   <div className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-8">
                     <div className="flex-1 max-w-prose">
-                      <blockquote className="text-2xl text-text-muted italic leading-relaxed mb-6">
+                      <blockquote className="text-lg md:text-xl text-text-muted italic leading-relaxed mb-6">
                         "We're here to make AI actually useful. We build smart, quality tools that help people and businesses get things done and unlock their full potential. It's all about creating tech that genuinely helps."
                       </blockquote>
-                      <h3 className="text-2xl font-bold text-accent-neon mb-2 group-hover:text-accent-neon-light transition-colors">
+                      <h3 className="text-xl md:text-2xl font-bold text-accent-neon mb-2 group-hover:text-accent-neon-light transition-colors">
                         Nils Effmert
                       </h3>
                       <p className="text-accent font-medium">Founder</p>
@@ -59,10 +59,10 @@ const AboutUs = () => {
                 <CardContent className="p-4 sm:p-8">
                   <div className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-8">
                     <div className="flex-1 max-w-prose">
-                      <blockquote className="text-2xl text-text-muted italic leading-relaxed mb-6">
+                      <blockquote className="text-lg md:text-xl text-text-muted italic leading-relaxed mb-6">
                         "AI has the power to spark some incredible new ideas and services that can benefit us all. At SparkloomAI, we're excited to be a part of that, building a future where technology empowers everyone."
                       </blockquote>
-                      <h3 className="text-2xl font-bold text-accent-neon mb-2 group-hover:text-accent-neon-light transition-colors">
+                      <h3 className="text-xl md:text-2xl font-bold text-accent-neon mb-2 group-hover:text-accent-neon-light transition-colors">
                         Moritz Florian
                       </h3>
                       <p className="text-accent font-medium">Founder</p>
