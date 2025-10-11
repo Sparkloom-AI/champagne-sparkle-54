@@ -9,11 +9,11 @@ const ContactSection = () => {
             {/* Left content */}
             <div className="flex-none sm:flex-1 p-8 lg:p-12 relative z-10 flex flex-col justify-center">
               <div className="space-y-6">
-                <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-sl-pearl-100 to-sl-fog-300">
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-sl-pearl-100 to-sl-fog-300 leading-tight">
                   Bring your business to life with intelligent automation.
                 </h1>
                 
-                <p className="text-lg text-sl-fog-300 max-w-lg leading-relaxed">
+                <p className="text-base md:text-lg text-sl-fog-300 max-w-lg leading-relaxed">
                   Our AI solutions create immersive experiences that capture attention 
                   and deliver measurable results in just 30 days.
                 </p>

@@ -100,10 +100,10 @@ const ResultsSection = () => {
       <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
             Real Results. <span className="text-accent-neon">Real Impact.</span>
           </h2>
-          <p className="text-xl text-text-muted max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-text-muted max-w-3xl mx-auto leading-relaxed">
             See how we've transformed businesses with AI automation, delivering measurable results and exceptional ROI.
           </p>
         </div>
@@ -126,12 +126,12 @@ const ResultsSection = () => {
                         {study.deliveryTime}
                       </span>
                     </div>
-                    <CardTitle className="text-lg mb-2 group-hover:text-accent-neon transition-colors duration-300">{study.client}</CardTitle>
+                    <CardTitle className="text-xl md:text-2xl font-semibold mb-2 leading-snug group-hover:text-accent-neon transition-colors duration-300">{study.client}</CardTitle>
                     
                   </CardHeader>
                   
                   <CardContent className="pt-0">
-                    <p className="text-text-muted text-sm mb-4 leading-relaxed group-hover:text-text transition-colors duration-300">
+                    <p className="text-sm md:text-base text-text-muted mb-4 leading-relaxed group-hover:text-text transition-colors duration-300">
                       {study.description}
                     </p>
                     
@@ -154,7 +154,7 @@ const ResultsSection = () => {
                 <div className="fixed inset-0 bg-black/95 backdrop-blur-sm -z-10" />
                 
                 <DialogHeader>
-                  <DialogTitle className="text-3xl font-bold mb-6 text-accent-neon flex items-center gap-3">
+                  <DialogTitle className="text-2xl md:text-3xl font-semibold mb-6 leading-tight text-accent-neon flex items-center gap-3">
                     <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${study.isNeon ? 'bg-gradient-neon shadow-neon' : 'bg-gradient-to-r from-accent to-accent-light shadow-glow'}`}>
                       <span className="text-sl-obsidian font-bold">
                         {study.client.split(' ').map(word => word[0]).join('').slice(0, 2)}
@@ -175,7 +175,7 @@ const ResultsSection = () => {
                   
                   {/* Problem Section */}
                   <div className="space-y-4">
-                    <h3 className="text-xl font-semibold text-accent flex items-center">
+                    <h3 className="text-xl md:text-2xl font-semibold text-accent flex items-center leading-snug">
                       ⚡ {study.problem.title}
                     </h3>
                     <p className="text-text-muted leading-relaxed bg-sl-graphite-800/50 p-4 rounded-lg">
@@ -185,7 +185,7 @@ const ResultsSection = () => {
                   
                   {/* Solution Section */}
                   <div className="space-y-4">
-                    <h3 className="text-xl font-semibold text-accent-neon flex items-center">
+                    <h3 className="text-xl md:text-2xl font-semibold text-accent-neon flex items-center leading-snug">
                       ✅ {study.solution.title}
                     </h3>
                     <p className="text-text-muted leading-relaxed bg-sl-graphite-800/50 p-4 rounded-lg">

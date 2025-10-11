@@ -92,10 +92,10 @@ const StatisticsSection = memo(() => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
             Maximize Profits by <span className="text-transparent bg-gradient-to-r from-sl-auric-700 to-sl-auric-500 bg-clip-text">Cutting Costs</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             See the real impact of AI automation on operational efficiency and revenue growth
           </p>
         </div>
@@ -103,19 +103,19 @@ const StatisticsSection = memo(() => {
         {/* Key Statistics */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           <div className="text-center">
-            <div className="text-4xl md:text-5xl font-bold text-sl-auric-700 mb-2">
+            <div className="text-3xl md:text-4xl font-bold text-sl-auric-700 mb-2">
               {startAnimations && <AnimatedCounter end={75} suffix="%" delay={0} />}
             </div>
             <p className="text-muted-foreground">Cost Reduction</p>
           </div>
           <div className="text-center">
-            <div className="text-4xl md:text-5xl font-bold text-sl-auric-700 mb-2">
+            <div className="text-3xl md:text-4xl font-bold text-sl-auric-700 mb-2">
               {startAnimations && <AnimatedCounter end={155} suffix="%" delay={200} />}
             </div>
             <p className="text-muted-foreground">Profit Increase</p>
           </div>
           <div className="text-center">
-            <div className="text-4xl md:text-5xl font-bold text-sl-auric-700 mb-2">
+            <div className="text-3xl md:text-4xl font-bold text-sl-auric-700 mb-2">
               {startAnimations && <AnimatedCounter end={30} delay={400} />}
             </div>
             <p className="text-muted-foreground">Days to ROI</p>
@@ -127,8 +127,8 @@ const StatisticsSection = memo(() => {
           {/* Cost Reduction Chart */}
           <Card className="bg-sl-slate-800/50 border-sl-iron-600/30 backdrop-blur-sm">
             <CardHeader>
-              <CardTitle className="text-foreground text-xl">Operational Cost Reduction</CardTitle>
-              <p className="text-muted-foreground text-sm">Monthly comparison: Manual vs AI-Automated processes</p>
+              <CardTitle className="text-xl md:text-2xl font-semibold text-foreground leading-snug">Operational Cost Reduction</CardTitle>
+              <p className="text-sm md:text-base text-muted-foreground leading-relaxed">Monthly comparison: Manual vs AI-Automated processes</p>
             </CardHeader>
             <CardContent>
               <div className="h-80">
@@ -177,8 +177,8 @@ const StatisticsSection = memo(() => {
           {/* Revenue Growth Chart */}
           <Card className="bg-sl-slate-800/50 border-sl-iron-600/30 backdrop-blur-sm">
             <CardHeader>
-              <CardTitle className="text-foreground text-xl">Revenue & Profit Growth</CardTitle>
-              <p className="text-muted-foreground text-sm">Post-AI implementation performance metrics</p>
+              <CardTitle className="text-xl md:text-2xl font-semibold text-foreground leading-snug">Revenue & Profit Growth</CardTitle>
+              <p className="text-sm md:text-base text-muted-foreground leading-relaxed">Post-AI implementation performance metrics</p>
             </CardHeader>
             <CardContent>
               <div className="h-80">

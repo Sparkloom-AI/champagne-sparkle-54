@@ -42,10 +42,10 @@ const ProcessSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in-up">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
             The 5-Step Process
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Our proven methodology transforms your business in 30 days with structured AI implementation
           </p>
         </div>
@@ -81,14 +81,14 @@ const ProcessSection = () => {
                   </div>
                   
                   {/* Title */}
-                  <h3 className={`text-xl font-bold text-foreground mb-3 transition-colors duration-500 ${
+                  <h3 className={`text-xl md:text-2xl font-semibold text-foreground mb-3 leading-snug transition-colors duration-500 ${
                     step.isNeon ? 'group-hover:text-accent-neon' : 'group-hover:text-sl-auric-700'
                   }`}>
                     {step.title}
                   </h3>
                   
                   {/* Description */}
-                  <p className="text-muted-foreground text-sm leading-relaxed flex-grow">
+                  <p className="text-sm leading-normal text-muted-foreground flex-grow">
                     {step.description}
                   </p>
                 </CardContent>

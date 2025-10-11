@@ -13,6 +13,20 @@ export default {
       },
     },
     extend: {
+      fontSize: {
+        'display-mobile': ['3rem', { lineHeight: '1.1', fontWeight: '700' }],
+        'display-desktop': ['4.5rem', { lineHeight: '1.1', fontWeight: '700' }],
+        'h1-mobile': ['2.25rem', { lineHeight: '1.2', fontWeight: '700' }],
+        'h1-desktop': ['3rem', { lineHeight: '1.2', fontWeight: '700' }],
+        'h2-mobile': ['1.875rem', { lineHeight: '1.2', fontWeight: '700' }],
+        'h2-desktop': ['2.25rem', { lineHeight: '1.2', fontWeight: '700' }],
+        'h3-mobile': ['1.25rem', { lineHeight: '1.3', fontWeight: '600' }],
+        'h3-desktop': ['1.5rem', { lineHeight: '1.3', fontWeight: '600' }],
+        'body-lg-mobile': ['1rem', { lineHeight: '1.6' }],
+        'body-lg-desktop': ['1.125rem', { lineHeight: '1.6' }],
+        'lead-mobile': ['1.25rem', { lineHeight: '1.6' }],
+        'lead-desktop': ['1.5rem', { lineHeight: '1.6' }],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

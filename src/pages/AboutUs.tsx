@@ -25,7 +25,7 @@ const AboutUs = () => {
           {/* Founders Section */}
           <section className="mb-16">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-foreground mb-4 italic">Our Mission is to empower organizations with accessible AI tools that solve real business problems and drive innovation.</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 italic leading-relaxed">Our Mission is to empower organizations with accessible AI tools that solve real business problems and drive innovation.</h2>
               <div className="w-24 h-1 bg-gradient-neon mx-auto rounded-full"></div>
             </div>
 
@@ -82,8 +82,8 @@ const AboutUs = () => {
 
           {/* Call to Action */}
           <section className="text-center py-16 bg-gradient-surface rounded-xl border border-border-neon shadow-neon">
-            <h2 className="text-3xl font-bold text-foreground mb-4">Ready to Transform Your Business?</h2>
-            <p className="text-xl text-text-muted mb-8 max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Ready to Transform Your Business?</h2>
+            <p className="text-lg md:text-xl text-text-muted mb-8 max-w-2xl mx-auto leading-relaxed">
               Let's discuss how AI can solve your real-world challenges and unlock new opportunities.
             </p>
             <button 

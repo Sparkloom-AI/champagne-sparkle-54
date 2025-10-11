@@ -53,25 +53,25 @@ const Navigation = () => {
         
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
-          <button onClick={() => handleNavigation('process-section')} className="text-muted-foreground hover:text-accent transition-colors">
+          <button onClick={() => handleNavigation('process-section')} className="text-base font-semibold text-muted-foreground hover:text-accent-neon transition-colors">
             Process
           </button>
-          <button onClick={() => handleNavigation('services')} className="text-muted-foreground hover:text-accent transition-colors">
+          <button onClick={() => handleNavigation('services')} className="text-base font-semibold text-muted-foreground hover:text-accent-neon transition-colors">
             Services
           </button>
-          <button onClick={() => handleNavigation('results-section')} className="text-muted-foreground hover:text-accent transition-colors">
+          <button onClick={() => handleNavigation('results-section')} className="text-base font-semibold text-muted-foreground hover:text-accent-neon transition-colors">
             Results
           </button>
-          <button onClick={() => handleNavigation('faq')} className="text-muted-foreground hover:text-accent transition-colors">
+          <button onClick={() => handleNavigation('faq')} className="text-base font-semibold text-muted-foreground hover:text-accent-neon transition-colors">
             FAQ
           </button>
-          <button onClick={() => handleNavigation('contact')} className="text-muted-foreground hover:text-accent transition-colors">
+          <button onClick={() => handleNavigation('contact')} className="text-base font-semibold text-muted-foreground hover:text-accent-neon transition-colors">
             Contact
           </button>
-          <a href="/about" className={`text-muted-foreground hover:text-accent transition-colors ${location.pathname === '/about' ? 'text-accent' : ''}`}>
+          <a href="/about" className={`text-base font-semibold text-muted-foreground hover:text-accent-neon transition-colors ${location.pathname === '/about' ? 'text-accent' : ''}`}>
             About
           </a>
-          <a href="/careers" className={`text-muted-foreground hover:text-accent transition-colors ${location.pathname === '/careers' ? 'text-accent' : ''}`}>
+          <a href="/careers" className={`text-base font-semibold text-muted-foreground hover:text-accent-neon transition-colors ${location.pathname === '/careers' ? 'text-accent' : ''}`}>
             Careers
           </a>
         </div>
@@ -99,25 +99,25 @@ const Navigation = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden absolute top-16 left-0 w-full bg-background border-b border-border shadow-lg">
           <div className="flex flex-col space-y-4 p-6">
-            <button onClick={() => handleNavigation('process-section')} className="text-left text-muted-foreground hover:text-accent transition-colors">
+            <button onClick={() => handleNavigation('process-section')} className="text-left text-base font-semibold text-muted-foreground hover:text-accent-neon transition-colors">
               Process
             </button>
-            <button onClick={() => handleNavigation('services')} className="text-left text-muted-foreground hover:text-accent transition-colors">
+            <button onClick={() => handleNavigation('services')} className="text-left text-base font-semibold text-muted-foreground hover:text-accent-neon transition-colors">
               Services
             </button>
-            <button onClick={() => handleNavigation('results-section')} className="text-left text-muted-foreground hover:text-accent transition-colors">
+            <button onClick={() => handleNavigation('results-section')} className="text-left text-base font-semibold text-muted-foreground hover:text-accent-neon transition-colors">
               Results
             </button>
-            <button onClick={() => handleNavigation('faq')} className="text-left text-muted-foreground hover:text-accent transition-colors">
+            <button onClick={() => handleNavigation('faq')} className="text-left text-base font-semibold text-muted-foreground hover:text-accent-neon transition-colors">
               FAQ
             </button>
-            <button onClick={() => handleNavigation('contact')} className="text-left text-muted-foreground hover:text-accent transition-colors">
+            <button onClick={() => handleNavigation('contact')} className="text-left text-base font-semibold text-muted-foreground hover:text-accent-neon transition-colors">
               Contact
             </button>
-            <a href="/about" className={`text-left text-muted-foreground hover:text-accent transition-colors ${location.pathname === '/about' ? 'text-accent' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>
+            <a href="/about" className={`text-left text-base font-semibold text-muted-foreground hover:text-accent-neon transition-colors ${location.pathname === '/about' ? 'text-accent' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>
               About
             </a>
-            <a href="/careers" className={`text-left text-muted-foreground hover:text-accent transition-colors ${location.pathname === '/careers' ? 'text-accent' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>
+            <a href="/careers" className={`text-left text-base font-semibold text-muted-foreground hover:text-accent-neon transition-colors ${location.pathname === '/careers' ? 'text-accent' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>
               Careers
             </a>
             <Button 

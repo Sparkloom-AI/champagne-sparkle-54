@@ -31,10 +31,10 @@ const ServicesSection = () => {
       
       <div className="container mx-auto px-6 relative">
         <div className="text-center mb-16 animate-fade-in-up">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground">
             Our <span className="text-accent">Services</span>
           </h2>
-          <p className="text-xl text-text-muted max-w-2xl mx-auto mb-8">
+          <p className="text-lg md:text-xl text-text-muted max-w-2xl mx-auto mb-8 leading-relaxed">
             Comprehensive AI solutions tailored to your business needs. From simple automation to enterprise transformation.
           </p>
           
@@ -51,8 +51,8 @@ const ServicesSection = () => {
                 </div>}
               
               <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-foreground mb-4">{plan.name}</h3>
-                <p className="text-text-muted">{plan.description}</p>
+                <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-4 leading-snug">{plan.name}</h3>
+                <p className="text-sm md:text-base text-text-muted leading-relaxed">{plan.description}</p>
               </div>
 
               <ul className="space-y-4 mb-8">
